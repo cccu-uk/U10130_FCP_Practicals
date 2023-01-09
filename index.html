@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Boolean Algebra - Templated mdBook</title>
+        <title>Introduction - Templated mdBook</title>
 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="Boolean_Algerbra/Boolean_Algebra.html" class="active"><strong aria-hidden="true">1.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="Number_Systems/Number_Systems.html"><strong aria-hidden="true">2.</strong> Number Systems</a></li><li class="chapter-item expanded "><a href="Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">3.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">4.</strong> Logic Gates</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="Arduino4BitBinaryCouter/Arduino4BitBinaryCouter.html"><strong aria-hidden="true">5.</strong> Arduino 4-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html"><strong aria-hidden="true">6.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="ArduinoPWM/ArduinoPWM.html"><strong aria-hidden="true">7.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="SevenSegmentedDisplay/SevenSegmentedDisplay.html"><strong aria-hidden="true">8.</strong> 7 Segment Display</a></li><li class="chapter-item expanded "><a href="MotorController/MotorController.html"><strong aria-hidden="true">9.</strong> MotorController</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Introduction/Intro.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">2.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="Number_Systems/Number_Systems.html"><strong aria-hidden="true">3.</strong> Number Systems</a></li><li class="chapter-item expanded "><a href="Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">4.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">5.</strong> Logic Gates</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="Arduino4BitBinaryCouter/Arduino4BitBinaryCouter.html"><strong aria-hidden="true">6.</strong> Arduino 4-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html"><strong aria-hidden="true">7.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="ArduinoPWM/ArduinoPWM.html"><strong aria-hidden="true">8.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="SevenSegmentedDisplay/SevenSegmentedDisplay.html"><strong aria-hidden="true">9.</strong> 7 Segment Display</a></li><li class="chapter-item expanded "><a href="MotorController/MotorController.html"><strong aria-hidden="true">10.</strong> MotorController</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,335 +143,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="workshop-on-boolean-algebra"><a class="header" href="#workshop-on-boolean-algebra">Workshop on Boolean Algebra</a></h1>
-<p>The <strong>Workshop on Boolean Algebra</strong> is designed for you to practice Boolean equations and its laws.</p>
-<h2 id="minimising-boolean-expressions"><a class="header" href="#minimising-boolean-expressions">Minimising Boolean Expressions</a></h2>
-<p>We can use Commutative, Associative, and Distributive Laws to manipulate Boolean expressions.</p>
-<hr />
-<h3 id="boolean-laws"><a class="header" href="#boolean-laws">BOOLEAN LAWS</a></h3>
-<p><strong>Commutative Laws</strong></p>
+                        <table>
+<tr>
+<td>
+<p>The mdBook accessed outside of blackboard and is mobile and tablet friendly. :</p>
 <ul>
 <li>
-<p>\(A + B \Longleftrightarrow B + A\)</p>
+<p><a href="https://github.com/cccu-uk/U10130_FCP_Practicals">https://github.com/cccu-uk/U10130_FCP_Practicals</a></p>
 </li>
 <li>
-<p>\(A.B \Longleftrightarrow B.A\)</p>
+<p>Or scan the QR code on the right:</p>
 </li>
 </ul>
-<p><strong>Associative Laws</strong></p>
-<ul>
-<li>
-<p>\((A + B) + C \Longleftrightarrow A + (B + C)\)</p>
-</li>
-<li>
-<p>\((A.B).C \Longleftrightarrow A.(B.C)\)</p>
-</li>
-</ul>
-<p><strong>Distributive Laws</strong></p>
-<ul>
-<li>
-<p>\(A + (B + C) \Longleftrightarrow (A + B) + (A + C)\)</p>
-</li>
-<li>
-<p>\(A.(B.C) \Longleftrightarrow (A.B) + (A.C)\)</p>
-</li>
-</ul>
-<p><strong>Axioms</strong></p>
-<p>The following rules (axioms) can also be used to minimise Boolean
-Expressions:</p>
-<p>1.</p>
-<ul>
-<li>
-<p>A literal by itself cancels out any term that contains it
-(Absorption):</p>
-<ul>
-<li>\(A + A.B + A.B.C \Longrightarrow A + \)<del>A.B</del> + <del>A.B.C</del> \(\Longrightarrow A\)</li>
-</ul>
-</li>
-</ul>
-<p>2.</p>
-<ul>
-<li>
-<p>A literal by itself knocks out its NOT'ed opposite that appears in
-any 'minterm' (Absorption):</p>
-<ul>
-<li>\(\overline{A} + A.\overline{B} + A.C \Longrightarrow \overline{A} +\)  <del>A</del> \(.\overline{B} +\) <del>A</del> \(.C \Longrightarrow \overline{A} + \overline{B} + C\)</li>
-</ul>
-</li>
-</ul>
-<hr />
-<h2 id="exercise-one"><a class="header" href="#exercise-one">Exercise: One</a></h2>
-<p>Minimise the following Boolean Expressions:</p>
-<p>1.  \(\hspace{1.75em}S = \overline{A} + A.C + \overline{B}.C\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A} + \)<del>A</del>\(.C + \overline{B}.C\)</p>
-<p>\(S = \overline{A} + C +\) <del>B.C</del></p>
-<p>\(S = \overline{A} + C\)</p>
-</details>
-<hr />
-<p>2.  \(\hspace{1.75em}S = A.C + A.B.C + A.B.\overline{C}\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = A.C + A.B.(C + \overline{C})\)</p>
-<p>\(S = A.C + A.B.(1)\)</p>
-<p>\(S = A.C + A.B\)</p>
-</details>
-<hr />
-<p>3.  \(\hspace{1.75em}S = \overline{B} + A.B + A.\overline{B}.C\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{B} + A.\) <del>B</del> \(+\) <del>A.B.C</del></p>
-<p>\(S = \overline{B} + A\)</p>
-</details>
-<hr />
-<p>4.  \(\hspace{1.75em}S = \overline{A}.\overline{B}.\overline{C} + A.\overline{B}.\overline{C} + A.C\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{B}.\overline{C}.(A  + \overline{A}) + A.C\)</p>
-<p>\(S = \overline{B}.\overline{C}.(1) + A.C\)</p>
-<p>\(S = \overline{B}.\overline{C} + A.C\)</p>
-</details>
-<hr />
-<p>5.  \(\hspace{1.75em}S = C + A.\overline{C} + B.C + A.B.C\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = C + A.\)<del>C</del> \(+\) <del>B.C</del> \(+\) <del>A.B.C</del></p>
-<p>\(S = C + A\)</p>
-</details>
-<hr />
-<p>6.  \(\hspace{1.75em}S = A.B.\overline{C} + A.B.C + A.\overline{B}.\overline{C} + A.\overline{B}.C + \overline{A}.B.C + \overline{A}.B.\overline{C}\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = A.B.(\overline{C} + C) + A.\overline{B}.(\overline{C} + C) + \overline{A}.B.(C + \overline{C})\)</p>
-<p>\(S = A.B.(1) + A.\overline{B}.(1) + \overline{A}.B.(1)\)</p>
-<p>\(S = A.B + A.\overline{B} + \overline{A}.B\)</p>
-<p>\(S = A.(B + \overline{B}) + \overline{A}.B\)</p>
-<p>\(S = A.(1) + \overline{A}.B\)</p>
-<p>\(S = A +\)<del>A</del>\(.B\)</p>
-<p>\(S = A + B\)</p>
-</details>
-<hr />
-<p>7.  \(\hspace{1.75em}S = A + B.C + \overline{A}.B.C\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = A + B.C +\) <del>A</del> \(.B.C\)</p>
-<p>\(S = A + B.C +\) <del>B.C</del></p>
-<p>\(S = A + B.C\)</p>
-</details>
-<hr />
-<p>8.  \(\hspace{1.75em}S = B + \overline{A}.B.\overline{C} + A.B.\overline{C} + \overline{A}.C\)</p>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = B +\) <del>A.B.C</del> \(+\) <del>A.B.C</del> \(+ \overline{A}.C\)</p>
-<p>\(S = B + \overline{A}.C\)</p>
-</details>
-<hr />
-<h2 id="exercise-two"><a class="header" href="#exercise-two">Exercise: Two</a></h2>
-<p>For each of the following truth tables produce the standard Sum of the Product Terms for the output \(S\). The reduce the Boolean expression to a simpler expression using Boolean algebra.</p>
-<p>1.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>1</td></tr>
-<tr><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>0</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.\overline{B} + \overline{A}.B + A.\overline{B}\)</p>
-<p>\(S = \overline{A}.(\overline{B} + B) + A.\overline{B}\)</p>
-<p>\(S = \overline{A}.(1) + A.\overline{B}\)</p>
-<p>\(S = \overline{A} + A.\overline{B}\)</p>
-<p>\(S = \overline{A} +\) <del>A</del>}\(.\overline{B}\)</p>
-<p>\(S = \overline{A} + \overline{B}\)</p>
-</details>
-<hr />
-<p>2.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>0</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}B + A\overline{B}\)</p>
-</details>
-<hr />
-<p>3.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>1</td><td>1</td><td>0</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.\overline{B}.\overline{C} + \overline{A}.\overline{B}.C\)</p>
-<p>\(S = \overline{A}.\overline{B}.(\overline{C} + C)\)</p>
-<p>\(S = \overline{A}.\overline{B}.(1)\)</p>
-<p>\(S = \overline{A}.\overline{B}\)</p>
-</details>
-<hr />
-<p>4.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.\overline{B}.C + \overline{A}.B.C + A.\overline{B}.C + A.B.C\)</p>
-<p>\(S = \overline{B}.C.(\overline{A} + A) + B.C.(\overline{A} + A)\)</p>
-<p>\(S = \overline{B}.C.(1) + B.C.(1)\)</p>
-<p>\(S = \overline{B}.C + B.C\)</p>
-<p>\(S = C.(\overline{B} + B)\)</p>
-<p>\(S = C.(1)\)</p>
-<p>\(S = C\)</p>
-</details>
-<hr />
-<p>5.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.\overline{B}.\overline{C} + \overline{A}.\overline{B}.C + \overline{A}.B.C + A.B.C\)</p>
-<p>\(S = \overline{A}.\overline{B}.(\overline{C} + C) + B.C.(\overline{A} + A)\)</p>
-<p>\(S = \overline{A}.\overline{B}.(1) + B.C.(1)\)</p>
-<p>\(S = \overline{A}.\overline{B} + B.C\)</p>
-</details>
-<hr />
-<p>6.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.\overline{B}.\overline{C} + \overline{A}.\overline{B}.C + \overline{A}.B.C + A.B.C\)</p>
-<p>\(S = \overline{A}.\overline{B}.(\overline{C} + C) + B.C.(\overline{A} + A)\)</p>
-<p>\(S = \overline{A}.\overline{B}.(1) + B.C.(1)\)</p>
-<p>\(S = \overline{A}.\overline{B} + B.C\)</p>
-</details>
-<hr />
-<p>7.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.B.\overline{C} + \overline{A}.B.C + A.\overline{B}.C + A.B.\overline{C} + A.B.C\)</p>
-<p>\(S = \overline{A}.B.(\overline{C} + C) + A.\overline{B}.C + A.\overline{B}.(\overline{C} + C)\)</p>
-<p>\(S = \overline{A}.B.(1) + A.\overline{B}.C + A.\overline{B}.(1)\)</p>
-<p>\(S = \overline{A}.B + A.\overline{B}.C + A.\overline{B}\)</p>
-<p>\(S = B.(\overline{A} + A) + A.\overline{B}.C\)</p>
-<p>\(S = B.(1) + A.\overline{B}.C\)</p>
-<p>\(S = B + A.\overline{B}.C\)</p>
-<p>\(S = B + A.\) <del>B</del> \(.C\)</p>
-<p>\(S = B + A.C\)</p>
-</details>
-<hr />
-<p>8.</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-<tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-</tbody></table>
-</div>
-<hr />
-<details>
-<summary><b>Click for Solution</b></summary>
-<p></p>
-<p>\(S = \overline{A}.B.C + A.\overline{B}.\overline{C} + A.\overline{B}.C + A.B.\overline{C} + A.B.C\)</p>
-<p>\(S = \overline{A}.B.C + A.\overline{B}.(\overline{C} + C) + A.B.(\overline{C} + C)\)</p>
-<p>\(S = \overline{A}.B.C + A.\overline{B}.(1) + A.B.(1)\)</p>
-<p>\(S = \overline{A}.B.C + A.\overline{B} + A.B\)</p>
-<p>\(S = \overline{A}.B.C + A.(\overline{B} + B)\)</p>
-<p>\(S = \overline{A}.B.C + A.(1)\)</p>
-<p>\(S = \overline{A}.B.C + A\)</p>
-<p>\(S =\) <del>A</del> \(B.C + A\)</p>
-<p>\(S = B.C + A\)</p>
-</details>
-<hr />
-
+</td>
+<td>
+<p><a href="www.qr-code-generator.com/" border="0" style="cursor:default" rel="nofollow"></a><img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fcccu-uk.github.io%2FU10130_FCP_Practicals%2FIntroduction%2FIntro.html&chs=180x180&choe=UTF-8&chld=L|2"></p>
+</td>
+</tr>
+</table>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next" href="Number_Systems/Number_Systems.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="Boolean_Algerbra/Boolean_Algebra.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -482,7 +177,7 @@ any 'minterm' (Absorption):</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next" href="Number_Systems/Number_Systems.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="Boolean_Algerbra/Boolean_Algebra.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
