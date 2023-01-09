@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">1.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="Number_Systems/Number_Systems.html"><strong aria-hidden="true">2.</strong> Number Systems</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">1.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="Number_Systems/Number_Systems.html"><strong aria-hidden="true">2.</strong> Number Systems</a></li><li class="chapter-item expanded "><a href="Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">3.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">4.</strong> Logic Gates</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="Arduino4BitBinaryCouter/Arduino4BitBinaryCouter.html"><strong aria-hidden="true">5.</strong> Arduino 4-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html"><strong aria-hidden="true">6.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="ArduinoPWM/ArduinoPWM.html"><strong aria-hidden="true">7.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="SevenSegmentedDisplay/SevenSegmentedDisplay.html"><strong aria-hidden="true">8.</strong> 7 Segment Display</a></li><li class="chapter-item expanded "><a href="MotorController/MotorController.html"><strong aria-hidden="true">9.</strong> MotorController</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -909,6 +909,1867 @@ any 'minterm' (Absorption):</p>
 </ol>
 </details>
 <hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="problem-to-logic-circuit-design"><a class="header" href="#problem-to-logic-circuit-design">Problem to Logic Circuit Design</a></h1>
+<p>The <strong>Problem to Logic Circuit Design</strong> lab is designed for you to get on with problem solving.</p>
+<p>As described in the lecture slides, simulate the circuit using <code>Digital</code> simulator for the following problem specification for an alarm to ring. To understand how to use Digital simulator, revisit <a href="Problem_To_Logic/../Logic_Gates/Logic_Gates.html">Logic Gates</a> worksheet.</p>
+<hr />
+<h2 id="example-scenario"><a class="header" href="#example-scenario">Example Scenario</a></h2>
+<p>The alarm will ring if the alarm switch is turned on and either the door is not closed or window is not closed; where variables are given below:</p>
+<ol>
+<li>Output Variable: Alarm = F ; 1 ON, 0 OFF</li>
+</ol>
+<p></p>
+<ol start="2">
+<li>Input variables : Alarm switch = A; 1 ON, 0 OFF</li>
+</ol>
+<p></p>
+<ol start="3">
+<li>Door status = B; 1 CLOSED, 0 OPEN</li>
+</ol>
+<p></p>
+<ol start="4">
+<li>Window Status = C ;1 CLOSED, 0 OPEN</li>
+</ol>
+<p></p>
+<p>The image below shows the components used for the minimised circuit is given below. You need place these components in the work area of Digital editor and then after wiring up simulate and check if the outputs are the same as in the truth table (see tutorial slide) for all possible inputs.</p>
+<p><img src="Problem_To_Logic/Figures/Template.PNG" alt="Scenario Template Circuit" /></p>
+<p><strong>CALL TO ACTION</strong></p>
+<ol>
+<li>Identify each gate without using Digital or notes?</li>
+</ol>
+<p></p>
+<ol start="2">
+<li>Wire up the circuit</li>
+</ol>
+<p></p>
+<ol start="3">
+<li>What is the Boolean Equation for this circuit?</li>
+</ol>
+<p></p>
+<ol start="4">
+<li>Minimise the Boolean Equation</li>
+</ol>
+<p></p>
+<ol start="5">
+<li>Redraw the circuit based on the minimised Boolean Equation</li>
+</ol>
+<p></p>
+<ol start="6">
+<li>
+<p>Test the circuit for the following test conditions:</p>
+<ul>
+<li>
+<p>ABC = 110</p>
+</li>
+<li>
+<p>ABC = 010</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="example-scenario-solution"><a class="header" href="#example-scenario-solution">Example Scenario Solution</a></h2>
+<p>The below circuit is the implementation of the following equation , which requires 5 gates:</p>
+<p><img src="Problem_To_Logic/Figures/TemplateWiredUp.PNG" alt="Scenario Template Circuit Wired-Up" /></p>
+<p>This circuit can be represented using the Boolean Equation below.</p>
+<p>\(S = A.\overline{B} + A.\overline{C}\)</p>
+<p>The minimisation process therefore is:</p>
+<p>\(S = A.\overline{B} + A.\overline{C}\)</p>
+<p>\(S = A.\overline{B} +\) <del>A</del> \(.\overline{C}\)</p>
+<p>\(S = A.(\overline{B} + \overline{C})\)</p>
+<p>Which in-turn produces the following images, with 4 gates:</p>
+<p><img src="Problem_To_Logic/Figures/MinimisedTemplate.PNG" alt="Scenario Template Circuit Minimised" /></p>
+<p>The circuit below shows the example simulation for the test condition for ABC=110:</p>
+<p><img src="Problem_To_Logic/Figures/Minimised110Template.PNG" alt="Scenario Template Circuit Minimised 110" /></p>
+<p>The same circuit with a change in input status shows the example simulation for the test condition for ABC=010:</p>
+<p><img src="Problem_To_Logic/Figures/Minimised010Template.PNG" alt="Scenario Template Circuit Minimised 010" /></p>
+<hr />
+<h2 id="scenario-1"><a class="header" href="#scenario-1">Scenario 1</a></h2>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Create a new file.</p>
+</blockquote>
+</blockquote>
+<p>You need to create a logic circuit for a warning light which will be placed on a skip at night to warn any approaching drivers that there is a hazard in the road. The light should only operate in the dark and the light should be flashing. The light sensor produces a logic 0 in the daylight, and Logic 1 in the dark. Follow the steps below:</p>
+<ol>
+<li>Find the input and output variables</li>
+</ol>
+<p></p>
+<ol start="2">
+<li>Construct the Truth Table</li>
+</ol>
+<p></p>
+<ol start="3">
+<li>Write the Boolean Equation: &quot;Output = Sum of the Standard ProductTerms&quot;</li>
+</ol>
+<p></p>
+<ol start="4">
+<li>If needed, minimise the equation using Boolean Algebra</li>
+</ol>
+<p></p>
+<ol start="5">
+<li>Draw logic circuit for the minimised equation</li>
+</ol>
+<p></p>
+<ol start="6">
+<li>Using Digital simulator, do a multi-step timing diagram simulation.</li>
+</ol>
+<p>Your simulation should have the same logic as seen in the image below.</p>
+<p><img src="Problem_To_Logic/Figures/ClockTemplate.PNG" alt="Step 6 Timing Example" /></p>
+<p>To understand how to do Timing diagram simulation (multistep) in Digital, revisit <a href="Problem_To_Logic/../Logic_Gates/Logic_Gates.html#exercise-four-experimentation">Logic Gates</a> worksheet.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<ul>
+<li>Save the circuit in OneDrive call it <code>Problem_To_Solution_Experiment_One</code></li>
+</ul>
+</blockquote>
+</blockquote>
+<hr />
+<details>
+<summary><b>Click for Solution</b></summary>
+<p></p>
+<p>To identify you could create a simple block diagram of the system like below:</p>
+<p><img src="Problem_To_Logic/./Figures/Scenario_1_Block_Diagram.png" alt="" /></p>
+<p>You will notice that the two inputs have now been given a letter so that we can identify them in a truth table. In this case there are only two inputs, and therefore there will be four possible combinations of A and B that we have to consider. The next stage is to construct a truth table to show all the possible input conditions and for each set of inputs determine when an output is required.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>Input A</strong></th><th><strong>Input B</strong></th><th><strong>Output S</strong></th><th><strong>Comments</strong></th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 0 \(\equiv\) Daylight, Pulse Generator <strong>B</strong>) = 0 \(\equiv\) Off, Output <strong>S</strong> = 0 Off</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 1 \(\equiv\) Dark, Pulse Generator <strong>B</strong>) = 0 \(\equiv\) Off, Output <strong>S</strong> = 0 Off</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 0 \(\equiv\) Daylight, Pulse Generator <strong>B</strong>) = 1 \(\equiv\) On, Output <strong>S</strong> = 0 Off</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 1 \(\equiv\) Daylight, Pulse Generator <strong>B</strong>) = 1 \(\equiv\) On, Output <strong>S</strong> = 1 On Z</td></tr>
+</tbody></table>
+</div>
+<p>From the truth table we can get the Boolean Equation, remember we only need to write out the equation where there is a <strong>1</strong> in the Output column.</p>
+<p>\(S = A.B\)</p>
+<p>Only one product term so this is the minimised equation, and you should be able to identify the logic gate from the truth table and the Boolean Algebra. See the image directly below for the logic gate solution:</p>
+<p><img src="Problem_To_Logic/./Figures/Scenario_1_Realisition_Block_Diagram.png" alt="" /></p>
+<p>Now you should be able to create the circuit in in Digital like the following image:</p>
+<p><img src="Problem_To_Logic/Figures/Scenario1_circuit.PNG" alt="Scenario 1 Circuit" /></p>
+<p>Notice that the circuit contains a <code>D</code> attached to the clock so that you can reproduce the .</p>
+</details>
+<hr />
+<h2 id="scenario-2"><a class="header" href="#scenario-2">Scenario 2</a></h2>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Create a new file.</p>
+</blockquote>
+</blockquote>
+<p>Create a logic circuit for the buzzer of a car, and it should Buzz when:</p>
+<ol>
+<li>the engine is on, the door is closed, and the seat belt is unbuckled</li>
+</ol>
+<p></p>
+<ol start="2">
+<li>the engine is on, the door is open</li>
+</ol>
+<p>Assume there are appropriate binary sensors for engine, door and seat belt. </p>
+<p>Create and simulate the circuit of the buzzer following the steps
+below:</p>
+<ol>
+<li>Find input and output variables</li>
+</ol>
+<p></p>
+<ol start="2">
+<li>Construct the Truth Table</li>
+</ol>
+<p></p>
+<ol start="3">
+<li>Write the Boolean Equation : &quot;Output = Sum of the Standard Product terms&quot;</li>
+</ol>
+<p></p>
+<ol start="4">
+<li>If needed, minimise equation using Boolean Algebra</li>
+</ol>
+<p></p>
+<ol start="5">
+<li>Draw logic circuit for the minimised equation</li>
+</ol>
+<p></p>
+<ol start="6">
+<li>Using Digital Simulator, simulate the circuit.</li>
+</ol>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Save the circuit in OneDrive call it <code>Problem_To_Solution_Scenario_Two</code></p>
+</blockquote>
+</blockquote>
+<hr />
+<details>
+<summary><b>Click for Solution</b></summary>
+<p></p>
+<p>Finding input and output variables:</p>
+<ol>
+<li><strong>Output</strong>, Buzzer , S = 1 means ON, 0 means OFF</li>
+</ol>
+<p></p>
+<ol start="2">
+<li><strong>Inputs</strong>, Engine Key, A = 1 means ON, 0 means OFF</li>
+</ol>
+<p></p>
+<ul>
+<li>Car Door, B=1 means Open, 0 means Closed</li>
+<li></li>
+<li>Seat belt , C=1 means buckled, 0 means Unbuckled</li>
+</ul>
+<p>Using the list of input and output variables the truth table can be created:</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+</div>
+<p>From the truth table the Boolean Equation can now be derived using the <code>Sum of the Standard Product Terms</code>:</p>
+<p>\(S = ABC + AB\overline{C} + A\overline{B} \overline{C}\)</p>
+<p>\(S = ABC + \)<del>AB</del> \(\overline{C} + A\overline{B} \overline{C}\) (remember: \(\overline{C} + C = 1)\)</p>
+<p>\(S = AB(C +\overline{C}) + A\overline{B} \overline{C}\)</p>
+<p>\(S = AB(1) + A\overline{B} \overline{C}\)</p>
+<p>\(S = AB + A\overline{B} \overline{C}\)</p>
+<p>\(S = AB + \) <del>A</del> \(\overline{B} \overline{C}\)</p>
+<p>\(S = A(B + \overline{B} \overline{C})\)</p>
+<p>\(S = A(B +\) <del>B</del> \(\overline{C})\)</p>
+<p>(remember: a literal on its own cancels its inverted version).</p>
+<p>\(S = A(B + \overline{C})\)</p>
+<p>The first image shows the logic circuit implementation of the minimised Boolean Equation:</p>
+<p><img src="Problem_To_Logic/Figures/Scenario2_circuit.PNG" alt="Scenario 2 Circuit" /></p>
+<p>The image below shows the example simulation for the test condition for ABC=100:</p>
+<p><img src="Problem_To_Logic/Figures/Scenario2_circuit_100.PNG" alt="Scenario 2 Circuit 100" /></p>
+<p>Penultimately, the circuit shows the example simulation for the test condition for ABC=100:</p>
+<p><img src="Problem_To_Logic/Figures/Scenario2_circuit_101.PNG" alt="Scenario 2 Circuit 101" /></p>
+<p>Finally, the image below shows the example simulation for the test condition for ABC=100:</p>
+<p><img src="Problem_To_Logic/Figures/Scenario2_circuit_110.PNG" alt="Scenario 2 Circuit 110" /></p>
+</details>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exploring-logic-gates"><a class="header" href="#exploring-logic-gates">Exploring Logic Gates</a></h1>
+<p>The <strong>Exploring Logic Gates</strong> lab is designed for you to explore the basic logic gates, simple logic circuits and truth tables. You will be using ``, a simulation tool for logic gates and other computer hardware.</p>
+<hr />
+<h4 id="important"><a class="header" href="#important">IMPORTANT</a></h4>
+<p>Download and extract to a convenient place on your OneDrive or other cloud storage centre so the application is accessible on any machine you use.</p>
+<p>Digital source code and project can be found on here:</p>
+<ul>
+<li><a href="https://learn.canterbury.ac.uk/bbcswebdav/pid-3125140-dt-content-rid-4509659_1/xid-4509659_1">https://learn.canterbury.ac.uk/bbcswebdav/pid-3125140-dt-content-rid-4509659/xid-4509659</a> or...</li>
+<li>From here <a href="Logic_Gates/./Logic_Simulator.zip">logic_simulator</a></li>
+</ul>
+<p>If you are stuck <strong>ASK FOR HELP</strong>.</p>
+<p>Once downloaded place in your OneDrive and unzip. Navigate to the <code>Digital</code> application and run.</p>
+<ul>
+<li>Linux see this video <a href="https://cccu.yuja.com/V/Video?v=90006&amp;node=366847&amp;a=1518664755&amp;autoplay=1">Linux Installer Guide</a></li>
+</ul>
+<p>Watch the video provided in the link below, where you are guided through the basic operations of Digital that are needed for the is lab here:</p>
+<ul>
+<li><a href="https://cccu.yuja.com/V/Video?v=81805&amp;node=337653&amp;a=1303215335&amp;autoplay=1">Introduction to Digital</a></li>
+</ul>
+<p>Once you have watched this you may continue with the lab sheet.</p>
+<hr />
+<h2 id="exercise-one-1"><a class="header" href="#exercise-one-1">Exercise One</a></h2>
+<p>In this exercise you are going to familiarise your self with placing components and operating the Logic Gates.</p>
+<p>The image below shows the location of where you will find the <strong>Input</strong> and <strong>Output</strong> components. You will need to select at least one <strong>Output</strong> and one or two <strong>Input</strong> components:</p>
+<p><img src="Logic_Gates/Figures/Digital_IO_Menu.PNG" alt="Location of I/O" /></p>
+<p>Next logic gates are selected as seen in the image below:</p>
+<p><img src="Logic_Gates/Figures/Digital_Logic_Gates_Menu.PNG" alt="Location of I/O" /></p>
+<h3 id="not"><a class="header" href="#not">NOT</a></h3>
+<p>Firstly, set up the the circuit in below:</p>
+<p><img src="Logic_Gates/Figures/NOT_Circuit.PNG" alt="NOT Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A', does it behavior as per the truth table below?</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Save the circuit in OneDrive call it <code>Logic-Gates-Exercise-1</code></p>
+</blockquote>
+</blockquote>
+<h3 id="or"><a class="header" href="#or">OR</a></h3>
+<p>Continuing in the same file add the OR gate underneath the NOT circuit so that your new circuit looks like below.</p>
+<p><img src="Logic_Gates/Figures/OR_Circuit.PNG" alt="OR Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as
+'A' and 'B', does it behavior as per the truth table below?</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>B</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit again.</p>
+</blockquote>
+</blockquote>
+<h3 id="and"><a class="header" href="#and">AND</a></h3>
+<p>Continuing in the same file add the AND gate underneath the OR so that your :new circuit looks like the image below.</p>
+<p><img src="Logic_Gates/Figures/AND_Circuit.PNG" alt="AND Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', does it behavior as per the table below?</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>B</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit again.</p>
+</blockquote>
+</blockquote>
+<h3 id="xor"><a class="header" href="#xor">XOR</a></h3>
+<p>Continuing in the same file add the XOR gate underneath the AND circuit so that your new circuit looks like the image below:</p>
+<p><img src="Logic_Gates/Figures/XOR_Circuit.PNG" alt="XOR Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as
+'A' and 'B', does it behavior as per the truth table below:</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>B</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit again</p>
+</blockquote>
+</blockquote>
+<h3 id="xnor"><a class="header" href="#xnor">XNOR</a></h3>
+<p>Continuing in the same file add the XNOR gate underneath the XOR circuit
+so that your new circuit looks like image below:</p>
+<p><img src="Logic_Gates/Figures/XNOR_Circuit.PNG" alt="XNOR Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', does it behavior as per the truth table below:</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>B</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit again</p>
+</blockquote>
+</blockquote>
+<h3 id="nor"><a class="header" href="#nor">NOR</a></h3>
+<p>Continuing in the same file add the NOR gate underneath the XNOR circuit
+so that your new circuit looks like the image below:</p>
+<p><img src="Logic_Gates/Figures/NOR_Circuit.PNG" alt="NOR Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', does it behavior as per the truth table below?</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>B</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit again</p>
+</blockquote>
+</blockquote>
+<h3 id="nand"><a class="header" href="#nand">NAND</a></h3>
+<p>Continuing in the same file add the NAND gate underneath the NOR circuit
+so that your new circuit looks like the image below:</p>
+<p><img src="Logic_Gates/Figures/NAND_Circuit.PNG" alt="NAND Circuit" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', does it behavior as per the truth tabel below:</p>
+<div class="table-wrapper"><table><thead><tr><th>A</th><th>B</th><th>S</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit again</p>
+</blockquote>
+</blockquote>
+<hr />
+<h2 id="exercise-two-investigation"><a class="header" href="#exercise-two-investigation">Exercise Two: Investigation</a></h2>
+<p>The following universal logic gate circuits below can be constructed to create any of the fundamental gates. Investigate with the construction of truth  ables match a universal logic gate circuit with a fundamental logic gate.</p>
+<h3 id="universal-logic-circuit-1"><a class="header" href="#universal-logic-circuit-1">Universal Logic Circuit 1</a></h3>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Create a new file.</p>
+</blockquote>
+</blockquote>
+<p>Firstly, set up the the circuit as seen below:</p>
+<p><img src="Logic_Gates/Figures/NAND_NOT_Circuit.PNG" alt="ULC 1" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A', what fundamental gate is this?</p>
+<ul>
+<li>
+<p>AND</p>
+</li>
+<li>
+<p>XNOR</p>
+</li>
+<li>
+<p>NOT</p>
+</li>
+<li>
+<p>OR</p>
+</li>
+</ul>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<ul>
+<li><strong>NOT</strong></li>
+</ul>
+</details>
+<hr />
+<p>Once you have found the answer, navigate back to and select <code>Components</code> -&gt;  <code>IO</code> and label the circuit with your answer.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Save the circuit in OneDrive call it <code>Logic-Gates-Exercise-2</code></p>
+</blockquote>
+</blockquote>
+<h3 id="universal-logic-circuit-2"><a class="header" href="#universal-logic-circuit-2">Universal Logic Circuit 2</a></h3>
+<p>Set up the the circuit in image below and place the new circuit beneath the last circuit created.</p>
+<p><img src="Logic_Gates/Figures/NAND_AND_Circuit.PNG" alt="ULC 2" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', what fundamental gate is this?</p>
+<ul>
+<li>
+<p>XNOR</p>
+</li>
+<li>
+<p>OR</p>
+</li>
+<li>
+<p>NOT</p>
+</li>
+<li>
+<p>NAND</p>
+</li>
+<li>
+<p>AND</p>
+</li>
+</ul>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<ul>
+<li><strong>AND</strong></li>
+</ul>
+</details>
+<hr />
+<p>Once you have found the answer, navigate back to and select <code>Components</code> -&gt;  <code>IO</code> and label the circuit with your answer.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit</p>
+</blockquote>
+</blockquote>
+<h3 id="universal-logic-circuit-3"><a class="header" href="#universal-logic-circuit-3">Universal Logic Circuit 3</a></h3>
+<p>Set up the the circuit below and place it beneath the last circuit created.</p>
+<p><img src="Logic_Gates/Figures/NAND_OR_Circuit.PNG" alt="ULC 2" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', what fundamental gate is this?</p>
+<ul>
+<li>
+<p>XNOR</p>
+</li>
+<li>
+<p>OR</p>
+</li>
+<li>
+<p>NOT</p>
+</li>
+<li>
+<p>NAND</p>
+</li>
+<li>
+<p>NOR</p>
+</li>
+</ul>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<ul>
+<li><strong>OR</strong></li>
+</ul>
+</details>
+<hr />
+<p>Once you have found the answer, navigate back to and select <code>Components</code> -&gt;  <code>IO</code> and label the circuit with your answer.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit</p>
+</blockquote>
+</blockquote>
+<h3 id="universal-logic-circuit-4"><a class="header" href="#universal-logic-circuit-4">Universal Logic Circuit 4</a></h3>
+<p>Set up the the circuit as seen below, beneath the last circuit created.</p>
+<p><img src="Logic_Gates/Figures/NOR_XNOR_Circuit.PNG" alt="ULC 2" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', what fundamental gate is this?</p>
+<ul>
+<li>
+<p>XOR</p>
+</li>
+<li>
+<p>OR</p>
+</li>
+<li>
+<p>NOT</p>
+</li>
+<li>
+<p>AND</p>
+</li>
+<li>
+<p>NOR</p>
+</li>
+</ul>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<ul>
+<li><strong>XNOR</strong></li>
+</ul>
+</details>
+<hr />
+<p>Once you have found the answer, navigate back to and select <code>Components</code> -&gt;  <code>IO</code> and label the circuit with your answer.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Re-save the circuit</p>
+</blockquote>
+</blockquote>
+<h3 id="universal-logic-circuit-5"><a class="header" href="#universal-logic-circuit-5">Universal Logic Circuit 5</a></h3>
+<p>Set up the circuit up as seen below, beneath the last circuit created.</p>
+<p><img src="Logic_Gates/Figures/NOR_XOR_Circuit.PNG" alt="ULC 2" /></p>
+<p>Press the the play icon, &amp;#9658, and toggle the input component labelled as 'A' and 'B', what fundamental gate is this?</p>
+<ul>
+<li>
+<p>NOT</p>
+</li>
+<li>
+<p>XOR</p>
+</li>
+<li>
+<p>OR</p>
+</li>
+<li>
+<p>AND</p>
+</li>
+<li>
+<p>XNOR</p>
+</li>
+</ul>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<ul>
+<li><strong>XOR</strong></li>
+</ul>
+</details>
+<hr />
+<p>Once you have found the answer, navigate back to and select <code>Components</code> -&gt;  <code>IO</code> and label the circuit with your answer.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<ul>
+<li>Re-save the circuit</li>
+<li>Go to your preferred search engine and search for 'Universal gate equivalents' and replicate the circuits we have not done in this file.</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr />
+<h2 id="exercise-four-experimentation"><a class="header" href="#exercise-four-experimentation">Exercise Four: Experimentation</a></h2>
+<p>You are now going to use the clock to generate <strong>signals</strong>: <strong>ON/OFF</strong> or <strong>1/0</strong> or <strong>HIGH/LOW</strong> or <strong>0V/5V</strong>.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Create a new file.</p>
+</blockquote>
+</blockquote>
+<p>Now get the components in the following order, so that your circuit looks like below:</p>
+<ol>
+<li>
+<p>AND Gate</p>
+</li>
+<li>
+<p>Input</p>
+</li>
+<li>
+<p>Clock Input</p>
+</li>
+<li>
+<p>Output</p>
+</li>
+<li>
+<p>Data Graph</p>
+</li>
+</ol>
+<p><img src="Logic_Gates/Figures/CLK_AND_Circuit.PNG" alt="Clock Input with AND Gate" /></p>
+<p>Like with all other circuits so far, right click a component and them labels as shown above. </p>
+<p>You will notice that when you right click the Clock Input you will get additional options, replicate the image below:</p>
+<p><img src="Logic_Gates/Figures/CLK_Options.PNG" alt="Clock Input Options" /></p>
+<p>Make sure that the Data Graph component option <code>Max number of steps to</code> is set to 25.</p>
+<p>When you run this circuit you should see something similar to the image below:</p>
+<p><img src="Logic_Gates/Figures/Active_CLK_Circuit.PNG" alt="Active Clock InputCircuit" /></p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<ul>
+<li>Save the circuit in OneDrive call it ``</li>
+<li>Experiment with different Clock Input Frequencies, what observations can you make? Discuss with the a peer or with the tutor.</li>
+<li>Replace the <code>with another</code> and chose different frequencies. Look at the Data Graph is there a pattern? Is it random? Discuss with your peers or with the tutor.</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr />
+<h2 id="exercise-five-investigate"><a class="header" href="#exercise-five-investigate">Exercise Five: Investigate</a></h2>
+<p>You are now going to create an arithmetic circuits; Half Adder and Full Adder</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Create a new file.</p>
+</blockquote>
+</blockquote>
+<h3 id="half-adder"><a class="header" href="#half-adder">Half Adder</a></h3>
+<p>Reproduce the Half Adder as seen in below:</p>
+<p><img src="Logic_Gates/Figures/Half_Adder_Circuit.PNG" alt="Half Adder Circuit" />{#fig:Half_Adder}</p>
+<p>... and then simulate so you can complete the truth table below:</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>S</strong></th><th><strong>Cout</strong></th></tr></thead><tbody>
+<tr><td> </td><td> </td><td> </td><td></td></tr>
+<tr><td> </td><td> </td><td> </td><td></td></tr>
+<tr><td> </td><td> </td><td> </td><td></td></tr>
+<tr><td> </td><td> </td><td> </td><td></td></tr>
+<tr><td>                 </td><td></td><td></td><td></td></tr>
+<tr><td>                 </td><td></td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>S</strong></th><th><strong>Cout</strong></th></tr></thead><tbody>
+<tr><td>0   </td><td>0  </td><td>0   </td><td>0</td></tr>
+<tr><td>0   </td><td>1  </td><td>1   </td><td>0</td></tr>
+<tr><td>1   </td><td>0  </td><td>1   </td><td>0</td></tr>
+<tr><td>1   </td><td>1  </td><td>0   </td><td>1</td></tr>
+</tbody></table>
+</div></details>
+<hr />
+<p>                 </p>
+<h2 id="full-adder"><a class="header" href="#full-adder">Full Adder</a></h2>
+<p>Produce a Full Adder and then simulate so you can populate, you should refer to the lecture slides.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>Cin</strong></th><th><strong>S</strong></th><th><strong>Cout</strong></th></tr></thead><tbody>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td> </td></tr>
+<tr><td> </td><td></td><td></td><td></td><td></td></tr>
+<tr><td>             </td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<hr />
+<details>
+<summary><b>Click for solution</b></summary>
+<p></p>
+<div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>Cin</strong></th><th><strong>S</strong></th><th><strong>Cout</strong></th></tr></thead><tbody>
+<tr><td>0   </td><td>0 </td><td>0 </td><td>0</td><td>        0</td></tr>
+<tr><td>0   </td><td>0 </td><td>1 </td><td>1</td><td>        0</td></tr>
+<tr><td>0   </td><td>1 </td><td>0 </td><td>1</td><td>        0</td></tr>
+<tr><td>0   </td><td>1 </td><td>1</td><td>0</td><td>         1</td></tr>
+<tr><td>1   </td><td>0 </td><td>0 </td><td>1</td><td>        0</td></tr>
+<tr><td>1   </td><td>0 </td><td>1 </td><td>0</td><td>         1</td></tr>
+<tr><td>1   </td><td>1 </td><td>0 </td><td>0</td><td>        1</td></tr>
+<tr><td>1   </td><td>1 </td><td>1 </td><td>1</td><td>        1</td></tr>
+</tbody></table>
+</div></details>
+<hr />
+<p>                     </p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<ul>
+<li>Save the circuit in OneDrive call it ``</li>
+<li>Experiment with different Clock Input Frequencies, what observations can you make? Discuss with the a peer or with the tutor.</li>
+<li>Replace the <code>with another</code> and chose different frequencies. Look at the Data Graph is there a pattern? Is it random? Discuss with your peers or with the tutor.</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr />
+<h1 id="exercise-six-research-and-implement"><a class="header" href="#exercise-six-research-and-implement">Exercise Six: Research and Implement</a></h1>
+<p>Investigate &amp; research the circuit of a 2-bit decoder, implement this and verify operation through a complete truth table and simulation.</p>
+<blockquote>
+<p><strong>CALL TO ACTION</strong></p>
+<blockquote>
+<p>Create a new file.</p>
+</blockquote>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>In today’s activity we will study how computers “count”, and we will discuss the idea of binary numbers and binary counting.</p>
+<p>We will then connect the Arduino board to 4 LEDs, and see how the computer can count.</p>
+<blockquote>
+<p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
+</blockquote>
+<h2 id="binary-counting"><a class="header" href="#binary-counting">Binary Counting</a></h2>
+<p>Computers count in BINARY, i.e. using ones and zeros. For example, the number 5 in binary is 101. How does this work? Here is a chart to explain how the computer uses 4-bits to represent the numbers from 0...15.</p>
+<p>Below is a table that show the possible combinations of 4-bit binary numbers and their decimal equivalent.</p>
+<table align=center>
+<tr>
+<td>
+<div class="table-wrapper"><table><thead><tr><th>Decimal</th><th>Binary</th></tr></thead><tbody>
+<tr><td>0</td><td>0000</td></tr>
+<tr><td>1</td><td>0001</td></tr>
+<tr><td>2</td><td>0010</td></tr>
+<tr><td>3</td><td>0011</td></tr>
+<tr><td>4</td><td>0100</td></tr>
+<tr><td>5</td><td>0101</td></tr>
+<tr><td>6</td><td>0110</td></tr>
+<tr><td>7</td><td>0111</td></tr>
+<tr><td>8</td><td>1000</td></tr>
+<tr><td>9</td><td>1001</td></tr>
+<tr><td>10</td><td>1010</td></tr>
+<tr><td>11</td><td>1011</td></tr>
+<tr><td>12</td><td>1100</td></tr>
+<tr><td>13</td><td>1101</td></tr>
+<tr><td>14</td><td>1110</td></tr>
+<tr><td>15</td><td>1111</td></tr>
+</tbody></table>
+</div>
+<p>*<em>Bite binary represented here is MSB to LSB</em></p>
+</td>
+</tr>
+</table>
+<h2 id="converting-between-decimal-----binary"><a class="header" href="#converting-between-decimal-----binary">Converting between Decimal &lt;---&gt; Binary</a></h2>
+<p>Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20 , the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent. </p>
+<p>Below are some examples as reminders.</p>
+<p>The decimal number `10' is converted to binary form like so:</p>
+<p>
+   <span class="math display">
+      \[
+        \begin{matrix}
+            2^3 & 2^2 & 2^1 & 2^0\\ \hline
+            8 & 4 & 2 & 1 \\
+            1 & 0 & 1 & 0
+        \end{matrix}
+    \]
+   </span>
+</p>
+<p>Alternatively you can achieve the same result this way too: </p>
+<p>\[ [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(0) \cdot 2^{0}] \ \]</p>
+<p>\[ 1 \cdot 8 + 0 \cdot 4 + 1 \cdot 2 + 0 \cdot 1  \]</p>
+<p>\[ 1 0 1 0 \]</p>
+<p>So therefore decimal `10' is 1010 in binary form.</p>
+<p>The binary number 0101 is converted to decimal form like so:</p>
+<p>
+   <span class="math display">
+      \[
+        \begin{matrix}
+            2^3 & 2^2 & 2^1 & 2^0\\ \hline
+            8 & 4 & 2 & 1 \\
+            0 & 1 & 0 & 1 \\
+        \end{matrix}\\
+         5 = 4 + 1
+   \]
+   </span>
+</p>
+<p>Alternatively you can achieve the same result this way too: </p>
+<p>\[ [(0) \cdot 2^{3}] + [(1) \cdot 2^{2}] + [(0) \cdot 2^{1}] + [(1) \cdot 2^{0}] \ \]</p>
+<p>\[ 0 \cdot 8 + 1 \cdot 4 + 0 \cdot 2 + 1 \cdot 1  \]</p>
+<p>\[ 0 1 0 1 \]</p>
+<h2 id="setting-up-the-circuit"><a class="header" href="#setting-up-the-circuit">Setting up the Circuit</a></h2>
+<p>Once loaded login to TinkerCad and then click on \menu{Circuits &gt; Create new Circuit}.</p>
+<p>Change the circuit name, located top-left hand side of the screen to ``4-bit Binary Counter'', see the below image.</p>
+<div align=center>
+<p><img src="Arduino4BitBinaryCouter/./figures/step1.png" alt="" /></p>
+</div>
+<p>Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.</p>
+<p>This can be achieved by either selecting the Arduino Uno and the breadboard from\ <strong>Components</strong> &gt; <strong>Basic</strong> components or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter.</p>
+<div align=center>
+<p><img src="Arduino4BitBinaryCouter/../MotorController/figures/step3-1.png" alt="" /></p>
+</div>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding  red 5V line and GND line. </p>
+<p>You now need to add:</p>
+<ul>
+<li>4 x LED, any colour</li>
+<li>4 x resistor, set at 0.22k$\Omega$ or 220$\Omega$</li>
+<li>4 x resistors, set at 10k$\Omega$ or 10000$\Omega$</li>
+<li>1 x DIP Switch SPST x 4  <em>use the search bar</em></li>
+</ul>
+<p>Placing components (refer to the image after the steps below):</p>
+<ol>
+<li>Place the LEDs so that the <strong>cathode</strong> and <strong>anode</strong> is in row <strong>18</strong> and <strong>19</strong> column <strong>e</strong> respectively. Repeat for the next 3 LEDs in rows <strong>(21 22), (24 25), (27 28)</strong>.</li>
+<li>. Place the resistors inline with the <strong>Cathode</strong> of each LED so that <strong>terminal 2</strong> is in column <strong>b</strong> and <strong>terminal 1</strong> in the GND rail.</li>
+<li>connect a wire from inline with each <strong>Anode</strong> of LED, and connect from left to right of the breadboard, to <strong>Pins 5 4 3 2</strong> in the Arduino Uno.</li>
+<li>Place the `DIP Switch SPST x 4' so that it bridges the breadboard in a horizontal position so that where number 1 is displayed the pins are on row <strong>12</strong> column <strong>e</strong>. Therefore the <strong>O</strong> of <strong>On</strong> is in row <strong>12</strong> column <strong>f</strong>.</li>
+<li>Using the 4 resistors, set at \(10k\Omega\) or \(10000\Omega\), place inline with the <strong>1 2 3 4</strong> of the `DIP Switch SPST x 4' so that <strong>terminal 1</strong> of each resistor is in the GND rail and <strong>terminal 2</strong> is in column <strong>d</strong> </li>
+<li>finally, connect the `DIP Switch SPST x 4' to the Arduino Uno so that the switch positions <strong>1,2,3,4</strong> are wired into the pins <strong>13,12,9,8</strong>.</li>
+</ol>
+<div align=center>
+<p><img src="Arduino4BitBinaryCouter/./figures/step3.png" alt="" /></p>
+</div>
+<h2 id="programming-the-ciruit"><a class="header" href="#programming-the-ciruit">Programming the Ciruit</a></h2>
+<p>Once you have completed the circuit you will need to programme the Arduino Uno.  Located above the <strong>Components</strong> click the <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code: </p>
+<pre><code class="language-C++">void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Now you are ready to set up the Sketch up as follows. </p>
+<pre><code class="language-C++">int positionOne = 2;
+int positionTwo = 3;
+int positionThree = 4;
+int positionFour = 5;
+
+int switchOne = 13;
+int switchTwo = 12;
+int switchThree = 9;
+int switchFour = 8;
+
+int one;
+int two;
+int three;
+int four;
+</code></pre>
+<p>Line 1 to 4, declares the LEDs, where <code>positionFour</code> through to <code>positionOne</code> represents the \(2^3 \Leftarrow 2^0\).</p>
+<p>Line 6 to 9, declares the switches, where <code>switchOne</code> through to <code>switchFour</code> represents the \(2^0 \Rightarrow 2^3\).</p>
+<p>Line 11 to 14, will store the state of each switch.</p>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments for each variable to describe their purpose, using the // comment symbols</p>
+</blockquote>
+<p>Now we do standard setup in the <code>void setup()</code></p>
+<pre><code class="language-C++">void setup()
+{
+  pinMode(positionOne, OUTPUT);
+  pinMode(positionTwo, OUTPUT);
+  pinMode(positionThree, OUTPUT);
+  pinMode(positionFour, OUTPUT);
+
+  pinMode(switchOne, INPUT);
+  pinMode(switchTwo, INPUT);
+  pinMode(switchThree, INPUT);
+  pinMode(switchFour, INPUT);
+}
+</code></pre>
+<p>Lines 18 to 21 set the pins to <code>OUTPUT</code> mode</p>
+<p>Lines 23 to 26 set the pins to <code>INPUT</code> mode</p>
+<p>The <code>void loop()</code>, has several sections and it is broken down into manageable chunks below.</p>
+<pre><code class="language-C++">void loop()
+{
+  one = digitalRead(switchOne);
+  two = digitalRead(switchTwo);
+  three = digitalRead(switchThree);
+  four = digitalRead(switchFour);
+</code></pre>
+<p>Lines 31 to 34, clearly shows the function <code>digitalRead()</code> function to read the pins and save the status to the variables defined earlier. </p>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments for each variable to describe their purpose, using the // comment symbols</p>
+</blockquote>
+<p>Next we will break down the compound if statements that control the output of the LEDs. Remember that if statements block code only executes when all conditions are return as true. </p>
+<pre><code class="language-C++"> if((one == false &amp;&amp; two == false) &amp;&amp; (three == false &amp;&amp; four == false))
+ {
+   digitalWrite(positionOne, LOW);
+   digitalWrite(positionTwo, LOW);
+   digitalWrite(positionThree, LOW);
+   digitalWrite(positionFour, LOW);
+ }
+</code></pre>
+<p>Line 36, has a three compounded conditions inside the <code>if()</code>. We can see that the first compound statement is <code>(one == false &amp;&amp; two == false)</code>. Here we can see that if the variable <code>one</code> stores a value of <code>0</code> or <code>false</code> then first part is <code>true</code>. Then using the <code>&amp;&amp;</code>, AND, we can perform a comparison with the second part to see if the variable <code>two</code> also stores the values <code>0</code> or <code>false</code>. If these are true then the second compound statement will then be compared, <code>(three == false &amp;&amp; four == false)</code>.
+The same process is repeated, so if the entire <code>if()</code> statement is <code>true</code> then we can enter the block of code. </p>
+<p>Lines 38 to 41, will turn each LED off to represent the the binary number  <code>0 0 0 0</code>.</p>
+<blockquote>
+<p>TODO: </p>
+<p>Summarise using a block comment, /* */, above line 36.</p>
+</blockquote>
+<pre><code class="language-C++"> else if((one == true &amp;&amp; two == false) &amp;&amp; (three == false &amp;&amp; four == false))
+ {
+   digitalWrite(positionOne, HIGH);
+   digitalWrite(positionTwo, LOW);
+   digitalWrite(positionThree, LOW);
+   digitalWrite(positionFour, LOW);
+ }
+</code></pre>
+<p>Now we can look at the next conditional statement, <code>else if()</code>.</p>
+<p>Line 44, will be executed if line 36 returns a <code>false</code>, there is only one difference which is <code>one == true</code>. Again the process remains the same each compound statement needs to return <code>true</code>.</p>
+<p>Line 46 to line 49, sets the LEDs <code>HIGH</code> and <code>LOW</code> from <code>positionOne</code> to <code>positionFour</code>, this pattern represent the binary number <code>0 0 0 1</code>.</p>
+<blockquote>
+<p>TODO: </p>
+<p>Summarise using a block comment, /* */, above line 44.</p>
+</blockquote>
+<p>The next block code follows the same pattern of <code>else if()</code> where the boolean logic represents the binary number <code>0 0 1 0</code>. </p>
+<pre><code class="language-C++">else if(one == false &amp;&amp; two == true &amp;&amp; three == false &amp;&amp; four == false)
+{
+  digitalWrite(positionOne, LOW);
+  digitalWrite(positionTwo, HIGH);
+  digitalWrite(positionThree, LOW);
+  digitalWrite(positionFour, LOW);
+}
+</code></pre>
+<p>The next block of code shown below produces a binary output that matches the switch positions for a decimal value of 3.</p>
+<pre><code class="language-C++">else if(one == false &amp;&amp; two == true &amp;&amp; three == false &amp;&amp; four == false)
+{
+ digitalWrite(positionOne, HIGH);
+ digitalWrite(positionTwo, HIGH);
+ digitalWrite(positionThree, LOW);
+ digitalWrite(positionFour, LOW);
+}
+</code></pre>
+<blockquote>
+<p>TODO: </p>
+<p>The that block code where the boolean logic represents the binary number <code>0 0 1 1</code>. </p>
+</blockquote>
+<blockquote>
+<p>Extension:</p>
+<ul>
+<li>
+<p>Add Serial output to show the decimal and binary equivalent for each combination, see the image below for desired output.</p>
+</li>
+<li>
+<p>Finish the binary counter so that it counts to 15, refer to binart table at the top.</p>
+</li>
+<li>
+<p>Reflect on this project, focus on the difficulty of the circuit and code.</p>
+</li>
+</ul>
+</blockquote>
+<div align=center>
+<p><img src="Arduino4BitBinaryCouter/./figures/step4.png" alt="" /></p>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h1>
+<p>In today’s activity we will study how computers “count”, and we will discuss the idea of binary numbers and binary counting.</p>
+<p>We will then connect the Arduino board to 4 LEDs, and see how the computer can count.</p>
+<blockquote>
+<p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
+</blockquote>
+<h2 id="binary-counting-1"><a class="header" href="#binary-counting-1">Binary Counting</a></h2>
+<p>Computers count in BINARY, i.e. using ones and zeros. For example, the number 5 in binary is 00000101. How does this work? Here is a chart to explain how the computer uses 8-bits to represent the numbers from 0...255.</p>
+<p>Below is a table that show the possible combinations of 4-bit binary numbers and their decimal equivalent.</p>
+<table align=center>
+<tr>
+<td>
+<div class="table-wrapper"><table><thead><tr><th>Decimal</th><th>Binary</th><th></th><th>Decimal</th><th>Binary</th></tr></thead><tbody>
+<tr><td>0</td><td>00000000</td><td></td><td>16</td><td>00010000</td></tr>
+<tr><td>1</td><td>00000001</td><td></td><td>32</td><td>00100001</td></tr>
+<tr><td>2</td><td>00000010</td><td></td><td>64</td><td>01000000</td></tr>
+<tr><td>3</td><td>00000011</td><td></td><td>66</td><td>01000010</td></tr>
+<tr><td>4</td><td>00000100</td><td></td><td>100</td><td>01100100</td></tr>
+<tr><td>5</td><td>00000101</td><td></td><td>156</td><td>00000101</td></tr>
+<tr><td>6</td><td>00000110</td><td></td><td>176</td><td>10110000</td></tr>
+<tr><td>7</td><td>00000111</td><td></td><td>184</td><td>10111000</td></tr>
+<tr><td>8</td><td>00001000</td><td></td><td>200</td><td>11001000</td></tr>
+<tr><td>9</td><td>00001001</td><td></td><td>201</td><td>11001001</td></tr>
+<tr><td>10</td><td>00001010</td><td></td><td>212</td><td>11010100</td></tr>
+<tr><td>11</td><td>00001011</td><td></td><td>236</td><td>11101100</td></tr>
+<tr><td>12</td><td>00001100</td><td></td><td>237</td><td>11101101</td></tr>
+<tr><td>13</td><td>00001101</td><td></td><td>239</td><td>11101111</td></tr>
+<tr><td>14</td><td>00001110</td><td></td><td>240</td><td>11110000</td></tr>
+<tr><td>15</td><td>00001111</td><td></td><td>255</td><td>11111111</td></tr>
+</tbody></table>
+</div>
+<p>*<em>Bite binary represented here is MSB to LSB</em></p>
+</td>
+</tr>
+</table>
+<h2 id="converting-between-decimal-----binary-1"><a class="header" href="#converting-between-decimal-----binary-1">Converting between Decimal &lt;---&gt; Binary</a></h2>
+<p>Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20 , the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent. </p>
+<p>Below are some examples as reminders.</p>
+<p>The decimal number `10' is converted to binary form like so:</p>
+<p>
+   <span class="math display">
+      \[
+        \begin{matrix}
+            2^3 & 2^2 & 2^1 & 2^0\\ \hline
+            8 & 4 & 2 & 1 \\
+            1 & 0 & 1 & 0
+        \end{matrix}
+    \]
+   </span>
+</p>
+<p>Alternatively you can achieve the same result this way too: </p>
+<p>\[ [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(0) \cdot 2^{0}] \ \]</p>
+<p>\[ 1 \cdot 8 + 0 \cdot 4 + 1 \cdot 2 + 0 \cdot 1  \]</p>
+<p>\[ 1 0 1 0 \]</p>
+<p>So therefore decimal `10' is 1010 in binary form.</p>
+<p>The binary number 11011011 is converted to decimal form like so: </p>
+<p>
+   <span class="math display">
+      \[
+        \begin{matrix}
+            2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0\\ \hline
+            128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\
+            1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 \\
+        \end{matrix}\\
+        219 = 128+64+16+8+2+1
+    \]
+   </span>
+</p>
+<p>Alternatively you can achieve the same result this way too: </p>
+<p>\[ [(1) \cdot 2^{7}] + [(1) \cdot 2^{6}] + [(0) \cdot 2^{5}] + [(1) \cdot 2^{4}] + [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(1) \cdot 2^{0}] \]</p>
+<p>\[ [1 \cdot 128] +[1 \cdot 64] + [0 \cdot 32] + [1 \cdot 16]  + [1 \cdot 8] +[0 \cdot 4] + [1 \cdot 2] + [1 \cdot 1]  \]</p>
+<p>\[ 219 = 128+64+16+8+2+1\]</p>
+<h2 id="settting-up-the-circuit"><a class="header" href="#settting-up-the-circuit">Settting up the Circuit</a></h2>
+<p>Once loaded login to TinkerCad and then click on <strong>Circuits</strong> &gt; <strong>Create new Circuit</strong>.</p>
+<p>Change the circuit name, located top-left hand side of the screen to <strong>8-bit Binary Counter</strong>, see below:</p>
+<div align=center>
+<p><img src="Arduino8BitBinaryCounter/./figures/step1.png" alt="" /></p>
+</div>
+<p>Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. </p>
+<p>This can be achieved by either selecting the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to the image below.</p>
+<div align=center>
+<p><img src="Arduino8BitBinaryCounter/../MotorController/figures/step3-1.png" alt="" /></p>
+</div>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding red 5V line and GND line. </p>
+<p>You will need: </p>
+<ul>
+<li>8 x LED, any colour</li>
+<li>8 x resistor, set at \(0.22k\Omega\) or \(220\Omega\)</li>
+</ul>
+<p>Placing components (refer to image below step by step instructions): </p>
+<ol>
+<li>Place the LEDs so that the <strong>cathode</strong> and <strong>anode</strong> is in row <strong>6</strong> and <strong>7</strong> column <strong>e</strong> respectively. Repeat for the next 7 LEDs with rows <strong>8, 11, 14, 17, 20, 23, 26</strong> as gaps between each LED.</li>
+<li>Place the resistors inline with the <strong>Cathode</strong> of the LED so that <strong>terminal 2</strong> is in column <strong>b</strong> and <strong>terminal 1</strong> in the GND rail.</li>
+<li>connect a wire from inline with each <strong>Anode</strong> of LED, and connect from left to right of the breadboard, to <strong>Pins 12, 11, 10, 9, 8, 7, 6, 5</strong> in the Arduino Uno.</li>
+</ol>
+<div align=center>
+<p><img src="Arduino8BitBinaryCounter/./figures/step2.png" alt="" /></p>
+</div>
+<h2 id="programming-the-circuit"><a class="header" href="#programming-the-circuit">Programming the Circuit</a></h2>
+<p>Once you have completed the circuit you will need to programme the Arduino Uno.  Located above the <strong>Components</strong> click the <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code: </p>
+<pre><code class="language-C++">void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Now you are ready to set up all the Sketch up as follows. </p>
+<pre><code class="language-C++">int ledPin[8]={5,6,7,8,9,10,11,12};
+char binary[9] ={0,0,0,0,0,0,0,0,'\0'};
+
+void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Line 2, is an array of <code>char</code> with a length of 9, notice that at the end the array is <code>\0</code>, this is a null terminator so that the when printed to the Serial monitor it only prints the first 8 positions in the array.</p>
+<p>Setting up the <code>void setup()</code> we will do something a little more efficient to set the <code>pinMode()</code> of the <code>ledPins</code> array. </p>
+<p><em>Important note, arrays start from 0 to n. So <code>ledPins[1] = 6</code> and <code>ledPins[7] = 12</code>.</em></p>
+<p>
+   <span class="math display">
+      \[
+ \begin{matrix}
+      Index[x] & 0 & 1 & 2 & 3 & 4 & 5  & 6  & 7\\ \hline
+      LedPin  Value & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+ \end{matrix}
+       \]
+   </span>
+</p>
+<p>Line 10, shows the initialisation of a for loop ,<code>for(int x=0;x&lt;8;x++)</code>, sets a variable <code>x</code> as 0 and while <code>x</code> less than 8 increment <code>x</code> by 1, so we can repeat the code between the <code>{}</code> 8 times. </p>
+<p>So you can see that as <code>x</code> starts at 0, <code>ledPin[x]</code> will set pin 5 as <code>OUTPUT</code>. So therefore <code>Serial.print(ledPin[x])</code> outputs the value to the Serial monitor.</p>
+<pre><code class="language-C++">void setup()
+{
+   Serial.begin(9600);
+   
+  for(int x=0;x&lt;8;x++)
+  {
+    pinMode(ledPin[x], OUTPUT);
+    Serial.print(ledPin[x]);
+    Serial.print(&quot;,&quot;);
+  } 
+ 
+  Serial.println();
+}
+</code></pre>
+<p>The <code>void loop()</code>, function has little code because of the for loop and a user defined function <code>displayBinary();</code>.</p>
+<pre><code class="language-C++">void loop()
+{
+  for (byte counter =0;counter&lt;=255; counter++)
+  {
+    displayBinary(counter);
+    delay(500);
+  } 
+}
+</code></pre>
+<blockquote>
+<p>QUESTION:</p>
+<ul>
+<li>Looking at the lines 22 to 26, describe what is happening.</li>
+</ul>
+</blockquote>
+<p>So now lets look at the user defined function <code>displayBinary();</code> below. </p>
+<p>*Remember in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the <code>displayBinary(byte numToShow);</code> is the data type <code>byte</code>. So line 31, <code>for(int i=0; i&lt;8; i++)</code> iterates over the number bits in one byte. </p>
+<pre><code class="language-C++">  displayBinary(counter);
+  delay(500);
+ }
+}
+
+void displayBinary(byte numToShow)
+{
+ for (int i =0;i&lt;8;i++)
+ {
+   if (bitRead(numToShow, i)==1)
+   {
+     binary[7-i] = '1';
+     digitalWrite(ledPin[i], HIGH);
+   }
+   else
+   {
+     binary[7-i] = '0';
+     digitalWrite(ledPin[i], LOW);
+   }
+ }
+
+ Serial.print(&quot;Number: &quot;);
+ Serial.print(numToShow);
+ Serial.print(&quot; | Binary: &quot;);
+ Serial.println(String(binary));
+}
+</code></pre>
+<p>Line 33, <code>if (bitRead(numToShow, i)==1)</code> passes the <code>numToShow</code> variable to the inbuilt function <code>bitRead();</code>. The <code>if</code> statement checks to see if the bit <code>i</code> is a 1.</p>
+<p>Line 35, <code>binary[7-i] = '1';</code> sets the value at the index <code>7-i</code>.</p>
+<p>Line 36, <code>digitalWrite(ledPin[i], HIGH);</code> sets the LED at the correct bit position to <code>HIGH</code>. </p>
+<p>Therefore line 38, <code>else</code> condition is implicitly true when <code>(bitRead(numToShow, i)==0)</code>.</p>
+<p>Line 40, <code>binary[7-i] = '0';</code> sets the value at the index <code>7-i</code>. </p>
+<p>Line 41, <code>digitalWrite(ledPin[i], LOW)</code>, sets the LED at the correct bit position to <code>LOW</code>.</p>
+<p>Line 44 to 47, outputs the current number <code>numToShow</code> and binary equivalent to the Serial monitor. As seen in image below.</p>
+<div align=center>
+<p><img src="Arduino8BitBinaryCounter/./figures/step3.png" alt="" /></p>
+</div>
+<p>Below shows the output you'd expect to see for the decimal number 171.</p>
+<p>\bigcirc</p>
+<p>
+   <span class="math display">
+      \[
+    \begin{matrix}
+        Arduino pins & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5\\
+         LEDs &\circledast & \bigcirc & \circledast & \bigcirc & \circledast & \bigcirc & \circledast & \bigcirc \\
+         Binary &1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+    \end{matrix}
+       \]
+   </span>
+</p>
+<blockquote>
+<p>QUESTIONS:</p>
+<ul>
+<li>
+<p>Look at the following documentation for <code>bitRead()</code> and summaries in your own words what it does:  https://www.arduino.cc/reference/en/language/functions/bits-and-bytes/bitread/</p>
+</li>
+<li>
+<p>Edit line 2 so that it says <code>char binary[8] ={0,0,0,0,0,0,0,0};</code> and then start the simulation. What difference was there from the original output? Once tested return the code on line 2 to <code>char binary[9] = {0,0,0,0,0,0,0,0,'\0'};</code>.</p>
+</li>
+<li>
+<p>What would the output be on line 47 <code>Serial.println(String(binary))</code>, if lines 35 and 40 <code>binary[7-i]</code> is changed to <code>binary[i]</code>. Test your theory/answer.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="extension"><a class="header" href="#extension">Extension</a></h2>
+<ul>
+<li>Append the circuit to show 9-bits.</li>
+<li>Adjust the code to match the circuit
+<ul>
+<li>Increase the arrays length by one on lines 1 and 2</li>
+<li>Therefore line 8, <code>for(int x=0;x&lt;8;x++)</code>, <code>x&lt;8</code> needs to be increase by one to match the changes made on lines 1 and 2.</li>
+<li>Line 21, <code>for (byte counter =0;counter&lt;=255; counter++)</code> needs to updated to show a range from 0 to a 9-bit number. Use the formula \((2^9 - 1)\) to find the value you need.</li>
+<li>Adjust line 30  <code>for (int i =0;i&lt;8;i++)</code> so that it is the same as line 8.</li>
+<li>Finally modify lines 34 and 39 <code>binary[7-i] = </code>, <code>8-i</code>.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>QUESTIONS:</p>
+<p>Does the cicuit and code output a 9-bit number? </p>
+<p>Reflect on this project, focus on the difficulty of the circuit and code. </p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-2"><a class="header" href="#introduction-2">Introduction</a></h1>
+<p>This lab will introduce you to Pulse Width Modulation (PWM) using the Arduino. </p>
+<blockquote>
+<p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
+</blockquote>
+<p>This project follows on from the lecture  <strong>Analogue Write with Arduino</strong> and is designed to put into practice the theory. You will control the brightness of an LED using PWM pins on the Arudino Uno by using the <code>analogWrite()</code> function and view the voltage and PWM value in the serial monitor using the <code>Serial.print()</code> and <code>Serial.println()</code> functions. </p>
+<h2 id="setting-up-the-circuit-1"><a class="header" href="#setting-up-the-circuit-1">Setting up the Circuit</a></h2>
+<p>Once loaded login to TinkerCad and then click on <strong>Circuits</strong> &gt; <strong>Create new Circuit</strong>.</p>
+<p>Change the circuit name, located top-left hand side of the screen to <code>PWM_ LED</code>, see image below.</p>
+<div align=center>
+<p><img src="ArduinoPWM/./figures/step1.png" alt="" /></p>
+</div>
+<p>Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. </p>
+<p>This can be achieved by either selecting the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to image below.</p>
+<div align=center>
+<p><img src="ArduinoPWM/../MotorController/figures/step3-1.png" alt="" /></p>
+</div>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding red 5V line and GND line.</p>
+<ul>
+<li>1 x LED, any colour</li>
+<li>1 x Potentiometer, set at \(10k\Omega\) or \(10000\Omega\)</li>
+<li>1 x resistor, set at \(0.22k\Omega\) or \(220\Omega\)</li>
+</ul>
+<p>Placing components (refer to the image below the steps):</p>
+<ol>
+<li>Place the LED so that the <strong>cathode</strong> and <strong>anode</strong> is in row <strong>18</strong> and <strong>19</strong> column <strong>e</strong> respectively.</li>
+<li>Place the resistor's <strong>terminal 2</strong> in row<strong>18</strong> column<strong>b</strong> and <strong>terminal 1</strong> in the GND rail</li>
+<li>connect a wire from row <strong>19</strong> column <strong>d</strong> to the PWM pin \textasciitilde6 in the Arduino Uno</li>
+<li>Place the potentiometer so that <strong>Terminal 1</strong>, <strong>Wiper</strong> and <strong>Terminal 2</strong> are in row<strong>26</strong>,<strong>27</strong> and<strong>28</strong> column <strong>e</strong> respectively.</li>
+<li>Wire up the potentiometer so that terminal <strong>1</strong> and <strong>2</strong> are in GND and 5V line of the breadboard. then take the Wiper to <strong>A0</strong> of Arduino Uno. </li>
+</ol>
+<p><em>Note the wires are placed in row <strong>26</strong>, <strong>28</strong> and <strong>27</strong> column <strong>d</strong> respectively.</em></p>
+<div align=center>
+<p><img src="ArduinoPWM/figures/step2.png" alt="" /></p>
+</div>
+<h2 id="programming-the-circuit-1"><a class="header" href="#programming-the-circuit-1">Programming the Circuit</a></h2>
+<pre><code class="language-C++">void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Now you are ready to set up all the Sketch up as follows:</p>
+<pre><code class="language-C++">int ledPin = 6;      // LED connected to digital pin 6
+int analogPin = A0;   // potentiometer connected to analog pin A0
+int val = 0;         // variable to store the read value
+
+void setup() {
+  pinMode(ledPin, OUTPUT);  // sets the pin as output
+}
+
+void loop() {
+   val = analogRead(analogPin);  // read the input pin
+   analogWrite(ledPin, val / 4); 
+}
+
+</code></pre>
+<blockquote>
+<p>TODO</p>
+<ul>
+<li>
+<p>Can lines 1 to 3 be refactored so that the variables are declared and initialised on 1 line? Refactor the code to test your answer.</p>
+</li>
+<li>
+<p>Looking inside the <code>void setup()</code> only the <code>ledPin</code> has had its mode changed to <code>OUTPUT</code>. Do we need to need to specify the <code>pinMode</code> for the variable <code>analogPin</code>? Test your theory by adapting the code.</p>
+</li>
+<li>
+<p>What is the purpose of the mathematical operation in line 11? Recall what <code>analogRead</code> returns and how <code>analogWrite</code> operates. Add comment to the the line 11 to briefly describe the code.</p>
+</li>
+<li>
+<p>Describe the relationship between the LED and the resistor based on your observation of your circuit.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="further-programming"><a class="header" href="#further-programming">Further Programming</a></h2>
+<p>In order to see what is happening numerically with the circuit you will need to send the data to the serial monitor: </p>
+<ol>
+<li>Create a new variable called <code>PWM</code> as an interger data type</li>
+<li>Adjust the code so that <code>void setup()</code> includes the command <code>Serial.begin(9600);</code></li>
+<li>Make a new line after the <code>val = analogRead</code> in <code>void loop()</code> and write <code>PWM = val \ 4;</code></li>
+<li>Next replace <code>analogWrite(ledPin, val \ 4);</code> with <code>analogWrite(ledPin, PWM);</code></li>
+<li>Then finally, modify the code inside the <code>void loop()</code>  to produce an output similar to below with a delay of 500<em>ms</em>.</li>
+</ol>
+<div align=center>
+<p><img src="ArduinoPWM/./figures/step4.png" alt="" /></p>
+</div>
+<p>Now that you have the PWM outputting to the Serial monitor. </p>
+<blockquote>
+<p>QUESTIONS:</p>
+<ul>
+<li>What is the voltage when PWM is 0, 51, 102, 153, 204 and 255? Use the the calculation:</li>
+</ul>
+<p>\[ V = \frac{PWM}{51}\]</p>
+<ul>
+<li>Use a multimeter to measure the voltage out of the pin ~ when the PWM is 51, 102, 153, 204 and 255, why is the multimeter value different to your calculations?</li>
+</ul>
+</blockquote>
+<p>Now adjust the code to output the calculated voltage to the Serial Monitor:</p>
+<ul>
+<li>Add <code>float voltage = 0;</code> to your list of variables at the top of the sketch.</li>
+<li>After the <code>PWM = val /4;</code> add <code>voltage = PWM / 51.0;</code> to a new line</li>
+<li>Output the voltage to the Serial monitor.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-3"><a class="header" href="#introduction-3">Introduction</a></h1>
+<p>In today’s activity we will use an Arduino to drive  seven segmented display with C/C++ code.</p>
+<blockquote>
+<p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
+</blockquote>
+<h2 id="setting-up-the-circuit-2"><a class="header" href="#setting-up-the-circuit-2">Setting up the Circuit</a></h2>
+<p>Once loaded login to TinkerCad and then click on \menu{Circuits &gt; Create new Circuit}.</p>
+<p>Change the circuit name, located top-left hand side of the screen to <strong>Seven__Segment_Display</strong>.</p>
+<p>Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. </p>
+<p>This can be achieved by either selecting the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to image below.</p>
+<div align=center>
+<p><img src="SevenSegmentedDisplay/./figures/step1.png" alt="" /></p>
+</div>
+<p>You now need to add:</p>
+<ul>
+<li>1 x 7 Segment Display, <strong>Components</strong> &gt; <strong>Other Components</strong> or alternatively use the search box</li>
+<li>1 x resistor, set at \(1k\Omega\) or \(1000\Omega\), <strong>Components</strong> &gt; <strong>Basic</strong> first component in the list.</li>
+</ul>
+<p>See below for the circuit set up:</p>
+<div align=center>
+<p><img src="SevenSegmentedDisplay/./figures/step2.png" alt="" /></p>
+</div>
+<h2 id="programming-the-circuit-2"><a class="header" href="#programming-the-circuit-2">Programming the Circuit</a></h2>
+<p>Once you have completed the circuit you will need to programme the Arduino Uno.  Located above the <strong>Components</strong> click the <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code: </p>
+<pre><code class="language-C++">void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+
+</code></pre>
+<p>Now you are ready to set up all the Sketch up as follows. </p>
+<pre><code class="language-C++">int a = 12;
+int b = 13;
+int c = 7;
+int d = 8;
+int e = 9;
+int f = 11;
+int g = 10;
+int dp = 6;
+
+void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Firstly the variables are declared and initialised using the <code>int</code> keyword.</p>
+<p>Lines 1 to 8, define the variables <code>int a</code> through to <code>int g</code> and then lastly <code>int dp</code> which are the pin names for the seven segment display (SSD) component. We have assigned the integers 13 to 6 which are the pins on the Arduino that we are going to use to drive the SSD.</p>
+<blockquote>
+<p>TODO:</p>
+<p>Add inline comment on line 1 to summaries the description above so that it explains what this section of code is, using the <code>//</code> comment symbols.</p>
+</blockquote>
+<p>The <code>void setup()</code> will be used to set the pin modes and initialise the serial. </p>
+<pre><code class="language-C++">void setup()
+{
+  pinMode(a,OUTPUT);
+  pinMode(b,OUTPUT);
+  pinMode(c,OUTPUT);
+  pinMode(d,OUTPUT);
+  pinMode(e,OUTPUT);
+  pinMode(f,OUTPUT);
+  pinMode(g,OUTPUT);
+  pinMode(dp,OUTPUT);
+}
+</code></pre>
+<p>For each variable (<code>a</code> ... <code>g}</code>and <code>dp</code>) we have to specify how the pin on the Arduino behaves, in this case we are setting them as outputs, <code>pinMode(a,OUTPUT);</code>.</p>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comment on lines 12 to describe the purpose of this block of code, hint I have mentioned this above, remember <code>//</code> are the comment symbols.</p>
+</blockquote>
+<p>The <code>void loop()</code>, function contains code that will run forever.</p>
+<p>Write out the following code:</p>
+<pre><code class="language-C++">void loop()
+{
+  digitalWrite(a, HIGH);
+  digitalWrite(b, HIGH);
+  digitalWrite(c, HIGH);
+  digitalWrite(d, HIGH);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, HIGH);
+  digitalWrite(g, HIGH);
+  digitalWrite(dp,HIGH);
+  delay(1000);                           //
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, LOW);
+  digitalWrite(f, LOW);
+  digitalWrite(g, HIGH);
+  delay(1000);                           //
+}
+</code></pre>
+<p>Notice that to control the pin we use the function <code>digitalWrite(pinNumber,KEYWORD)</code>. Pins in the <code>OUTPUT</code> mode can only be <code>HIGH</code> or <code>LOW</code> to represent voltage on or off. We can see that line 24 sets the pin <code>12</code> or <code>a</code> is set as <code>HIGH</code>, this is because we are using the anode setup of the SSD and therefore we use the inverse. See the diagrams for anode and cathode circuity.</p>
+<div align=center>
+<p><img src="SevenSegmentedDisplay/./figures/step4.png" alt="" /></p>
+<p><img src="SevenSegmentedDisplay/./figures/step5.png" alt="" /></p>
+</div>
+<p>If you where to run the circuit now you should see after one second the number 0 displayed and then nothing for a second and so forth. This is because we are waiting 1 second before change the pins' output, <code>delay(1000);</code> where 1000 is in milliseconds. </p>
+<blockquote>
+<p>TODO:</p>
+<ul>
+<li>Using the image below as reference try to generate 0 - 9 then A,b,C,d,E,F and finally the decimal point(dp). You have the skeleton code do this, copy and paste line 33 to line 40 on line 41 and repeat.</li>
+</ul>
+</blockquote>
+<div align=center>
+<p><img src="SevenSegmentedDisplay/./figures/step6.png" alt="" /></p>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="motor-control-board-using-tinkercad"><a class="header" href="#motor-control-board-using-tinkercad">Motor Control Board using TinkerCad</a></h1>
+<h2 id="1-introduction"><a class="header" href="#1-introduction">1 Introduction</a></h2>
+<p>In today’s activity we will use an Arduino and a H-bridge controller to engage a DC motor to move in a postive or negative direction based on a temperature value. This could be useful to move plants, canopy in response to heat from the Sun.</p>
+<blockquote>
+<p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
+</blockquote>
+<hr />
+<h2 id="2-rpm-rads-angular-velocitydegs"><a class="header" href="#2-rpm-rads-angular-velocitydegs">2 RPM, Rad/s, Angular Velocity(Deg/s)</a></h2>
+<p>This section provides a quick recap on Revolution Per Minute, Radians Per Second and Degrees per second. Being able to interchange between these values will help visualise.</p>
+<p><strong>RPM:</strong></p>
+<ul>
+<li>the number of complete turns (full revolutions) the engine or wheel makes in a one-minute time
+period</li>
+<li>remember that this is only per minute, not per second like many other measures of rotation.</li>
+</ul>
+<p><strong>Rad/s:</strong></p>
+<ul>
+<li>A radian is a measure of an angle</li>
+<li>defined in terms of π</li>
+<li>2π radians (rad) in a complete revolution</li>
+<li>You can relate this to degrees by noting that 360 degrees = 2π rad, so 1 radian = 57.3 degrees.</li>
+</ul>
+<p>So lets assume that we have a RPM of 1000, and that this needs to be converted to Rad/s. The two main steps in the conversion are converting RPM to revolutions per second (RPS), then converting total revolutions to the angle covered in radians. The first step is simple: Divide the number in RPM by 60 to find the number of revolutions per second as shown in the <strong>equation 1</strong>:</p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            RPS  &amp;= \frac{RPM}{60 seconds/minute} \\ \\
+            \Rightarrow 16.67 RPS &amp;= \frac{1000}{60} 
+         \end{aligned}\tag{Eqn:1}
+      \]
+   </span>
+</p>
+<p>Now we need to convert the RPS to Rad/s,you take RPS and convert to radians by multiplying by 2π, as seen in the <strong>equation 2</strong>:</p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            rad/s &amp;= RPS \cdot 2\pi  \\ \\
+            \Rightarrow   104.72 rad/s &amp;= 16.67 \cdot 2\pi
+         \end{aligned}\tag{Eqn:2}
+      \]
+   </span>
+</p>
+<p>Therefore we can combine <strong>equations 1</strong> and <strong>2</strong> above into one <strong>equation 3</strong> below:</p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            rad/s &amp;= RPM \cdot \frac{2\pi}{60} \\
+            104.72 rad/s &amp;= 1000 \cdot \frac{2\pi}{60}
+         \end{aligned}\tag{Eqn:3}
+      \]
+   </span>
+</p>
+<p>Now that we rad/s we can calculate the angular velocity (deg/s). There are two ways to achieve this both methods are shown below in <strong>equations 4</strong> and <strong>5</strong>.</p>
+<p><strong>Equation 4</strong> first takes the approach using the knowledge that \(1 rad/s = 57.2958^{\circ}\) and you have precalulated using <strong>equation 3</strong>.</p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            deg/s &amp;= rad/s \cdot 57.2958^{\circ} \\ 
+            \Rightarrow  628.32^{\circ}/s  &amp;= 104.72 rad/s \cdot 57.2958^{\circ}
+         \end{aligned}\tag{Eqn:4}
+      \]
+   </span>
+</p>
+<p><strong>Equation 5</strong> replaces the \(2\pi\) with 360 in *<strong>Equation 3</strong></p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            deg/s &amp;= RPM \cdot \frac{360}{60} \\
+            628.32^{\circ}/s  &amp;= 1000 \cdot \frac{360}{60} 57.2958^{\circ}
+         \end{aligned}\tag{Eqn:5}
+      \]
+   </span>
+</p>
+<p><strong>Questions:</strong></p>
+<details>
+<summary>Convert 53 RPM to Angular velocity to 2 decimal places</summary>
+<p>\(318^\circ\)</p>
+</details>
+<details>
+<summary>Convert 4242 RPM to Angular velocity to 2 decimal places.</summary>
+<p>\(25452^{\circ}\)</p>
+</details>
+<hr />
+<h2 id="3-setting-up-the-circuit"><a class="header" href="#3-setting-up-the-circuit">3 Setting up the circuit</a></h2>
+<p>Once loaded login to TinkerCad and then click on <strong>Circuits</strong> &gt; <strong>Create new Circuit</strong></p>
+<p>Change the circuit name, located top-left hand side of the screen to <strong>Direction_Control_DC_Motor_TMP36</strong>, see below.</p>
+<div align=center>
+<p><img src="MotorController/./figures/step3.png" alt="" /></p>
+</div>
+<p>Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.</p>
+<p>Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. </p>
+<p>This can be achieved by either selecting the Arduino Uno and the breadboard from\ <strong>Components</strong> &gt; <strong>Basic</strong> components or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer the image below.</p>
+<div align=center>
+<p><img src="MotorController/./figures/step3-1.png" alt="" /></p>
+</div>
+<p>If you have chosen the Arduino and breadboard template from the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding 5V line(red) and GND line. </p>
+<p><strong>You now need to add:</strong></p>
+<ol>
+<li>1 x TMP36 sensor, <strong>Components</strong> &gt; <strong>Basic</strong> at the bottom or alternatively use the search box</li>
+<li>1 x resistor, set at 1k\(\Omega\) or 1000\(\Omega\),  <strong>Components</strong> &gt; <strong>Basic</strong> first component in the list</li>
+<li>1 x L293D, H-bridge Motor Driver, <strong>Components</strong> &gt; <strong>All</strong> in the last item in Power control section of the list or alternatively use the search box</li>
+<li>1 x DC Motor, <strong>Components</strong> &gt; <strong>Basic</strong>, 14th item in the list, or alternatively use the search box</li>
+<li>1 x 9V D-Cell Battery, <strong>Components</strong> &gt; <strong>Basic</strong>, 7th item in the list, or alternatively use the search box.</li>
+</ol>
+<p>Placing components (refer to the image below): </p>
+<ol>
+<li>
+<p>Place the TMP36 so that the <strong>Power</strong> and <strong>GND</strong> is in row <strong>4</strong> and <strong>6</strong> column <strong>h</strong> respectively. Take a wire from the <strong>Vout</strong> to on row <strong>5</strong> column <strong>g</strong> to pin <strong>A0</strong> of the Arduino Uno. </p>
+</li>
+<li>
+<p>Place the L293D chip so that the white dot (<strong>enable 1 &amp; 2</strong> pin) is in row <strong>12</strong> and column <strong>e</strong>, therefore the pin labeled <strong>Power 2</strong> should be in row <strong>19</strong> column <strong>e</strong>. You should have bridge between both sides of the breadboard. </p>
+</li>
+<li>
+<p>Staying with L293D, create a red wire at row <strong>12</strong> column <strong>j</strong> into the <strong>+</strong> line the same row, this connects L293D <strong>Power 1</strong> pin to the Arduino 5V line. </p>
+</li>
+<li>
+<p>Next create a black wire at row <strong>15</strong> column <strong>j</strong> into the <strong>-</strong> of the same row, so this connects the L293D <strong>Ground</strong> pin to the Arduino GND line.</p>
+</li>
+<li>
+<p>Create a new red wire just below the <strong>Enable 1 &amp; 2</strong> pin of the L293D at row <strong>12</strong> column <strong>d</strong>, to pin <strong>10</strong> of the Ardunio Uno. </p>
+</li>
+<li>
+<p>Create an orange wire at row <strong>13</strong> column <strong>c</strong>, below <strong>Input 1</strong> pin of the L293D, to pin <strong>9</strong> of the Arduino Uno. </p>
+</li>
+<li>
+<p>Create an orange wire at row <strong>18</strong> column <strong>d</strong>, below <strong>Input 2</strong> pin of the L293D, to pin <strong>8</strong> of the Arduino Uno.</p>
+</li>
+<li>
+<p>Get the 9V Battery and places it in vertical alignment using the rotate button top left of the control panel, so that it is parallel to the breadboard on the opposite side the Arduino Uno. </p>
+</li>
+<li>
+<p>Create a red wire from the <strong>Positive</strong> terminal of the battery and connect it to row <strong>19</strong> column <strong>d</strong>, just below the L293D <strong>Power 2</strong> pin.</p>
+</li>
+<li>
+<p>Similarly create a black wire from the <strong>Negative</strong> terminal of the battery and connect it to row <strong>16</strong> column <strong>g</strong>, just above the other L293D <strong>Ground</strong> pin.</p>
+</li>
+<li>
+<p>Now place the DC motor underneath the breadboard, between rows <strong>13</strong> and <strong>25</strong></p>
+</li>
+<li>
+<p>Continuing with the DC motor, take a black wire from <strong>Terminal 1</strong> of the DC motor and connect it to row <strong>14</strong> column <strong>a</strong>, inline with L293D <strong>Output 1</strong>.</p>
+</li>
+<li>
+<p>Similarly take a red wire from <strong>Terminal 2</strong> of the DC motor and connect it to row <strong>20</strong> column <strong>a</strong></p>
+</li>
+<li>
+<p>Lastly, take the resistor set to \(1k\Omega\), and rotate so that it lies horizontally, and connect <strong>Terminal 1</strong> pin to the row <strong>17</strong> column <strong>c</strong>, inline with L293D <strong>Output 2</strong>, therefore <strong>Terminal 2</strong> of the resistor should be connected to row <strong>21</strong> column <strong>c</strong></p>
+</li>
+</ol>
+<p>For reference look at the below image for L293D functional block diagram and pin layout.</p>
+<div align=center>
+<p><img src="MotorController/./figures/step3-2.png" alt="" /></p>
+</div>
+<div align=center>
+<img src="MotorController/./figures/step3-3.png" style="transform:rotate(90deg);" width=50%>
+</div>
+<h2 id="4--programming-the-circuit"><a class="header" href="#4--programming-the-circuit">4.  Programming The Circuit</a></h2>
+<p>Once you have completed the circuit you will need to programme the Arduino Uno. Located above <strong>Components</strong> click the <strong>Code Text</strong>. Once sketch has appeared reproduce the following code:</p>
+<pre><code class="language-C++">void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Now you are ready to set up all the Sketch up as follows.</p>
+<pre><code class="language-C++">#define en 10
+#define in1 9
+#define in2 8
+#define temp A0
+
+void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<p>Firstly the variables are declared and initialised using the <code>#define</code> keyword.</p>
+<p>Lines 1 to 3, define the variables <code>en 10</code>, <code>in1 9</code> and <code>in2 8</code> will reference the physical connections of the L293D Enable 1 &amp; 2, <strong>Input 1</strong> and <strong>Input 2</strong> respectively.</p>
+<p>Line 4, define the variable <code>temp A0</code> will reference the physical connection of the TMP36 <code>Vout</code> pin.</p>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments on lines 1 - 4 for what each variable is for, using the // comment symbols</p>
+</blockquote>
+<p>Secondly, the dynamic variables are declared and initialised using data types <code>int</code>, <code>float</code> and <code>bool</code>.</p>
+<pre><code class="language-C++">int pwmOutput = 12;
+float tempValue;
+float temperature;
+float rads = 0.0;
+float degrees = 0.0;
+bool movedRight = false;
+bool movedLeft = false;
+</code></pre>
+<p>Line 6, <code>int pwmOutput = 12;</code>, will stores the value that will be used in the <code>analogWrite()</code> function.</p>
+<p>Lines 7 and 8, variables <code>float tempValue; float temperature;</code> will store the <code>analogRead()</code> value and the converted temperature value respectively. </p>
+<p>Lines 9 and 10, variables <code>float rads =0.0;</code> and <code>float degrees = 0.0;</code> will store the calculated values for radians per second and degrees per second respectively.</p>
+<p>Lines 11 and 12, variables <code>bool movedRight = false;</code> and <code>bool movedLeft = false;</code> are used to stop the motor turning continuously.</p>
+<p>Script should now look like the below:</p>
+<pre><code class="language-C++">#define en 10
+#define in1 9
+#define in2 8
+#define temp A0
+
+int pwmOutput = 12;
+float tempValue;
+float temperature;
+float rads = 0.0;
+float degrees = 0.0;
+bool movedRight = false;
+bool movedLeft = false;
+
+void setup()
+{
+
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments on lines 6 - 12 for what each variable is for, using the // comment symbols</p>
+</blockquote>
+<p>The <code>void setup()</code> will be used to set the pin modes and initialise the serial.</p>
+<pre><code class="language-C++">void setup()
+{
+  Serial.begin(9600);
+  pinMode(en, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+}
+</code></pre>
+<p>Line 16's code, <code>Serial.begin(9600);</code>, sets the Serial speed at 9600 bits per second (bps)</p>
+<p>Line 17's code, <code>pinMode(en, OUTPUT);</code>, sets pin 10 on the Arduino Uno as an output so that a signal can be sent to the <strong>Enable 1 &amp; 2</strong> pin of the L293D chip.</p>
+<p>Line 18's and 19's code, <code>pinMode(in1, OUTPUT);</code> <code>pinMode(in2, OUTPUT)</code>, sets pin 9 and 8 on the Arduino Uno as an output so that a signal can be sent to the <strong>Input 1 &amp; 2</strong> pin of the L293D chip respectively.</p>
+<pre><code class="language-C++">#define en 10
+#define in1 9
+#define in2 8
+#define temp A0
+
+int pwmOutput = 12;
+float tempValue;
+float temperature;
+float rads = 0.0;
+float degrees = 0.0;
+bool movedRight = false;
+bool movedLeft = false;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(en, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+}
+
+void loop()
+{
+
+}
+</code></pre>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments on lines 16 - 19 for what each variable is for, using the // comment symbols</p>
+</blockquote>
+<pre><code class="language-C++"> void loop()
+{
+  tempValue = analogRead(temp);
+  temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;
+
+  if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)
+  {
+    motorInstructions();
+    debugger();
+
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    delay(1000);
+    digitalWrite(in2, LOW);
+    movedRight = true;
+    movedLeft = false;
+  }
+  else if ( temperature &gt;= 40.0 &amp;&amp; movedLeft == false)
+  {
+    motorInstructions();
+    debugger();
+
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    delay(1000);
+    digitalWrite(in1, LOW);
+    movedLeft = true;
+    movedRight = false;
+  }
+}
+</code></pre>
+<p>Starting with line 24, the code <code>tempValue = analogRead(temp);</code> will read the TMP36 wired to pin A0 of the Arduino, and convert voltage to the Analogue Digital Converted value. Remember the that voltage rang is 0V to 5V and the ADC of the Arduino is 10-bits, so its range is 0 - 1023.</p>
+<p>Line 25's code, <code>temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}</code>, converts the the <code>temp</code> value, (0 - 358) to Celsius with a range of \(-40^{\circ}C\) to \(125^{\circ}C\), see <strong>equation 6</strong>.</p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            temperature = \cfrac{\left(\left(tempValue \cdot \left( \cfrac{5.0V}{1024}\right)\right)-0.5\right)}{0.01}\\ 
+            \Rightarrow 26.17^{\circ}C = \cfrac{\left(\left(156 \cdot \left( \cfrac{5.0V}{1024}\right)\right)-0.5\right)}{0.01} 
+         \end{aligned}\tag{Eqn:6}
+      \]
+   </span>
+</p>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments on lines 24 - 25 for what each variable is for, using the // comment symbols</p>
+</blockquote>
+<p>Now that the <code>temperature</code> value has been calculated, lines 27 and 39 can be explained.</p>
+<p>Line 27's code, <code>if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)</code>, checks to see if the <code>temperature</code> is less than or equal to, <code>&lt;=</code>, 30.0. If this condition is <code>true</code> then the second part of the conditional statement can be checked, using <code>&amp;&amp;</code>. the boolean (true or false) variable <code>movedRight == false</code> is compared for equality <code>==</code>, remember a single <code>=</code> means assign the right hand side to the left hand side. Now if both conditions are true then the code between lines 29 and 37 will be executed. If either statement is false, then then line 39 is executed. </p>
+<p>Line 39's code is much the same as line 27's, but the <code>temperature</code> has to be greater or equal to, <code>&gt;=</code>, 40.0 and <code>movedLeft</code> must be false. If both statements are true then lines 41 to 49 are executed, if not then the programme loops back to the line 24, and the process starts again. </p>
+<p>Now we can look inside lines 29 to 30 &amp; lines 40 to 49, you probably can see that there are only a few differences between the two blocks of code. We will look at lines 29, 30, 41 and 42 later. </p>
+<p>Lets look at lines 32, 33 and 44 and 45, where the two sets of lines are polar opposites of each other. The <code>digitalWrite(in1, LOW);</code> <code>digitalWrite(in1, HIGH);</code> &amp; <code>digitalWrite(in2, LOW);</code> <code>digitalWrite(in2, HIGH);</code>  changes the direction the motor spins. </p>
+<p>Looking at the block diagram of the L293D, we can see that Input 1, and Input 2, both pin 3 and 7 on the L293D change the direction of the motor.</p>
+<p>Lines 34 and 46 code, <code>delay(1000)</code>,allowing the motor to turn in that direction for 1 second.</p>
+<blockquote>
+<p>TODO: </p>
+<p>Add inline comments on lines 33 - 35 &amp; 44 - 47 for what each variable is for, using the // comment symbols</p>
+</blockquote>
+<p>Lines 36, 37 &amp; 48, 49 both set the <code>movedLeft</code> and <code>movedRight</code> variables true or false.</p>
+<p>Now it is time to return to lines 29 &amp; 41, both sets of lines do the same things so look below at the code for <code>motorInstructions();</code>, add to end of the script after the closing <code>}</code> of the <code>void loop()</code>.</p>
+<pre><code class="language-C++">void motorInstructions()
+{
+  rads = 53.0 * (2*3.1415926/60.0);
+  degrees = rads * 57.2958;
+  analogWrite(en, pwmOutput);
+}
+</code></pre>
+<p>Let's first look at line 55's code, <code>rads = 53.0 * (2*3.1415926/60.0);</code>, calculates the radians per second using <strong>equation 3</strong>. Where \(\pi\) is shown to 7 decimal places. The <code>53.0</code> the average speed the DC motor in response to the resistors value of \(1k\Omega\).</p>
+<p>Line 56's code, <code>degrees = rads * 57.2958;</code>, which is taken from <strong>equation 4</strong>, to calculate the degrees per second. </p>
+<p>Line 57's code, <code>analogWrite(en, pwmOutput);</code>, outputs the PWM signal,<code>pwmOutput</code> value of 12 to the <code>en</code> pin, to the <strong>Enable 1 &amp; 2</strong> pin of the L293D. The value of <code>en</code>, 12, again is preset because of the resistors value of \(1k\Omega\).</p>
+<p>So lastly, lets look at the function <code>debugger();</code> called on lines 30 and 42 of the <code>void loop()</code> function. </p>
+<pre><code class="language-C++">void debugger()
+{
+  Serial.print(&quot;Temperature: &quot;);
+  Serial.print(temperature);
+  Serial.print(&quot;  | RAD/s: &quot;);
+  Serial.print(rads);
+  Serial.print(&quot;   | Degree/s: &quot;);
+  Serial.println(degrees);
+}
+</code></pre>
+<p>So we can see that lines 62 to 67 output information about the variables to the serial montior.</p>
+<p>Now you have a better understanding of the circuit and the code ...</p>
+<blockquote>
+<p>TODO: </p>
+<ul>
+<li>What happens to the motor when the resistance value is changed? Adjust line 55's rpm value to match the motors rpm value. </li>
+<li>With the knowledge that each line of code takes <em>some</em> time to execute, specifically mathematical functions. Would pre calculating all of the constants in an equation speed up the programme? Try it.</li>
+<li>Explore the code, make changes to experiment with different temperature values, timings, conditional statements (if, else if).</li>
+</ul>
+</blockquote>
+<p>Full code is seen below:</p>
+<pre><code class="language-C++">#define en 10
+#define in1 9
+#define in2 8
+#define temp A0
+
+int pwmOutput = 12;
+float tempValue;
+float temperature;
+float rads = 0.0;
+float degrees = 0.0;
+bool movedRight = false;
+bool movedLeft = false;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(en, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+}
+
+void loop()
+{
+  tempValue = analogRead(temp);
+  temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;
+
+  if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)
+  {
+    motorInstructions();
+    debugger();
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    delay(1000);
+    digitalWrite(in2, LOW);
+    movedRight = true;
+    movedLeft = false;
+  }
+  else if ( temperature &gt;= 40.0 &amp;&amp; movedLeft == false)
+  {
+    motorInstructions();
+    debugger();
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    delay(1000);
+    digitalWrite(in1, LOW);
+    movedLeft = true;
+    movedRight = false;
+  }
+}
+
+void motorInstructions()
+{
+  rads = 53.0 * (2*3.1415926/60.0);
+  degrees = rads * 57.2958;
+  analogWrite(en, pwmOutput);
+}
+
+void debugger()
+{
+  Serial.print(&quot;Temperature: &quot;);
+  Serial.print(temperature);
+  Serial.print(&quot;  | RAD/s: &quot;);
+  Serial.print(rads);
+  Serial.print(&quot;   | Degree/s: &quot;);
+  Serial.println(degrees);
+}
+</code></pre>
 
                     </main>
 
