@@ -1,6 +1,6 @@
 [book]
-authors = ["Contributor(s) name"]
-title = "Templated mdBook"
+authors = ["Georgina Zimbitas", "Seb Blair"]
+title = "Fundamentals of Computer Programming"
 language = "en"
 multilingual = false
 src = "content"
