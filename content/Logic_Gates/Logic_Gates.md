@@ -10,7 +10,7 @@ Download and extract to a convenient place on your OneDrive or other cloud stora
 
 Digital source code and project can be found on here:
 
--  [https://learn.canterbury.ac.uk/bbcswebdav/pid-3125140-dt-content-rid-4509659/xid-4509659](https://learn.canterbury.ac.uk/bbcswebdav/pid-3125140-dt-content-rid-4509659_1/xid-4509659_1) or...
+-  [https://learn.canterbury.ac.uk/bbcswebdav/pid-3692905-dt-content-rid-7006465_1/xid-7006465_1](https://learn.canterbury.ac.uk/bbcswebdav/pid-3692905-dt-content-rid-7006465_1/xid-7006465_1) or...
 - From here [logic_simulator](./Logic_Simulator.zip)
 
 If you are stuck **ASK FOR HELP**.
