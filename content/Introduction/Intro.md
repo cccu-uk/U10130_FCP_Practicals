@@ -1,5 +1,7 @@
 # Introduction
 
+Special thanks to Seb Blair for preparing this mdbook and allowing us access to it!
+
 This mdBook will grow over the duration of this module with new labs/workshops and general content needed to test and increase your knowledge of computer programming.
 
 <table>
