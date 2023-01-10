@@ -1,6 +1,7 @@
 [book]
-authors = ["Georgina Zimbitas", "Seb Blair"]
+authors = ["Seb Blair", "Georgina Zimbitas"]
 title = "Fundamentals of Computer Programming"
+subtitle = "Practical - Special thanks to Seb Blair"
 language = "en"
 multilingual = false
 src = "content"
