@@ -3,7 +3,9 @@
 - [Logic Gates](./Logic_Gates/Logic_Gates.md)
 - [Problem to Logic](./Problem_To_Logic/Problem_To_Logic.md)
 - [Boolean Algebra](./Boolean_Algerbra/Boolean_Algebra.md)
+<!-->
 - [Number Systems](./Number_Systems/Number_Systems.md)
+-->
 
 
 
