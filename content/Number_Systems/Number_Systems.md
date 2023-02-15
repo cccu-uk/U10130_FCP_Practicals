@@ -213,7 +213,7 @@ Convert the following decimal numbers into binary:
 </details>
 
 ---
-
+<!--
 ## Hexadecimal Numbers
 
 Hexadecimal is a base 16 numbering system. It uses 0 to 9, like decimal, plus A to F:
@@ -515,3 +515,4 @@ Convert the following binary numbers to hexadecimal:
 </details>
 
 ---
+-->
