@@ -4,7 +4,18 @@ This lab will introduce you to Pulse Width Modulation (PWM) using the Arduino.
 
 > The primary tool for this project will be TinkerCad -> https://www.tinkercad.com
 
-This project follows on from the lecture  **Analogue Write with Arduino** and is designed to put into practice the theory. You will control the brightness of an LED using PWM pins on the Arudino Uno by using the `analogWrite()` function and view the voltage and PWM value in the serial monitor using the `Serial.print()` and `Serial.println()` functions. 
+**Pulse-width modulation (PWM)**: method of chopping up an electrical signal to discrete parts to reduce the average power delivered by it. 
+By turning the switch between the supply and load (the electrical component using active power, e.g., a light) on and off at a fast rate, we can control the average voltage (and current) fed to the load. The total power supplied to the load is higher the longer the switch is on compared to off. The PWM switching frequency (rate of on/off switching of the power supply) has to be high enough not to affect the load, in other words the resultant waveform perceived by the load must be as smooth as possible. 
+PMW is used in solar panels, digital controls, communication systems, running certain motors, etc. PWM has a main advantage in that power loss in the switching devices is very low. 
+Many modern microcontrollers integrate PWM controllers exposed to external pins as peripheral devices controlled by means of internal programming interfaces. These are commonly used for direct current (DC) motor controls (e.g., in robotics). 
+
+**Duty Cycle**: The term is used to describe the proportion of 'on' time to the regular interval ('period' of time). The duty cycle is expressed in percentage:
+100%: Fully on. High power. 
+50%: “Square” wave. Half the time the power is on, and the other half it is off. 
+25%: The power is on 25% of the time, and off 75% of the time. Low power. 
+
+
+In this section you will control the brightness of an LED using PWM pins on the Arudino Uno by using the `analogWrite()` function and view the voltage and PWM value in the serial monitor using the `Serial.print()` and `Serial.println()` functions. 
 
 ## Setting up the Circuit
 
