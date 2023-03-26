@@ -17,3 +17,6 @@ Arduino4BitBinaryCouter/Arduino4BitBinaryCouter.md)
 - [7 Segment Display](./SevenSegmentedDisplay/SevenSegmentedDisplay.md)
 -->
 
+
+
+[./MotorController/MotorController.md]: ./MotorController/MotorController.md
