@@ -12,7 +12,8 @@ Arduino4BitBinaryCouter/Arduino4BitBinaryCouter.md)
 -->
 - [Arduino 8-bit Binary Counter](./Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.md)
 - [ArduinoPWM](./ArduinoPWM/ArduinoPWM.md)
+- [MotorController](./MotorController/MotorController.md)
 <!--
 - [7 Segment Display](./SevenSegmentedDisplay/SevenSegmentedDisplay.md)
-- [MotorController](./MotorController/MotorController.md)
 -->
+
