@@ -111,7 +111,7 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
 
 ## 3 Setting up the circuit
 
-Once loaded, login to TinkerCad and then click on **Circuits** > **Create new Circuit**
+Once loaded, login to TinkerCad and then click on **Circuits** > **Create new Circuit**.
 
 Change the circuit name (located top-left hand side of the screen) to **Direction_Control_DC_Motor\_TMP36**, as see below.
 
@@ -122,9 +122,9 @@ Change the circuit name (located top-left hand side of the screen) to **Directio
 </div>
 
 
-Next, you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.
+Next, you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino board to the power and ground rails of the breadboard.
 
-This can be achieved by either selecting the Arduino Uno and the breadboard from\ **Components** > **Basic** components, or by changing **Components** > **Basic** to **Components** > **Starter** and choosing Arduino Uno and the Breadboard starter. Please refer the image below.
+This can be achieved by either selecting the Arduino Uno and the breadboard from\ **Components** > **Basic** components, or by changing **Components** > **Basic** to **Components** > **Starter** and choosing Arduino Uno and the Breadboard starter. Please refer to the image below.
 
 <div align=center>
 
