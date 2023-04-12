@@ -1,15 +1,15 @@
-# Motor Control Board using TinkerCad
+# Motor Control Board based on Temperature Differences, using TinkerCad
 
 ## 1 Introduction 
 
-In today’s activity we will use an Arduino and a H-bridge controller to engage a DC motor to move in a postive or negative direction based on a temperature value. This could be useful to move plants, canopy in response to heat from the Sun.
+In today’s activity we will use an Arduino and a H-bridge controller to engage a DC motor to move in a postive or negative direction based on a temperature value. This could be useful to move plants & canopy in response to heat from the Sun.
 
 > The primary tool for this project will be TinkerCad -> https://www.tinkercad.com
 -------------------
 
 ## 2 RPM, Rad/s, Angular Velocity(Deg/s)
 
-This section provides a quick recap on Revolution Per Minute, Radians Per Second and Degrees per second. Being able to interchange between these values will help visualise.
+This section provides a quick recap on Revolution Per Minute, Radians Per Second, and Degrees per second. Being able to interchange between these values will help you visualise.
 
 **RPM:**
 - the number of complete turns (full revolutions) the engine or wheel makes in a one-minute time
@@ -18,11 +18,11 @@ period
 
 **Rad/s:**
 - A radian is a measure of an angle
-- defined in terms of π
+- It is defined in terms of π
 - 2π radians (rad) in a complete revolution
 - You can relate this to degrees by noting that 360 degrees = 2π rad, so 1 radian = 57.3 degrees.
 
-So lets assume that we have a RPM of 1000, and that this needs to be converted to Rad/s. The two main steps in the conversion are converting RPM to revolutions per second (RPS), then converting total revolutions to the angle covered in radians. The first step is simple: Divide the number in RPM by 60 to find the number of revolutions per second as shown in the **equation 1**:
+So lets assume that we have a RPM of 1000, and that this needs to be converted to Rad/s. The two main steps in the conversion are converting RPM to revolutions per second (RPS), then converting total revolutions to the angle covered in radians. The first step is simple: Divide the number in RPM by 60 to find the number of revolutions per second, as shown in **equation 1**:
 
 <p>
    <span class="math display">
@@ -35,7 +35,7 @@ So lets assume that we have a RPM of 1000, and that this needs to be converted t
    </span>
 </p>
 
-Now we need to convert the RPS to Rad/s,you take RPS and convert to radians by multiplying by 2π, as seen in the **equation 2**:
+Now we need to convert the RPS to Rad/s. Take RPS and convert to radians by multiplying by 2π, as seen in **equation 2**:
 
 <p>
    <span class="math display">
@@ -49,7 +49,7 @@ Now we need to convert the RPS to Rad/s,you take RPS and convert to radians by m
 </p>
 
 
-Therefore we can combine **equations 1** and **2** above into one **equation 3** below:
+Combining **equations 1** and **2** give **equation 3**:
 
 <p>
    <span class="math display">
@@ -62,9 +62,9 @@ Therefore we can combine **equations 1** and **2** above into one **equation 3**
    </span>
 </p>
 
-Now that we rad/s we can calculate the angular velocity (deg/s). There are two ways to achieve this both methods are shown below in **equations 4** and **5**.
+Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in **equations 4** and **5** respectiely. 
 
-**Equation 4** first takes the approach using the knowledge that \\(1 rad/s = 57.2958^{\circ}\\) and you have precalulated using **equation 3**.
+**Equation 4** first takes the approach using the knowledge that \\(1 rad/s = 57.2958^{\circ}\\), as you have precalulated using **equation 3**.
 
 <p>
    <span class="math display">
@@ -77,7 +77,7 @@ Now that we rad/s we can calculate the angular velocity (deg/s). There are two w
    </span>
 </p>
 
-**Equation 5** replaces the \\(2\pi\\) with 360 in ***Equation 3**
+**Equation 5** replaces \\(2\pi\\) in **Equation 3** with 360:
 
 
 <p>
@@ -111,9 +111,9 @@ Now that we rad/s we can calculate the angular velocity (deg/s). There are two w
 
 ## 3 Setting up the circuit
 
-Once loaded login to TinkerCad and then click on **Circuits** > **Create new Circuit**
+Once loaded, login to TinkerCad and then click on **Circuits** > **Create new Circuit**
 
-Change the circuit name, located top-left hand side of the screen to **Direction_Control_DC_Motor\_TMP36**, see below.
+Change the circuit name (located top-left hand side of the screen) to **Direction_Control_DC_Motor\_TMP36**, as see below.
 
 <div align=center>
 
@@ -122,11 +122,9 @@ Change the circuit name, located top-left hand side of the screen to **Direction
 </div>
 
 
-Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.
+Next, you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.
 
-Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. 
-
-This can be achieved by either selecting the Arduino Uno and the breadboard from\ **Components** > **Basic** components or by changing **Components** > **Basic** to **Components** > **Starter** and choosing Arduino Uno and the Breadboard starter. Please refer the image below.
+This can be achieved by either selecting the Arduino Uno and the breadboard from\ **Components** > **Basic** components, or by changing **Components** > **Basic** to **Components** > **Starter** and choosing Arduino Uno and the Breadboard starter. Please refer the image below.
 
 <div align=center>
 
@@ -138,44 +136,44 @@ If you have chosen the Arduino and breadboard template from the **Components** >
 
 **You now need to add:**
 
-1. 1 x TMP36 sensor, **Components** > **Basic** at the bottom or alternatively use the search box
-2. 1 x resistor, set at 1k\\(\Omega\\) or 1000\\(\Omega\\),  **Components** > **Basic** first component in the list
-3. 1 x L293D, H-bridge Motor Driver, **Components** > **All** in the last item in Power control section of the list or alternatively use the search box
-4. 1 x DC Motor, **Components** > **Basic**, 14th item in the list, or alternatively use the search box
-5. 1 x 9V D-Cell Battery, **Components** > **Basic**, 7th item in the list, or alternatively use the search box.
+1. 1 x TMP36 sensor, **Components** > **Basic**; bottom of the list or, alternatively, use the search box
+2. 1 x resistor, set at 1k\\(\Omega\\) or 1000\\(\Omega\\),  **Components** > **Basic**; first component in the list
+3. 1 x L293D, H-bridge Motor Driver, **Components** > **All**; last item in the Power control section of the list or, alternatively, use the search box
+4. 1 x DC Motor, **Components** > **Basic**; 14th item in the list or, alternatively, use the search box
+5. 1 x 9V D-Cell Battery, **Components** > **Basic**; 7th item in the list or, alternatively, use the search box.
 
 
 Placing components (refer to the image below): 
 
-1. Place the TMP36 so that the **Power** and **GND** is in row **4** and **6** column **h** respectively. Take a wire from the **Vout** to on row **5** column **g** to pin **A0** of the Arduino Uno. 
+1. Place the TMP36 so that the **Power** and **GND** are in row **4** and **6**  respectively, and both are in column **h**. Take a wire from the **Vout** to row **5** column **g**, to pin **A0** of the Arduino Uno. 
    
-2. Place the L293D chip so that the white dot (**enable 1 & 2** pin) is in row **12** and column **e**, therefore the pin labeled **Power 2** should be in row **19** column **e**. You should have bridge between both sides of the breadboard. 
+2. Place the L293D chip so that the white dot (**enable 1 & 2** pin) is in row **12** and column **e**, therefore the pin labeled **Power 2** should be in row **19** column **e**. You should have the bridge between both sides of the breadboard. 
    
-3. Staying with L293D, create a red wire at row **12** column **j** into the **+** line the same row, this connects L293D **Power 1** pin to the Arduino 5V line. 
+3. Staying with the L293D bridge, create a red wire at row **12** column **j** going to the **+** line of the same row. This connects the L293D **Power 1** pin to the Arduino 5V line. 
    
-4. Next create a black wire at row **15** column **j** into the **-** of the same row, so this connects the L293D **Ground** pin to the Arduino GND line.
+4. Next, create a black wire at row **15** column **j** going to the **-** of the same row. This connects the L293D **Ground** pin to the Arduino GND line.
    
-5. Create a new red wire just below the **Enable 1 & 2** pin of the L293D at row **12** column **d**, to pin **10** of the Ardunio Uno. 
+5. Create a new red wire just below the **Enable 1 & 2** pin of the L293D at row **12** column **d**, going to pin **10** of the Ardunio Uno. 
    
-6. Create an orange wire at row **13** column **c**, below **Input 1** pin of the L293D, to pin **9** of the Arduino Uno. 
+6. Create an orange wire at row **13** column **c**, below **Input 1** pin of the L293D, going to pin **9** of the Arduino Uno. 
 
-7. Create an orange wire at row **18** column **d**, below **Input 2** pin of the L293D, to pin **8** of the Arduino Uno.
+7. Create an orange wire at row **18** column **d**, below **Input 2** pin of the L293D, going to pin **8** of the Arduino Uno.
    
-8. Get the 9V Battery and places it in vertical alignment using the rotate button top left of the control panel, so that it is parallel to the breadboard on the opposite side the Arduino Uno. 
+8. Get the 9V Battery and places it in vertical alignment using the rotate button at the top left of the control panel. Place the battery so that it is parallel to the breadboard on the opposite side the Arduino Uno. 
    
 9.  Create a red wire from the **Positive** terminal of the battery and connect it to row **19** column **d**, just below the L293D **Power 2** pin.
     
-10. Similarly create a black wire from the **Negative** terminal of the battery and connect it to row **16** column **g**, just above the other L293D **Ground** pin.
+10. Similarly, create a black wire from the **Negative** terminal of the battery and connect it to row **16** column **g**, just above the other L293D **Ground** pin.
     
 11. Now place the DC motor underneath the breadboard, between rows **13** and **25**
     
 12. Continuing with the DC motor, take a black wire from **Terminal 1** of the DC motor and connect it to row **14** column **a**, inline with L293D **Output 1**.
 
-13. Similarly take a red wire from **Terminal 2** of the DC motor and connect it to row **20** column **a**
+13. Similarly, take a red wire from **Terminal 2** of the DC motor and connect it to row **20** column **a**
 
-14. Lastly, take the resistor set to \\(1k\Omega\\), and rotate so that it lies horizontally, and connect **Terminal 1** pin to the row **17** column **c**, inline with L293D **Output 2**, therefore **Terminal 2** of the resistor should be connected to row **21** column **c**
+14. Lastly, take the resistor and set it to \\(1k\Omega\\). Rotate it so that it lies horizontally, and then connect the **Terminal 1** pin to row **17** column **c** of the breadboard, inline with L293D **Output 2**. This means **Terminal 2** of the resistor should be connected to row **21** column **c**.
 
-For reference look at the below image for L293D functional block diagram and pin layout.
+For reference, look at the image below for the L293D H bridge functional block diagram and pin layout.
 
 <div align=center>
 
@@ -192,7 +190,7 @@ For reference look at the below image for L293D functional block diagram and pin
 
 ## 4.  Programming The Circuit
 
-Once you have completed the circuit you will need to programme the Arduino Uno. Located above **Components** click the **Code Text**. Once sketch has appeared reproduce the following code:
+Once you have completed the circuit you will need to programme the Arduino Uno. Click the **Code Text** located above **Components**. Once sketch has appeared, reproduce the following code:
 
 ```C++
 void setup()
@@ -206,7 +204,7 @@ void loop()
 }
 ```
 
-Now you are ready to set up all the Sketch up as follows.
+Now you are ready to set up all of the Sketch up as follows.
 
 ```C++
 #define en 10
@@ -225,11 +223,11 @@ void loop()
 }
 ```
 
-Firstly the variables are declared and initialised using the `#define` keyword.
+Firstly, the variables are declared and initialised using the `#define` keyword.
 
-Lines 1 to 3, define the variables `en 10`, `in1 9` and `in2 8` will reference the physical connections of the L293D Enable 1 & 2, **Input 1** and **Input 2** respectively.
+Lines 1 to 3 define the variables `en 10`, `in1 9` and `in2 8` and will reference the physical connections of the L293D: Enable 1 & 2, **Input 1**, and **Input 2** respectively.
 
-Line 4, define the variable `temp A0` will reference the physical connection of the TMP36 `Vout` pin.
+Line 4, defines the variable `temp A0` which will reference the physical connection of the TMP36 `Vout` pin.
 
 > TODO: 
 > 
@@ -248,13 +246,13 @@ bool movedLeft = false;
 ```
 Line 6, `int pwmOutput = 12;`, will stores the value that will be used in the `analogWrite()` function.
 
-Lines 7 and 8, variables `float tempValue; float temperature;` will store the `analogRead()` value and the converted temperature value respectively. 
+Lines 7 and 8, variables `float tempValue; float temperature;` respectively, will store the `analogRead()` value and the converted temperature value respectively. 
 
-Lines 9 and 10, variables `float rads =0.0;` and `float degrees = 0.0;` will store the calculated values for radians per second and degrees per second respectively.
+Lines 9 and 10, variables `float rads =0.0;` and `float degrees = 0.0;` respectively, will store the calculated values for radians per second and degrees per second respectively.
 
-Lines 11 and 12, variables `bool movedRight = false;` and `bool movedLeft = false;` are used to stop the motor turning continuously.
+Lines 11 and 12, variables `bool movedRight = false;` and `bool movedLeft = false;` respectively, are used to stop the motor turning continuously.
 
-Script should now look like the below:
+The script should now look like the below:
 
 ```C++
 #define en 10
@@ -299,9 +297,9 @@ void setup()
 
 Line 16's code, `Serial.begin(9600);`, sets the Serial speed at 9600 bits per second (bps)
 
-Line 17's code, `pinMode(en, OUTPUT);`, sets pin 10 on the Arduino Uno as an output so that a signal can be sent to the **Enable 1 & 2** pin of the L293D chip.
+Line 17's code, `pinMode(en, OUTPUT);`, sets pin 10 on the Arduino Uno as an output so that a signal can be sent to the **Enable 1 & 2** pins of the L293D chip.
 
-Line 18's and 19's code, `pinMode(in1, OUTPUT);` `pinMode(in2, OUTPUT)`, sets pin 9 and 8 on the Arduino Uno as an output so that a signal can be sent to the **Input 1 & 2** pin of the L293D chip respectively.
+Code of line 18 and 19, `pinMode(in1, OUTPUT);` `pinMode(in2, OUTPUT)` respectively, sets pin 9 and 8 on the Arduino Uno as outputs so that a signal can be sent to the **Input 1 & 2** pins of the L293D chip respectively.
 
 ```C++
 #define en 10
@@ -368,9 +366,9 @@ void loop()
 }
 ```
 
-Starting with line 24, the code `tempValue = analogRead(temp);` will read the TMP36 wired to pin A0 of the Arduino, and convert voltage to the Analogue Digital Converted value. Remember the that voltage rang is 0V to 5V and the ADC of the Arduino is 10-bits, so its range is 0 - 1023.
+Starting with line 24, the code `tempValue = analogRead(temp);` will read the TMP36 wired to pin A0 of the Arduino, and convert voltage to the Analogue Digital Converted value. Remember, the voltage range is 0V to 5V, and the ADC of the Arduino is 10-bits, so its range is 0 - 1023.
 
-Line 25's code, `temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}`, converts the the `temp` value, (0 - 358) to Celsius with a range of \\(-40^{\circ}C\\) to \\(125^{\circ}C\\), see **equation 6**.
+Line 25's code, `temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}`, converts the the `temp` value, (0 - 358), to Celsius with a range of \\(-40^{\circ}C\\) to \\(125^{\circ}C\\), see **equation 6**.
 
  
  <p>
@@ -392,25 +390,25 @@ Line 25's code, `temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}`, converts 
 
 Now that the `temperature` value has been calculated, lines 27 and 39 can be explained.
 
-Line 27's code, `if( temperature <= 30.0 && movedRight == false)`, checks to see if the `temperature` is less than or equal to, `<=`, 30.0. If this condition is `true` then the second part of the conditional statement can be checked, using `&&`. the boolean (true or false) variable `movedRight == false` is compared for equality `==`, remember a single `=` means assign the right hand side to the left hand side. Now if both conditions are true then the code between lines 29 and 37 will be executed. If either statement is false, then then line 39 is executed. 
+Line 27's code, `if( temperature <= 30.0 && movedRight == false)`, checks to see if the `temperature` is less than or equal to, `<=`, 30.0. If this condition is `true` then the second part of the conditional statement can be checked, using `&&`. The boolean (true or false) variable `movedRight == false` is compared for equality `==`. NOTE: a single `=` means assign the right hand side value to the left hand side. Now if both conditions are true then the code between lines 29 and 37 will be executed. If either statement is false, then line 39 is executed. 
 
-Line 39's code is much the same as line 27's, but the `temperature` has to be greater or equal to, `>=`, 40.0 and `movedLeft` must be false. If both statements are true then lines 41 to 49 are executed, if not then the programme loops back to the line 24, and the process starts again. 
+Line 39's code is much the same as line 27's, but the `temperature` has to be greater or equal to, `>=`, 40.0 and `movedLeft` must be false. If both statements are true then lines 41 to 49 are executed. If either or both statements are false then the programme loops back to the line 24, and the process starts again. 
 
-Now we can look inside lines 29 to 30 & lines 40 to 49, you probably can see that there are only a few differences between the two blocks of code. We will look at lines 29, 30, 41 and 42 later. 
+When looking inside lines 29 to 30 & lines 40 to 49, you can see that there are only a few differences between the two blocks of code. We will look at lines 29 - 30 and 41 - 42 later. 
 
-Lets look at lines 32, 33 and 44 and 45, where the two sets of lines are polar opposites of each other. The `digitalWrite(in1, LOW);` `digitalWrite(in1, HIGH);` & `digitalWrite(in2, LOW);` `digitalWrite(in2, HIGH);`  changes the direction the motor spins. 
+Lets look at lines 32 - 33 and 44 - 45, where the two sets of lines are polar opposites of each other. The `digitalWrite(in1, LOW);` `digitalWrite(in1, HIGH);` & `digitalWrite(in2, LOW);` `digitalWrite(in2, HIGH);`  changes the direction the motor spins. 
 
-Looking at the block diagram of the L293D, we can see that Input 1, and Input 2, both pin 3 and 7 on the L293D change the direction of the motor.
+Looking at the block diagram of the L293D bridge, we can see that Input 1 (pin 3 on the bridge) and Input 2 (pin 7 on the bridge) change the direction of the motor.
 
-Lines 34 and 46 code, `delay(1000)`,allowing the motor to turn in that direction for 1 second.
+The code of lines 34 and 46, `delay(1000)`, gives the motor 1 second to turn in the programmed direction. 
 
 > TODO: 
 > 
 > Add inline comments on lines 33 - 35 & 44 - 47 for what each variable is for, using the // comment symbols
 
-Lines 36, 37 & 48, 49 both set the `movedLeft` and `movedRight` variables true or false.
+Lines 36 - 37, and 48 - 49 both set the `movedLeft` and `movedRight` variables as true or false.
 
-Now it is time to return to lines 29 & 41, both sets of lines do the same things so look below at the code for `motorInstructions();`, add to end of the script after the closing `}` of the `void loop()`.
+Now it is time to return to lines 29 & 41. Both sets of lines do the same things, so look below at the code for `motorInstructions();`, which is added to end of the script after the closing `}` of the `void loop()`.
 
 ```C++
 void motorInstructions()
@@ -421,11 +419,11 @@ void motorInstructions()
 }
 ```
 
-Let's first look at line 55's code, `rads = 53.0 * (2*3.1415926/60.0);`, calculates the radians per second using **equation 3**. Where \\(\pi\\) is shown to 7 decimal places. The `53.0` the average speed the DC motor in response to the resistors value of \\(1k\Omega\\).
+Let's first look at line 55's code: `rads = 53.0 * (2*3.1415926/60.0);`. This calculates the radians per second using **equation 3**, where \\(\pi\\) is shown to 7 decimal places. The `53.0` value is the average speed of the DC motor in response to the resistor's value of \\(1k\Omega\\).
 
-Line 56's code, `degrees = rads * 57.2958;`, which is taken from **equation 4**, to calculate the degrees per second. 
+Line 56's code, `degrees = rads * 57.2958;`, is taken from **equation 4** and is used to calculate degrees per second. 
 
-Line 57's code, `analogWrite(en, pwmOutput);`, outputs the PWM signal,`pwmOutput` value of 12 to the `en` pin, to the **Enable 1 & 2** pin of the L293D. The value of `en`, 12, again is preset because of the resistors value of \\(1k\Omega\\).
+Line 57's code, `analogWrite(en, pwmOutput);`, outputs the PWM signal,`pwmOutput`,  value of 12 to the `en` pin, to the **Enable 1 & 2** pin of the L293D. The value of `en`, 12, again is preset because of the resistor's value of \\(1k\Omega\\).
 
 So lastly, lets look at the function `debugger();` called on lines 30 and 42 of the `void loop()` function. 
 
@@ -440,15 +438,15 @@ void debugger()
   Serial.println(degrees);
 }
 ```
-So we can see that lines 62 to 67 output information about the variables to the serial montior.
+Lines 62 to 67 output information about the variables to the serial montior.
 
 Now you have a better understanding of the circuit and the code ...
 
 > TODO: 
 > 
 > - What happens to the motor when the resistance value is changed? Adjust line 55's rpm value to match the motors rpm value. 
-> - With the knowledge that each line of code takes *some* time to execute, specifically mathematical functions. Would pre calculating all of the constants in an equation speed up the programme? Try it.
-> -  Explore the code, make changes to experiment with different temperature values, timings, conditional statements (if, else if).
+> - With the knowledge that each line of code takes *some* time to execute, specifically mathematical functions, Would pre-calculating all of the constants in an equation speed up the programme? Try it.
+> -  Explore the code; make changes to experiment with different temperature values, timings, and conditional statements (if, else if).
 
 Full code is seen below:
 
