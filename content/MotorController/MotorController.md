@@ -49,7 +49,7 @@ Now we need to convert the RPS to Rad/s. Take RPS and convert to radians by mult
 </p>
 
 
-Combining **equations 1** and **2** give **equation 3**:
+Combining **equations 1** and **2** gives **equation 3**:
 
 <p>
    <span class="math display">
