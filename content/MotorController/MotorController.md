@@ -425,11 +425,11 @@ void motorInstructions()
 }
 ```
 
-Let's first look at line 54's code: `lnOhm = log(1000);`. This code gives us the natural logaritm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. 
+Let's first look at line 54's code: `lnOhm = log(1000);`. This code gives us the natural logarithm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. 
 
 Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. 
 
-The code in line 56 calculates the radians per second using **equation 3**, whereby 1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm. 
+The code in line 56 calculates the radians per second, whereby 1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm. 
 
 Line 57's code, `degrees = rads * 57.2958;`, is taken from **equation 4** and is used to calculate degrees per second. 
 
@@ -457,8 +457,9 @@ Now you have a better understanding of the circuit and the code ...
 > TODO: 
 > 
 > - What happens to the motor when the resistance value is changed? Adjust line 54's value to match the resistance on the resistor. 
-> - With the knowledge that each line of code takes *some* time to execute, specifically mathematical functions, Would pre-calculating all of the constants in an equation speed up the programme? Try it.
-> -  Explore the code; make changes to experiment with different temperature values, timings, and conditional statements (if, else if).
+> - Why are we using float for some variables and int for others? What would happen if, for example, we defined PWM or lnOhm via int instead of float?
+> - With the knowledge that each line of code takes *some* time to execute, specifically mathematical functions, would pre-calculating all of the constants in an equation speed up the programme? Try it.
+> -  Explore the code; make changes to experiment with different temperature values, PWM values, timings, and conditional statements (if, else if).
 
 Full code is seen below:
 
@@ -529,11 +530,11 @@ void debugger()
 {
   Serial.print("Temperature: ");
   Serial.print(temperature);
-  Serial.print("  | RAD/s: ");
+  Serial.print("  | Radians/s: ");
   Serial.print(rads);
-  Serial.print("   | Degree/s: ");
+  Serial.print("   | Degrees/s: ");
   Serial.print(degrees);
-  Serial.print("   | rpm/s: ");
+  Serial.print("   | rpm ");
   Serial.println(rpm);
 }
 ```
