@@ -496,9 +496,9 @@ void loop()
   analogWrite(en, pwmOutput);
 }
 </code></pre>
-<p>Let's first look at line 54's code: <code>lnOhm = log(1000);</code>. This code gives us the natural logaritm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. </p>
+<p>Let's first look at line 54's code: <code>lnOhm = log(1000);</code>. This code gives us the natural logarithm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. </p>
 <p>Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. </p>
-<p>The code in line 56 calculates the radians per second using <strong>equation 3</strong>, whereby 1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm. </p>
+<p>The code in line 56 calculates the radians per second, whereby 1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm. </p>
 <p>Line 57's code, <code>degrees = rads * 57.2958;</code>, is taken from <strong>equation 4</strong> and is used to calculate degrees per second. </p>
 <p>Line 58's code, <code>analogWrite(en, pwmOutput);</code>, outputs the PWM signal,<code>pwmOutput</code>,  value of 12 to the <code>en</code> pin, to the <strong>Enable 1 &amp; 2</strong> pin of the L293D. The value of <code>en</code>, 12, again is preset because of the resistor's initial value of \(1k\Omega\).</p>
 <p>So lastly, lets look at the function <code>debugger();</code> called on lines 32 and 43 of the <code>void loop()</code> function. </p>
@@ -520,8 +520,9 @@ void loop()
 <p>TODO: </p>
 <ul>
 <li>What happens to the motor when the resistance value is changed? Adjust line 54's value to match the resistance on the resistor. </li>
-<li>With the knowledge that each line of code takes <em>some</em> time to execute, specifically mathematical functions, Would pre-calculating all of the constants in an equation speed up the programme? Try it.</li>
-<li>Explore the code; make changes to experiment with different temperature values, timings, and conditional statements (if, else if).</li>
+<li>Why are we using float for some variables and int for others? What would happen if, for example, we defined PWM or lnOhm via int instead of float?</li>
+<li>With the knowledge that each line of code takes <em>some</em> time to execute, specifically mathematical functions, would pre-calculating all of the constants in an equation speed up the programme? Try it.</li>
+<li>Explore the code; make changes to experiment with different temperature values, PWM values, timings, and conditional statements (if, else if).</li>
 </ul>
 </blockquote>
 <p>Full code is seen below:</p>
@@ -591,11 +592,11 @@ void debugger()
 {
   Serial.print(&quot;Temperature: &quot;);
   Serial.print(temperature);
-  Serial.print(&quot;  | RAD/s: &quot;);
+  Serial.print(&quot;  | Radians/s: &quot;);
   Serial.print(rads);
-  Serial.print(&quot;   | Degree/s: &quot;);
+  Serial.print(&quot;   | Degrees/s: &quot;);
   Serial.print(degrees);
-  Serial.print(&quot;   | rpm/s: &quot;);
+  Serial.print(&quot;   | rpm &quot;);
   Serial.println(rpm);
 }
 </code></pre>
