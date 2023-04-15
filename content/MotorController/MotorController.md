@@ -93,7 +93,7 @@ Combining **equations 1** and **2** gives **equation 3**:
 Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in **equations 4** and **5** respectiely. 
 
 
-**Equation 4** first takes the approach using the knowledge that **1 rad/s = 57.2958^{\circ}**, as you have pre-calculated using **equation 3**:
+**Equation 4** first takes the approach using the knowledge that **1 rad/s = 57.2958 degrees**, as you have pre-calculated using **equation 3**:
 <p>
    <span class="math display">
       \[
