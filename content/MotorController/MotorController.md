@@ -40,8 +40,8 @@ Now we need to convert the RPS to Rad/s. Take RPS and convert to radians by mult
    <span class="math display">
       \[
          \begin{aligned}
-            rad/s &amp;= RPS \cdot 2\pi  \\ \\
-           e.g.,    
+             RPS \cdot 2\pi  &amp;=rad/s \\ \\
+           e.g.,    \\ \\
            16.67RPS \cdot 2\pi &amp;=104.72 rad/s 
          \end{aligned}\tag{Eqn:2}
       \]
