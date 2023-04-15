@@ -1,6 +1,6 @@
 # Workshop on Boolean Algebra
 
-The **Workshop on Boolean Algebra** is designed for you to practice Boolean equations and its laws.
+This **Workshop on Boolean Algebra** is designed for you to practice Boolean equations and Boolean Algebra laws.
 
 ## Minimising Boolean Expressions
 
@@ -29,8 +29,7 @@ We can use Commutative, Associative, and Distributive Laws to manipulate Boolean
 
 **Axioms**
 
-The following rules (axioms) can also be used to minimise Boolean
-Expressions:
+The following rules (axioms) can also be used to minimise Boolean Expressions:
 
 1\.  
   - A literal by itself cancels out any term that contains it
@@ -39,8 +38,7 @@ Expressions:
     - \\(A + A.B + A.B.C \Longrightarrow A + \\)~~A.B~~ + ~~A.B.C~~ \\(\Longrightarrow A\\)
 
 2\.
-  -  A literal by itself knocks out its NOT'ed opposite that appears in
-    any 'minterm' (Absorption):
+  -  A literal by itself knocks out its NOT'ed opposite that appears in any 'minterm' (Absorption):
 
      - \\(\overline{A} + A.\overline{B} + A.C \Longrightarrow \overline{A} +\\)  ~~A~~ \\(.\overline{B} +\\) ~~A~~ \\(.C \Longrightarrow \overline{A} + \overline{B} + C\\)
 
@@ -190,7 +188,7 @@ Minimise the following Boolean Expressions:
 
 ## Exercise: Two
 
-For each of the following truth tables produce the standard Sum of the Product Terms for the output \\(S\\). The reduce the Boolean expression to a simpler expression using Boolean algebra.
+For each of the following truth tables produce the standard **Sum of the Product Terms** for the output \\(S\\), then reduce the Boolean expression to a simpler expression using Boolean algebra.
 
 1\.
 
