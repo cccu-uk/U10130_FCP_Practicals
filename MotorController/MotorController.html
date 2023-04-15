@@ -205,7 +205,6 @@ period</li>
       \]
    </span>
 </p>
-\\ \\
 <p>Combining <strong>equations 1</strong> and <strong>2</strong> gives <strong>equation 3</strong>:</p>
 <p>
    <span class="math display">
@@ -226,7 +225,7 @@ period</li>
    </span>
 </p>
 <p>Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in <strong>equations 4</strong> and <strong>5</strong> respectiely. </p>
-<p><strong>Equation 4</strong> first takes the approach using the knowledge that <strong>\(1 rad/s = 57.2958^{\circ}\)</strong>, as you have pre-calculated using <strong>equation 3</strong>:</p>
+<p><strong>Equation 4</strong> first takes the approach using the knowledge that \<strong>(1 rad/s = 57.2958^{\circ}</strong>\), as you have pre-calculated using <strong>equation 3</strong>:</p>
 <p>
    <span class="math display">
       \[
@@ -240,7 +239,7 @@ period</li>
    <span class="math display">
       \[
          \begin{aligned}
-          e.g., 628.32^{\circ}/s  &amp;= 104.72 rad/s \cdot 57.2958^{\circ}
+          e.g., 104.72 rad/s \cdot 57.2958^{\circ} &amp;= 628.32^{\circ}/s   
          \end{aligned}
       \]
    </span>
@@ -250,9 +249,17 @@ period</li>
    <span class="math display">
       \[
          \begin{aligned}
-            deg/s &amp;= RPM \cdot \frac{360}{60} \\
-            628.32^{\circ}/s  &amp;= 1000 \cdot \frac{360}{60} 57.2958^{\circ}
+            RPM \cdot \frac{360} &amp;= {60}deg/s
          \end{aligned}\tag{Eqn:5}
+      \]
+   </span>
+</p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+            e.g., 1000 \cdot \frac{360}{60} 57.2958^{\circ} &amp;= 628.32^{\circ}/s  
+         \end{aligned}
       \]
    </span>
 </p>
@@ -280,19 +287,19 @@ period</li>
 <p>If you have chosen the Arduino and breadboard template from the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding 5V line(red) and GND line. </p>
 <p><strong>You now need to add:</strong></p>
 <ol>
-<li>1 x TMP36 sensor, <strong>Components</strong> &gt; <strong>Basic</strong>; bottom of the list or, alternatively, use the search box</li>
-<li>1 x resistor, set at 1k\(\Omega\) or 1000\(\Omega\),  <strong>Components</strong> &gt; <strong>Basic</strong>; first component in the list</li>
-<li>1 x L293D, H-bridge Motor Driver, <strong>Components</strong> &gt; <strong>All</strong>; last item in the Power control section of the list or, alternatively, use the search box</li>
-<li>1 x DC Motor, <strong>Components</strong> &gt; <strong>Basic</strong>; 14th item in the list or, alternatively, use the search box</li>
-<li>1 x 9V D-Cell Battery, <strong>Components</strong> &gt; <strong>Basic</strong>; 7th item in the list or, alternatively, use the search box.</li>
+<li>1 x TMP36, temperature sensor: <strong>Components</strong> &gt; <strong>Basic</strong>; bottom of the list or, alternatively, use the search box</li>
+<li>1 x resistor set at 1k\(\Omega\) or 1000\(\Omega\):  <strong>Components</strong> &gt; <strong>Basic</strong>; first component in the list</li>
+<li>1 x L293D, H-bridge Motor Driver: <strong>Components</strong> &gt; <strong>All</strong>; last item in the Power control section of the list or, alternatively, use the search box</li>
+<li>1 x DC Motor: <strong>Components</strong> &gt; <strong>Basic</strong>; 14th item in the list or, alternatively, use the search box</li>
+<li>1 x 9V D-Cell Battery: <strong>Components</strong> &gt; <strong>Basic</strong>; 7th item in the list or, alternatively, use the search box.</li>
 </ol>
 <p>Placing components (refer to the image below): </p>
 <ol>
 <li>
-<p>Place the TMP36 so that the <strong>Power</strong> and <strong>GND</strong> are in row <strong>4</strong> and <strong>6</strong>  respectively, and both are in column <strong>h</strong>. Take a wire from the <strong>Vout</strong> to row <strong>5</strong> column <strong>g</strong>, to pin <strong>A0</strong> of the Arduino Uno. </p>
+<p>Place the TMP36 so that the <strong>Power</strong> and <strong>GND</strong> are in row <strong>4</strong> and <strong>6</strong>  respectively, and both are in column <strong>h</strong>. Take a wire from the <strong>Vout</strong> of the sensor (row <strong>5</strong> column <strong>g</strong>) to pin <strong>A0</strong> of the Arduino Uno. </p>
 </li>
 <li>
-<p>Place the L293D chip so that the white dot (<strong>enable 1 &amp; 2</strong> pin) is in row <strong>12</strong> and column <strong>e</strong>, therefore the pin labeled <strong>Power 2</strong> should be in row <strong>19</strong> column <strong>e</strong>. You should have the bridge between both sides of the breadboard. </p>
+<p>Place the L293D chip so that the white dot (pin <strong>enable 1 &amp; 2</strong>) is in row <strong>12</strong> and column <strong>e</strong>, therefore the pin labeled <strong>Power 2</strong> should be in row <strong>19</strong> column <strong>e</strong>. You should have the H-bridge between both sides of the breadboard (rows e and f). </p>
 </li>
 <li>
 <p>Staying with the L293D bridge, create a red wire at row <strong>12</strong> column <strong>j</strong> going to the <strong>+</strong> line of the same row. This connects the L293D <strong>Power 1</strong> pin to the Arduino 5V line. </p>
@@ -301,19 +308,19 @@ period</li>
 <p>Next, create a black wire at row <strong>15</strong> column <strong>j</strong> going to the <strong>-</strong> of the same row. This connects the L293D <strong>Ground</strong> pin to the Arduino GND line.</p>
 </li>
 <li>
-<p>Create a new red wire just below the <strong>Enable 1 &amp; 2</strong> pin of the L293D at row <strong>12</strong> column <strong>d</strong>, going to pin <strong>10</strong> of the Ardunio Uno. </p>
+<p>Create a new red wire just below pin <strong>Enable 1 &amp; 2</strong> of the L293D bridge, at row <strong>12</strong> column <strong>d</strong>, going to pin <strong>10</strong> of the Ardunio Uno. </p>
 </li>
 <li>
-<p>Create an orange wire at row <strong>13</strong> column <strong>c</strong>, below <strong>Input 1</strong> pin of the L293D, going to pin <strong>9</strong> of the Arduino Uno. </p>
+<p>Create an orange wire at row <strong>13</strong> column <strong>c</strong>, below pin <strong>Input 1</strong> of the L293D brdige, going to pin <strong>9</strong> of the Arduino Uno. </p>
 </li>
 <li>
-<p>Create an orange wire at row <strong>18</strong> column <strong>d</strong>, below <strong>Input 2</strong> pin of the L293D, going to pin <strong>8</strong> of the Arduino Uno.</p>
+<p>Create an orange wire at row <strong>18</strong> column <strong>d</strong>, below pin <strong>Input 2</strong> of the L293D brdige, going to pin <strong>8</strong> of the Arduino Uno.</p>
 </li>
 <li>
 <p>Get the 9V Battery and places it in vertical alignment using the rotate button at the top left of the control panel. Place the battery so that it is parallel to the breadboard on the opposite side the Arduino Uno. </p>
 </li>
 <li>
-<p>Create a red wire from the <strong>Positive</strong> terminal of the battery and connect it to row <strong>19</strong> column <strong>d</strong>, just below the L293D <strong>Power 2</strong> pin.</p>
+<p>Create a red wire from the <strong>Positive</strong> terminal of the battery and connect it to row <strong>19</strong> column <strong>d</strong>, just below  pin <strong>Power 2</strong> of the L293D bridge.</p>
 </li>
 <li>
 <p>Similarly, create a black wire from the <strong>Negative</strong> terminal of the battery and connect it to row <strong>16</strong> column <strong>g</strong>, just above the other L293D <strong>Ground</strong> pin.</p>
@@ -368,7 +375,7 @@ void loop()
 </code></pre>
 <p>Firstly, the variables are declared and initialised using the <code>#define</code> keyword.</p>
 <p>Lines 1 to 3 define the variables <code>en 10</code>, <code>in1 9</code> and <code>in2 8</code> and will reference the physical connections of the L293D: Enable 1 &amp; 2, <strong>Input 1</strong>, and <strong>Input 2</strong> respectively.</p>
-<p>Line 4, defines the variable <code>temp A0</code> which will reference the physical connection of the TMP36 <code>Vout</code> pin.</p>
+<p>Line 4, defines the variable <code>temp A0</code> which will reference the physical connection of the TMP36 temperature sensor<code>Vout</code> pin.</p>
 <blockquote>
 <p>TODO: </p>
 <p>Add inline comments on lines 1 - 4 for what each variable is for, using the // comment symbols</p>
@@ -382,12 +389,12 @@ float degrees = 0.0;
 bool movedRight = false;
 bool movedLeft = false;
 </code></pre>
-<p>Line 6, <code>float pwmOutput = 12;</code>, will stores the value that will be used in the <code>analogWrite()</code> function. Use float and not int! </p>
+<p>Line 6, <code>float pwmOutput = 12;</code>, will store the value that will be used in the <code>analogWrite()</code> function. Use float and not int! </p>
 <p>Lines 7 and 8, variables <code>float tempValue; float temperature;</code> respectively, will store the <code>analogRead()</code> value and the converted temperature value respectively. </p>
 <p>Lines 9 and 10, variables <code>float rads =0.0;</code> and <code>float degrees = 0.0;</code> respectively, will store the calculated values for radians per second and degrees per second respectively.</p>
 <p>Lines 11 and 12, variables <code>bool movedRight = false;</code> and <code>bool movedLeft = false;</code> respectively, are used to stop the motor turning continuously.</p>
-<p>Lines 13-15 include some more variables that will be used to calculate RPM. Speciifcally, line 13 contains rpm (to store the calculated rounds per minute), line 14 contains PWM (which stores the percentage of the total voltage used in the modulation), and line 15 contains lnOhm: this will be used to store the natural logarithm of the resistance value. You will need to enter the resistance manually every time you change its value. </p>
-<p>The script should now look like the below:</p>
+<p>Lines 13-15 include some more variables that will be used to calculate RPM. Speciifcally, line 13 contains rpm (to store the calculated rounds per minute), line 14 contains PWM (which stores the percentage of the total voltage used in the modulation), and line 15 contains lnOhm: this will be used to store the natural logarithm of the resistance value. You will need to enter this resistance value in the code manually every time you change the value on the resistor. </p>
+<p>The script should now look like this:</p>
 <pre><code class="language-C++">#define en 10
 #define in1 9
 #define in2 8
@@ -492,14 +499,22 @@ void loop()
 }
 </code></pre>
 <p>Starting with line 27, the code <code>tempValue = analogRead(temp);</code> will read the TMP36 wired to pin A0 of the Arduino, and convert voltage to the Analogue Digital Converted value. Remember, the voltage range is 0V to 5V, and the ADC of the Arduino is 10-bits, so its range is 0 - 1023.</p>
-<p>Line 28's code, <code>temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}</code>, converts the the <code>temp</code> value, (0 - 358), to Celsius with a range of \(-40^{\circ}C\) to \(125^{\circ}C\), see <strong>equation 6</strong>.</p>
+<p>Line 28's code, <code>temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}</code>, converts the the <code>temp</code> value, (0 - 358), to Celsius with a range of \(-40^{\circ}C\) to \(125^{\circ}C\), see <strong>equation 6</strong>:.</p>
 <p>
    <span class="math display">
       \[
          \begin{aligned}
-            temperature = \cfrac{\left(\left(tempValue \cdot \left( \cfrac{5.0V}{1024}\right)\right)-0.5\right)}{0.01}\\ 
-            \Rightarrow 26.17^{\circ}C = \cfrac{\left(\left(156 \cdot \left( \cfrac{5.0V}{1024}\right)\right)-0.5\right)}{0.01} 
-         \end{aligned}\tag{Eqn:6}
+            \cfrac{\left(\left(tempValue \cdot \left( \cfrac{5.0V}{1024}\right)\right)-0.5\right)}{0.01} &amp;= temperature      
+            \end{aligned}\tag{Eqn:6}
+      \]
+   </span>
+</p>
+ <p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+        e.g., \cfrac{\left(\left(156 \cdot \left( \cfrac{5.0V}{1024}\right)\right)-0.5\right)}{0.01} &amp;=  26.17^{\circ}C 
+        \end{aligned}
       \]
    </span>
 </p>
@@ -508,10 +523,12 @@ void loop()
 <p>Add inline comments on lines 27 - 28 for what each variable is for, using the // comment symbols</p>
 </blockquote>
 <p>Now that the <code>temperature</code> value has been calculated, lines 27 and 41 can be explained.</p>
-<p>Line 29's code, <code>if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)</code>, checks to see if the <code>temperature</code> is less than or equal to, <code>&lt;=</code>, 30.0. If this condition is <code>true</code> then the second part of the conditional statement can be checked, using <code>&amp;&amp;</code>. The boolean (true or false) variable <code>movedRight == false</code> is compared for equality <code>==</code>. NOTE: a single <code>=</code> means assign the right hand side value to the left hand side. Now if both conditions are true then the code between lines 30 and 39 will be executed. If either statement is false, then line 40 is executed. </p>
+<p>Line 29's code, <code>if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)</code>, checks to see if the <code>temperature</code> is less than or equal to, <code>&lt;=</code>, 30.0. If this condition is <code>true</code> then the second part of the conditional statement can be checked, using <code>&amp;&amp;</code>. The boolean (true or false) variable <code>movedRight == false</code> is compared for equality <code>==</code>. 
+Now if both conditions are true then the code between lines 30 and 39 will be executed. If either statement is false, then line 40 is executed. </p>
+<p><strong>NOTE:</strong> a single <code>=</code> means assign the right hand side value to the left hand side, whereas double <code>==</code> is a comparison operator. </p>
 <p>Line 42's code is much the same as line 31's, but the <code>temperature</code> has to be greater or equal to, <code>&gt;=</code>, 40.0 and <code>movedLeft</code> must be false. If both statements are true then lines 42 to 49 are executed. If either or both statements are false then the programme loops back to the line 25, and the process starts again. </p>
 <p>When looking inside lines 31 to 38 &amp; lines 42 to 49, you can see that there are only a few differences between the two blocks of code. We will look at lines 31 - 32 and 42 - 43 later. </p>
-<p>Lets look at lines 33 - 34 and 44 - 45, where the two sets of lines are polar opposites of each other. The <code>digitalWrite(in1, LOW);</code> <code>digitalWrite(in1, HIGH);</code> &amp; <code>digitalWrite(in2, LOW);</code> <code>digitalWrite(in2, HIGH);</code>  changes the direction the motor spins. </p>
+<p>Lets look at lines 33 - 34 and 44 - 45, where the two sets of lines are polar opposites of each other. The <code>digitalWrite(in1, LOW);</code> <code>digitalWrite(in1, HIGH);</code> &amp; <code>digitalWrite(in2, LOW);</code> <code>digitalWrite(in2, HIGH);</code> changes the direction the motor spins. </p>
 <p>Looking at the block diagram of the L293D bridge, we can see that Input 1 (pin 3 on the bridge) and Input 2 (pin 7 on the bridge) change the direction of the motor.</p>
 <p>The code of lines 35 and 46, <code>delay(1000)</code>, gives the motor 1 second to turn in the programmed direction. </p>
 <blockquote>
@@ -531,10 +548,10 @@ void loop()
 </code></pre>
 <p>Let's first look at line 54's code: <code>lnOhm = log(1000);</code>. This code gives us the natural logarithm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. </p>
 <p>Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. </p>
-<p>The code in line 56 calculates the radians per second, whereby 1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm. </p>
+<p>The code in line 56 calculates the radians per second, whereby <strong>1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm</strong>. </p>
 <p>Line 57's code, <code>degrees = rads * 57.2958;</code>, is taken from <strong>equation 4</strong> and is used to calculate degrees per second. </p>
 <p>Line 58's code, <code>analogWrite(en, pwmOutput);</code>, outputs the PWM signal,<code>pwmOutput</code>,  value of 12 to the <code>en</code> pin, to the <strong>Enable 1 &amp; 2</strong> pin of the L293D. The value of <code>en</code>, 12, again is preset because of the resistor's initial value of \(1k\Omega\).</p>
-<p>So lastly, lets look at the function <code>debugger();</code> called on lines 32 and 43 of the <code>void loop()</code> function. </p>
+<p>So lastly, lets look at the function <code>debugger();</code>, called on lines 32 and 43 of the <code>void loop()</code> function. </p>
 <pre><code class="language-C++">void debugger()
 {
   Serial.print(&quot;Temperature: &quot;);
@@ -554,11 +571,12 @@ void loop()
 <ul>
 <li>What happens to the motor when the resistance value is changed? Adjust line 54's value to match the resistance on the resistor. </li>
 <li>Why are we using float for some variables and int for others? What would happen if, for example, we defined PWM or lnOhm via int instead of float?</li>
+<li>Why was #define used on some variables?</li>
 <li>With the knowledge that each line of code takes <em>some</em> time to execute, specifically mathematical functions, would pre-calculating all of the constants in an equation speed up the programme? Try it.</li>
 <li>Explore the code; make changes to experiment with different temperature values, PWM values, timings, and conditional statements (if, else if).</li>
 </ul>
 </blockquote>
-<p>Full code is seen below:</p>
+<p>The full code is seen below:</p>
 <pre><code class="language-C++">#define en 10
 #define in1 9
 #define in2 8
