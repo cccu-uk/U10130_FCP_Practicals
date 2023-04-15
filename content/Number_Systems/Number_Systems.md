@@ -1,6 +1,6 @@
 # Number Systems Exercises
 
-The **Number System** lab is designed for you to practice converting between different bases.
+This **Number System** lab is designed for you to practice converting between different bases.
 
 ## Binary Numbers
 
@@ -84,11 +84,13 @@ Convert the following binary numbers into decimal:
 
 ## Decimal to Binary Conversion
 
-To convert from decimal to Binary, we have two options. The first of these involves continually dividing by two, and is explained in the PowerPoint presentation. The shorter way involves dividing through by the positional values rather than two. For example:
+To convert from decimal to Binary, we have two options: 
+The first of these involves continually dividing by two, and is explained in the PowerPoint presentation. 
+The second way is the shorter way and it involves dividing through by the positional values rather than two. For example:
 
 **$$171_{10}$$**
 
-The largest positional value which will divide into \\(171_{10}\\) once is \\(2^7\\) which is \\(128_{10}\\). We therefore place a 1 in the \\(2^7\\) column, and subtract \\(128_{10}\\) from \\(171_{10}\\):
+The largest positional value which will divide into \\(171_{10}\\) once is \\(2^7\\) which is equal to \\(128_{10}\\). We therefore place a 1 in the \\(2^7\\) column, and subtract \\(128_{10}\\) from \\(171_{10}\\):
                                                            
 |     MSB |         |         |          |          |         |          |         |         |         |     LSB|
 |---------|---------|---------|----------|----------|---------|----------|---------|---------|---------|--------|
@@ -216,7 +218,7 @@ Convert the following decimal numbers into binary:
 <!--
 ## Hexadecimal Numbers
 
-Hexadecimal is a base 16 numbering system. It uses 0 to 9, like decimal, plus A to F:
+Hexadecimal is a base 16 numbering system. It uses 0 to 9, like decimal, but also includes A to F:
 
 0 1 2 3 4 5 6 7 8 9 A B C D E F
 
@@ -419,7 +421,7 @@ For example:
 
 \\(C_{16}\equiv 12_{10} \equiv1100_{2}\\)
 
-Putting it together we get: 
+Putting it all together, we get: 
 
 - **\\(1010 0011 1010 1100_{2}\\)**
 
