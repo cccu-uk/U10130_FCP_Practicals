@@ -83,7 +83,7 @@ Combining **equations 1** and **2** gives **equation 3**:
    <span class="math display">
       \[
          \begin{aligned}
-           e.g.,  104.72 rad/s &amp;= 1000RPM \cdot \frac{2\pi}{60sec}
+           e.g., 1000RPM \cdot \frac{2\pi}{60sec} &amp;= 104.72 rad/s
          \end{aligned}
       \]
    </span>
