@@ -10,7 +10,7 @@ This mdBook will grow over the duration of this module with new labs/workshops a
 
 <td>
 
-The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
+The mdBook can be accessed outside of blackboard and is mobile and tablet friendly:
 
 - [https://github.com/cccu-uk/U10130_FCP_Practicals](https://github.com/cccu-uk/U10130_FCP_Practicals)
 
@@ -45,7 +45,7 @@ The **left and right arrow keys** on the keyboard can be used to navigate to the
 
 ### Top menu bar
 
-The menu bar at the top of the page provides some icons for interacting with the book.
+The menu bar at the top of the page provides some icons for interacting with this mdBook.
 The icons displayed will depend on the settings of how the book was generated.
 
 | Icon | Description |
@@ -80,8 +80,8 @@ If you notice a mistake you can notify the module team who can make the correcti
 
 ## Printing
 
-Currently the mdBook is approximately 60+ pages, and the environmental impact per page ~10.2L water, 2g CO\\(_2\\) and 2g wood. Therefore, ~600L water, 120g CO\\(_2\\) and 120g wood would be needed to produce a paper copy of this mdBook.
+Currently the mdBook is approximately 60+ pages, and the environmental impact per page is app. 10.2L water, 2g CO\\(_2\\) and 2g wood. Therefore, app. 600L water, 120g CO\\(_2\\) and 120g wood would be needed to produce a paper copy of this mdBook.
 
-The environmental effects of paper production include deforestation, the use of enormous amounts of energy and water as well as air pollution and waste problems. Paper accounts for around 26% of total waste at landfills
+The environmental effects of paper production include deforestation, the use of enormous amounts of energy and water, as well as air pollution and waste problems. Paper accounts for around 26% of total waste at landfills.
 
-Therefore, please print only if this is really necessary.
+In other words, please print only if this is really necessary.
