@@ -499,7 +499,7 @@ void loop()
 }
 </code></pre>
 <p>Starting with line 27, the code <code>tempValue = analogRead(temp);</code> will read the TMP36 wired to pin A0 of the Arduino, and convert voltage to the Analogue Digital Converted value. Remember, the voltage range is 0V to 5V, and the ADC of the Arduino is 10-bits, so its range is 0 - 1023.</p>
-<p>Line 28's code, <code>temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}</code>, converts the the <code>temp</code> value, (0 - 358), to Celsius with a range of \(-40^{\circ}C\) to \(125^{\circ}C\), see <strong>equation 6</strong>:.</p>
+<p>Line 28's code, <code>temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}</code>, converts the the <code>temp</code> value, (0 - 358), to degrees Celsius with a range of \(-40^{\circ}C\) to \(125^{\circ}C\), see <strong>equation 6</strong>:.</p>
 <p>
    <span class="math display">
       \[
