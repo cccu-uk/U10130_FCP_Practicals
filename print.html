@@ -674,10 +674,10 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="problem-to-logic-circuit-design"><a class="header" href="#problem-to-logic-circuit-design">Problem to Logic Circuit Design</a></h1>
 <p>The <strong>Problem to Logic Circuit Design</strong> lab is designed for you to get on with problem solving.</p>
-<p>As described in the lecture slides, simulate the circuit using <code>Digital</code> simulator for the following problem specification for an alarm to ring. To understand how to use Digital simulator, revisit <a href="Problem_To_Logic/../Logic_Gates/Logic_Gates.html">Logic Gates</a> worksheet.</p>
+<p>As described in the lecture slides, simulate the circuit using <strong>Digital Simulator</strong> for the following problem specification of an alarm to ring. To understand how to use Digital Simulator, revisit <a href="Problem_To_Logic/../Logic_Gates/Logic_Gates.html">Logic Gates</a> worksheet.</p>
 <hr />
 <h2 id="example-scenario"><a class="header" href="#example-scenario">Example Scenario</a></h2>
-<p>The alarm will ring if the alarm switch is turned on and either the door is not closed or window is not closed; where variables are given below:</p>
+<p>The alarm will ring if the alarm switch is turned on and either the door or window are not closed. Variables are given below:</p>
 <ol>
 <li>Output Variable: Alarm = F ; 1 ON, 0 OFF</li>
 </ol>
@@ -694,15 +694,15 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <li>Window Status = C ;1 CLOSED, 0 OPEN</li>
 </ol>
 <p></p>
-<p>The image below shows the components used for the minimised circuit is given below. You need place these components in the work area of Digital editor and then after wiring up simulate and check if the outputs are the same as in the truth table (see tutorial slide) for all possible inputs.</p>
+<p>The image below shows the components used for the minimised circuit. You need to place these components in the work area of <strong>Digital editor</strong> and then, after wiring up, simulate and check if the outputs are the same as in the truth table (see tutorial slides) for all possible inputs.</p>
 <p><img src="Problem_To_Logic/Figures/Template.PNG" alt="Scenario Template Circuit" /></p>
 <p><strong>CALL TO ACTION</strong></p>
 <ol>
-<li>Identify each gate without using Digital or notes?</li>
+<li>Can you identify each gate without using <strong>Digital</strong> or notes?</li>
 </ol>
 <p></p>
 <ol start="2">
-<li>Wire up the circuit</li>
+<li>Wire up the circuit.</li>
 </ol>
 <p></p>
 <ol start="3">
@@ -710,11 +710,11 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 </ol>
 <p></p>
 <ol start="4">
-<li>Minimise the Boolean Equation</li>
+<li>Minimise the Boolean Equation.</li>
 </ol>
 <p></p>
 <ol start="5">
-<li>Redraw the circuit based on the minimised Boolean Equation</li>
+<li>Redraw the circuit based on the minimised Boolean Equation.</li>
 </ol>
 <p></p>
 <ol start="6">
@@ -732,19 +732,19 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 </ol>
 <hr />
 <h2 id="example-scenario-solution"><a class="header" href="#example-scenario-solution">Example Scenario Solution</a></h2>
-<p>The below circuit is the implementation of the following equation , which requires 5 gates:</p>
+<p>The below circuit is the implementation of the following equation, which requires 5 gates:</p>
 <p><img src="Problem_To_Logic/Figures/TemplateWiredUp.PNG" alt="Scenario Template Circuit Wired-Up" /></p>
-<p>This circuit can be represented using the Boolean Equation below.</p>
+<p>This circuit can be represented using the Boolean Equation below:</p>
 <p>\(S = A.\overline{B} + A.\overline{C}\)</p>
 <p>The minimisation process therefore is:</p>
 <p>\(S = A.\overline{B} + A.\overline{C}\)</p>
 <p>\(S = A.\overline{B} +\) <del>A</del> \(.\overline{C}\)</p>
 <p>\(S = A.(\overline{B} + \overline{C})\)</p>
-<p>Which in-turn produces the following images, with 4 gates:</p>
+<p>Which, in turn, produces the following images, with 4 gates:</p>
 <p><img src="Problem_To_Logic/Figures/MinimisedTemplate.PNG" alt="Scenario Template Circuit Minimised" /></p>
-<p>The circuit below shows the example simulation for the test condition for ABC=110:</p>
+<p>The circuit below shows the example simulation for the test condition of ABC = 110:</p>
 <p><img src="Problem_To_Logic/Figures/Minimised110Template.PNG" alt="Scenario Template Circuit Minimised 110" /></p>
-<p>The same circuit with a change in input status shows the example simulation for the test condition for ABC=010:</p>
+<p>The same circuit, with a change in input status, shows the example simulation for the test condition of ABC = 010:</p>
 <p><img src="Problem_To_Logic/Figures/Minimised010Template.PNG" alt="Scenario Template Circuit Minimised 010" /></p>
 <hr />
 <h2 id="scenario-1"><a class="header" href="#scenario-1">Scenario 1</a></h2>
@@ -754,7 +754,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <p>Create a new file.</p>
 </blockquote>
 </blockquote>
-<p>You need to create a logic circuit for a warning light which will be placed on a skip at night to warn any approaching drivers that there is a hazard in the road. The light should only operate in the dark and the light should be flashing. The light sensor produces a logic 0 in the daylight, and Logic 1 in the dark. Follow the steps below:</p>
+<p>You need to create a logic circuit for a warning light which will be placed on a skip at night to warn any approaching drivers that there is a hazard on the road. The light should only operate in the dark and it should be flashing. The light sensor produces a logic 0 in the daylight, and Logic 1 in the dark. Follow the steps below:</p>
 <ol>
 <li>Find the input and output variables</li>
 </ol>
@@ -776,16 +776,16 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 </ol>
 <p></p>
 <ol start="6">
-<li>Using Digital simulator, do a multi-step timing diagram simulation.</li>
+<li>Using <strong>Digital simulator</strong>, do a multi-step timing diagram simulation</li>
 </ol>
 <p>Your simulation should have the same logic as seen in the image below.</p>
 <p><img src="Problem_To_Logic/Figures/ClockTemplate.PNG" alt="Step 6 Timing Example" /></p>
-<p>To understand how to do Timing diagram simulation (multistep) in Digital, revisit <a href="Problem_To_Logic/../Logic_Gates/Logic_Gates.html#exercise-four-experimentation">Logic Gates</a> worksheet.</p>
+<p>To understand how to do a Timing diagram simulation (multistep) in Digital, revisit <a href="Problem_To_Logic/../Logic_Gates/Logic_Gates.html#exercise-four-experimentation">Logic Gates</a> worksheet.</p>
 <blockquote>
 <p><strong>CALL TO ACTION</strong></p>
 <blockquote>
 <ul>
-<li>Save the circuit in OneDrive call it <code>Problem_To_Solution_Experiment_One</code></li>
+<li>Save the circuit in OneDrive and call it <code>Problem_To_Solution_Experiment_One</code></li>
 </ul>
 </blockquote>
 </blockquote>
@@ -793,9 +793,9 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <details>
 <summary><b>Click for Solution</b></summary>
 <p></p>
-<p>To identify you could create a simple block diagram of the system like below:</p>
+<p>To identify, you could create a simple block diagram of the system like below:</p>
 <p><img src="Problem_To_Logic/./Figures/Scenario_1_Block_Diagram.png" alt="" /></p>
-<p>You will notice that the two inputs have now been given a letter so that we can identify them in a truth table. In this case there are only two inputs, and therefore there will be four possible combinations of A and B that we have to consider. The next stage is to construct a truth table to show all the possible input conditions and for each set of inputs determine when an output is required.</p>
+<p>You will notice that the two inputs have now been given a letter so that we can identify them in a truth table. In this case there are only two inputs, and therefore there will be four possible combinations of A and B that we have to consider. The next stage is to construct a truth table to show all the possible input conditions, and for each set of inputs determine when an output is required.</p>
 <div class="table-wrapper"><table><thead><tr><th><strong>Input A</strong></th><th><strong>Input B</strong></th><th><strong>Output S</strong></th><th><strong>Comments</strong></th></tr></thead><tbody>
 <tr><td>0</td><td>0</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 0 \(\equiv\) Daylight, Pulse Generator <strong>B</strong>) = 0 \(\equiv\) Off, Output <strong>S</strong> = 0 Off</td></tr>
 <tr><td>0</td><td>1</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 1 \(\equiv\) Dark, Pulse Generator <strong>B</strong>) = 0 \(\equiv\) Off, Output <strong>S</strong> = 0 Off</td></tr>
@@ -803,13 +803,12 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <tr><td>1</td><td>1</td><td>0</td><td>Light Sensor (<strong>A</strong>) = 1 \(\equiv\) Daylight, Pulse Generator <strong>B</strong>) = 1 \(\equiv\) On, Output <strong>S</strong> = 1 On Z</td></tr>
 </tbody></table>
 </div>
-<p>From the truth table we can get the Boolean Equation, remember we only need to write out the equation where there is a <strong>1</strong> in the Output column.</p>
+<p>From the truth table we can get the Boolean Equation. Remember, we only need to write out the equation where there is a <strong>1</strong> in the Output column:</p>
 <p>\(S = A.B\)</p>
-<p>Only one product term so this is the minimised equation, and you should be able to identify the logic gate from the truth table and the Boolean Algebra. See the image directly below for the logic gate solution:</p>
+<p>There is only one product term, so this must be the minimised equation. You should be able to identify the logic gate from the truth table and the Boolean Algebra. See the image directly below for the logic gate solution:</p>
 <p><img src="Problem_To_Logic/./Figures/Scenario_1_Realisition_Block_Diagram.png" alt="" /></p>
-<p>Now you should be able to create the circuit in in Digital like the following image:</p>
+<p>Now you should be able to create the circuit in <strong>Digital</strong>, like the following image:</p>
 <p><img src="Problem_To_Logic/Figures/Scenario1_circuit.PNG" alt="Scenario 1 Circuit" /></p>
-<p>Notice that the circuit contains a <code>D</code> attached to the clock so that you can reproduce the .</p>
 </details>
 <hr />
 <h2 id="scenario-2"><a class="header" href="#scenario-2">Scenario 2</a></h2>
@@ -819,7 +818,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <p>Create a new file.</p>
 </blockquote>
 </blockquote>
-<p>Create a logic circuit for the buzzer of a car, and it should Buzz when:</p>
+<p>Create a logic circuit for the buzzer of a car, and it should buzz when:</p>
 <ol>
 <li>the engine is on, the door is closed, and the seat belt is unbuckled</li>
 </ol>
@@ -827,7 +826,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <ol start="2">
 <li>the engine is on, the door is open</li>
 </ol>
-<p>Assume there are appropriate binary sensors for engine, door and seat belt. </p>
+<p>Assume there are appropriate binary sensors for the engine, door and seat belt. </p>
 <p>Create and simulate the circuit of the buzzer following the steps
 below:</p>
 <ol>
@@ -839,7 +838,7 @@ below:</p>
 </ol>
 <p></p>
 <ol start="3">
-<li>Write the Boolean Equation : &quot;Output = Sum of the Standard Product terms&quot;</li>
+<li>Write the Boolean Equation: &quot;Output = Sum of the Standard Product terms&quot;</li>
 </ol>
 <p></p>
 <ol start="4">
@@ -851,12 +850,12 @@ below:</p>
 </ol>
 <p></p>
 <ol start="6">
-<li>Using Digital Simulator, simulate the circuit.</li>
+<li>Using <strong>Digital Simulator</strong>, simulate the circuit</li>
 </ol>
 <blockquote>
 <p><strong>CALL TO ACTION</strong></p>
 <blockquote>
-<p>Save the circuit in OneDrive call it <code>Problem_To_Solution_Scenario_Two</code></p>
+<p>Save the circuit in OneDrive and call it <code>Problem_To_Solution_Scenario_Two</code></p>
 </blockquote>
 </blockquote>
 <hr />
@@ -877,7 +876,7 @@ below:</p>
 <li></li>
 <li>Seat belt , C=1 means buckled, 0 means Unbuckled</li>
 </ul>
-<p>Using the list of input and output variables the truth table can be created:</p>
+<p>Using the list of input and output variables, the following truth table can be created:</p>
 <div class="table-wrapper"><table><thead><tr><th><strong>A</strong></th><th><strong>B</strong></th><th><strong>C</strong></th><th><strong>S</strong></th></tr></thead><tbody>
 <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
@@ -902,11 +901,11 @@ below:</p>
 <p>\(S = A(B + \overline{C})\)</p>
 <p>The first image shows the logic circuit implementation of the minimised Boolean Equation:</p>
 <p><img src="Problem_To_Logic/Figures/Scenario2_circuit.PNG" alt="Scenario 2 Circuit" /></p>
-<p>The image below shows the example simulation for the test condition for ABC=100:</p>
+<p>The image below shows the example simulation for the test condition of ABC = 100:</p>
 <p><img src="Problem_To_Logic/Figures/Scenario2_circuit_100.PNG" alt="Scenario 2 Circuit 100" /></p>
-<p>Penultimately, the circuit shows the example simulation for the test condition for ABC=100:</p>
+<p>The circuit below now shows the example simulation for the test condition of ABC = 101:</p>
 <p><img src="Problem_To_Logic/Figures/Scenario2_circuit_101.PNG" alt="Scenario 2 Circuit 101" /></p>
-<p>Finally, the image below shows the example simulation for the test condition for ABC=100:</p>
+<p>Finally, the image below now shows the example simulation for the test condition for ABC = 110:</p>
 <p><img src="Problem_To_Logic/Figures/Scenario2_circuit_110.PNG" alt="Scenario 2 Circuit 110" /></p>
 </details>
 <hr />
