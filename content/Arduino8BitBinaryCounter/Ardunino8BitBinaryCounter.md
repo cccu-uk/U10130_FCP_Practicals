@@ -5,13 +5,14 @@ In today’s activity we will study how computers “count”, and we will discu
 We will then connect the Arduino board to 4 LEDs, and see how the computer can count.
 
 > The primary tool for this project will be TinkerCad -> https://www.tinkercad.com
+Create your own account to access TinkerCad and remember your login details, as we will be using TinkerCad often throughout this module. 
 
 
 ## Binary Counting
 
-Computers count in BINARY, i.e. using ones and zeros. For example, the number 5 in binary is 00000101. How does this work? Here is a chart to explain how the computer uses 8-bits to represent the numbers from 0...255.
+Computers count in BINARY, i.e., using ones and zeros. For example, the number 5 in binary is 00000101. How does this work? 
 
-Below is a table that show the possible combinations of 4-bit binary numbers and their decimal equivalent.
+Below is a table that shows the possible combinations of 4-bit binary numbers and their decimal equivalent of 0 to 255:
 
 <table align=center>
 <tr>
@@ -42,7 +43,7 @@ Below is a table that show the possible combinations of 4-bit binary numbers and
 </table>
 
 ## Converting between Decimal <---> Binary
-Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20 , the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent. 
+Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20, the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent. 
 
 Below are some examples as reminders.
 
@@ -68,7 +69,7 @@ Alternatively you can achieve the same result this way too:
 
 \\[ 1 0 1 0 \\]
 
-So therefore decimal `10' is 1010 in binary form.
+Therefore, decimal `10' is 1010 in binary form.
 
 The binary number 11011011 is converted to decimal form like so: 
 
@@ -85,7 +86,7 @@ The binary number 11011011 is converted to decimal form like so:
    </span>
 </p>
 
-Alternatively you can achieve the same result this way too: 
+Alternatively, you can achieve the same result this way too: 
 
 \\[ [(1) \cdot 2^{7}] + [(1) \cdot 2^{6}] + [(0) \cdot 2^{5}] + [(1) \cdot 2^{4}] + [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(1) \cdot 2^{0}] \\]
 
@@ -96,7 +97,7 @@ Alternatively you can achieve the same result this way too:
 ## Settting up the Circuit
 
 
-Once loaded login to TinkerCad and then click on **Circuits** > **Create new Circuit**.
+Login to TinkerCad and then click on **Circuits** > **Create new Circuit**.
 
 Change the circuit name, located top-left hand side of the screen to **8-bit Binary Counter**, see below:
 
@@ -107,9 +108,9 @@ Change the circuit name, located top-left hand side of the screen to **8-bit Bin
 
 </div>
 
-Next you need to add an Arduino Uno and a breadboard that need to be connected together from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. 
+You will need to add an Arduino Uno and a breadboard. From there you need to connect the two boards from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. 
 
-This can be achieved by either selecting the Arduino Uno and the breadboard from **Components** > **Basic** components or by changing **Components** > **Basic** to **Components** > **Starter** and choosing Arduino Uno and the Breadboard starter. Please refer to the image below.
+To do this, select the Arduino Uno and the breadboard from **Components** > **Basic** components, or by changing **Components** > **Basic** to **Components** > **Starter** and choosing Arduino Uno and the Breadboard starter. Please refer to the image below:
 
 <div align=center>
 
@@ -117,16 +118,16 @@ This can be achieved by either selecting the Arduino Uno and the breadboard from
 
 </div>
 
-If you have chosen the Arduino and breadboard template from the the **Components** > **Starter** then these two components are already connected with a corresponding red 5V line and GND line. 
+If you have chosen the Arduino and breadboard template from the the **Components** > **Starter**, then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards in the configuration mentioned above. 
 
-You will need: 
+Next, you will need: 
 - 8 x LED, any colour
 - 8 x resistor, set at \\(0.22k\Omega\\) or \\(220\Omega\\)
 
 Placing components (refer to image below step by step instructions): 
-1.  Place the LEDs so that the **cathode** and **anode** is in row **6** and **7** column **e** respectively. Repeat for the next 7 LEDs with rows **8, 11, 14, 17, 20, 23, 26** as gaps between each LED.
-2.  Place the resistors inline with the **Cathode** of the LED so that **terminal 2** is in column **b** and **terminal 1** in the GND rail.
-3.  connect a wire from inline with each **Anode** of LED, and connect from left to right of the breadboard, to **Pins 12, 11, 10, 9, 8, 7, 6, 5** in the Arduino Uno.
+1.  Place the LEDs so that the **cathode** and **anode** are in row **6** and **7** respectively, and both are in column **e**. Repeat for the next 7 LEDs with rows **8, 11, 14, 17, 20, 23, 26** as gaps between each LED.
+2.  Place the resistors inline with the **Cathode** of their corresponding LED so that **terminal 2** is in column **b** and **terminal 1** in the GND rail.
+3.  Connect a wire from inline with each **Anode** of LED, and connect from left to right of the breadboard, to **Pins 12, 11, 10, 9, 8, 7, 6, 5** in the Arduino Uno.
 
 <div align=center>
 
@@ -136,7 +137,7 @@ Placing components (refer to image below step by step instructions):
 
 ## Programming the Circuit
 
-Once you have completed the circuit you will need to programme the Arduino Uno.  Located above the **Components** click the **Code** > **Text**. Once the sketch has appeared reproduce the following code: 
+Once you have completed the circuit you will need to programme the Arduino Uno. Located above the **Components**, click the option **Code** > **Text**. Once the sketch has appeared reproduce the following code: 
 
 ```C++
 void setup()
@@ -167,11 +168,11 @@ void loop()
 }
 ```
 
-Line 2, is an array of `char` with a length of 9, notice that at the end the array is `\0`, this is a null terminator so that the when printed to the Serial monitor it only prints the first 8 positions in the array.
+Line 2, is an array of `char` with a length of 9. Notice that at the end the array there is `\0`. This is a null terminator, so that the when printed to the Serial monitor it only prints the positions prior to the `\0` (in this case, the first 8 positions) in the array.
 
-Setting up the `void setup()` we will do something a little more efficient to set the `pinMode()` of the `ledPins` array. 
+When setting up the `void setup()` we will do something a little more efficient to set the `pinMode()` of the `ledPins` array. 
 
-*Important note, arrays start from 0 to n. So `ledPins[1] = 6` and `ledPins[7] = 12`.*
+*Important note: arrays start from 0 to n. So `ledPins[1] = 6` and `ledPins[7] = 12`.*
 
 <p>
    <span class="math display">
@@ -184,7 +185,7 @@ Setting up the `void setup()` we will do something a little more efficient to se
    </span>
 </p>
 
-Line 10, shows the initialisation of a for loop ,`for(int x=0;x<8;x++)`, sets a variable `x` as 0 and while `x` less than 8 increment `x` by 1, so we can repeat the code between the `{}` 8 times. 
+Line 10 shows the initialisation of a **for** loop ,`for(int x=0;x<8;x++)`, whereby it sets a variable `x` as 0 and while `x` less than 8 increments `x` by 1. Therefore, we can repeat the code between the `{}` 8 times. 
 
 So you can see that as `x` starts at 0, `ledPin[x]` will set pin 5 as `OUTPUT`. So therefore `Serial.print(ledPin[x])` outputs the value to the Serial monitor.
 
@@ -205,7 +206,7 @@ void setup()
 }
 ```
 
-The `void loop()`, function has little code because of the for loop and a user defined function `displayBinary();`.
+The `void loop()` function has little code because of the **for** loop and a user-defined function named `displayBinary();`.
 
 ```C++
 void loop()
@@ -220,11 +221,11 @@ void loop()
 
 > QUESTION:
 >
-> - Looking at the lines 22 to 26, describe what is happening.
+> - Looking at lines 22 to 26, describe what is happening.
 
-So now lets look at the user defined function `displayBinary();` below. 
+So now lets look at the user-defined function `displayBinary();` below. 
 
-*Remember in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the `displayBinary(byte numToShow);` is the data type `byte`. So line 31, `for(int i=0; i<8; i++)` iterates over the number bits in one byte. 
+*Do you recall how in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the `displayBinary(byte numToShow);` is the data type `byte`. So line 31, `for(int i=0; i<8; i++)` iterates over the number bits in one byte. 
 
 
 ```C++
@@ -260,9 +261,9 @@ Line 33, `if (bitRead(numToShow, i)==1)` passes the `numToShow` variable to the 
 
 Line 35, `binary[7-i] = '1';` sets the value at the index `7-i`.
 
-Line 36, `digitalWrite(ledPin[i], HIGH);` sets the LED at the correct bit position to `HIGH`. 
+Line 36, `digitalWrite(ledPin[i], HIGH);` sets the LED at the correct bit position of `HIGH`. 
 
-Therefore line 38, `else` condition is implicitly true when `(bitRead(numToShow, i)==0)`.
+Therefore in line 38 the `else` condition is implicitly true when `(bitRead(numToShow, i)==0)`.
 
 Line 40, `binary[7-i] = '0';` sets the value at the index `7-i`. 
 
@@ -294,25 +295,25 @@ Below shows the output you'd expect to see for the decimal number 171.
 
 > QUESTIONS:
 >
-> - Look at the following documentation for `bitRead()` and summaries in your own words what it does:  https://www.arduino.cc/reference/en/language/functions/bits-and-bytes/bitread/
+> - Look at the following documentation for `bitRead()` and summarize, in your own words, what it does:  https://www.arduino.cc/reference/en/language/functions/bits-and-bytes/bitread/
 > 
 > -  Edit line 2 so that it says `char binary[8] ={0,0,0,0,0,0,0,0};` and then start the simulation. What difference was there from the original output? Once tested return the code on line 2 to `char binary[9] = {0,0,0,0,0,0,0,0,'\0'};`.
 >
-> - What would the output be on line 47 `Serial.println(String(binary))`, if lines 35 and 40 `binary[7-i]` is changed to `binary[i]`. Test your theory/answer.
+> - What would the output be on line 47 `Serial.println(String(binary))`, if the code onlines 35 and 40 `binary[7-i]` is changed to `binary[i]`. Test your theory/answer.
 
 ## Extension
 
 - Append the circuit to show 9-bits.
-- Adjust the code to match the circuit
+- Adjust the code to match the circuit:
    -  Increase the arrays length by one on lines 1 and 2
-   -  Therefore line 8, `for(int x=0;x<8;x++)`, `x<8` needs to be increase by one to match the changes made on lines 1 and 2.
+   -  As such, line 8, `for(int x=0;x<8;x++)`, `x<8` needs to be increase by one to match the changes made on lines 1 and 2.
    -  Line 21, `for (byte counter =0;counter<=255; counter++)` needs to updated to show a range from 0 to a 9-bit number. Use the formula \\((2^9 - 1)\\) to find the value you need.
    -  Adjust line 30  `for (int i =0;i<8;i++)` so that it is the same as line 8.
-   -  Finally modify lines 34 and 39 `binary[7-i] = `, `8-i`.  
+   -  Finally, modify lines 34 and 39 `binary[7-i] = `, `8-i`.  
 
 > QUESTIONS:
 >
 > Does the cicuit and code output a 9-bit number? 
 >
-> Reflect on this project, focus on the difficulty of the circuit and code. 
+> Reflect on this project, and focus on the difficulty of the circuit and code. 
 
