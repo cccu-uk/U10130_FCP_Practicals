@@ -27,10 +27,12 @@ So lets assume that we have a RPM of 1000, and that this needs to be converted t
    <span class="math display">
       \[
          \begin{aligned}
-           \frac{RPM}{60 seconds/minute}  &amp;=  RPS \end{aligned}\tag{Eqn:1} 
+           \frac{RPM}{60 seconds/minute}  &amp;= RPS 
+           \end{aligned}\tag{Eqn:1} 
       \]
    </span>
 </p>
+
  <p>
    <span class="math display">
       \[     
@@ -41,18 +43,28 @@ So lets assume that we have a RPM of 1000, and that this needs to be converted t
    </span>
 </p>
 
+
 Now we need to convert the RPS to Rad/s. Take RPS and convert to radians by multiplying by 2π, as seen in **equation 2**:
 
 <p>
    <span class="math display">
       \[
          \begin{aligned}
-             RPS \cdot 2\pi  &amp;=rad/s  \end{aligned}\tag{Eqn:2} \\ \\
-         \begin{aligned} e.g., 16.67RPS \cdot 2\pi &amp;=104.72 rad/s \end{aligned}  
+             RPS \cdot 2\pi  &amp;= rad/s 
+             \end{aligned}\tag{Eqn:2}
       \]
    </span>
 </p>
-
+<p>
+   <span class="math display">
+      \[ 
+         \begin{aligned} 
+         e.g., 16.67RPS \cdot 2\pi &amp;=104.72 rad/s 
+         \end{aligned}  
+      \]
+   </span>
+</p>
+\\ \\
 
 Combining **equations 1** and **2** gives **equation 3**:
 
@@ -60,27 +72,46 @@ Combining **equations 1** and **2** gives **equation 3**:
    <span class="math display">
       \[
          \begin{aligned}
-            rad/s &amp;= RPM \cdot \frac{2\pi}{60} \\
-            104.72 rad/s &amp;= 1000RPS \cdot \frac{2\pi}{60sec}
+            RPM \cdot \frac{2\pi}{60} &amp;= rad/s
          \end{aligned}\tag{Eqn:3}
+      \]
+   </span>
+</p>
+
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+           e.g.,  104.72 rad/s &amp;= 1000RPS \cdot \frac{2\pi}{60sec}
+         \end{aligned}
       \]
    </span>
 </p>
 
 Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in **equations 4** and **5** respectiely. 
 
-**Equation 4** first takes the approach using the knowledge that \\(1 rad/s = 57.2958^{\circ}\\), as you have precalulated using **equation 3**.
+**Equation 4** first takes the approach using the knowledge that **\\(1 rad/s = 57.2958^{\circ}\\)**, as you have pre-calculated using **equation 3**:
 
 <p>
    <span class="math display">
       \[
          \begin{aligned}
-            deg/s &amp;= rad/s \cdot 57.2958^{\circ} \\ 
-            \Rightarrow  628.32^{\circ}/s  &amp;= 104.72 rad/s \cdot 57.2958^{\circ}
+            rad/s \cdot 57.2958^{\circ} &amp;= deg/s 
          \end{aligned}\tag{Eqn:4}
       \]
    </span>
 </p>
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+          e.g., 628.32^{\circ}/s  &amp;= 104.72 rad/s \cdot 57.2958^{\circ}
+         \end{aligned}
+      \]
+   </span>
+</p>
+
+
 
 **Equation 5** replaces \\(2\pi\\) in **Equation 3** with 360:
 
