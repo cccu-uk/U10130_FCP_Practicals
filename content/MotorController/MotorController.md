@@ -27,9 +27,10 @@ So lets assume that we have a RPM of 1000, and that this needs to be converted t
    <span class="math display">
       \[
          \begin{aligned}
-            RPS  &amp;= \frac{RPM}{60 seconds/minute} \\ \\
-            e.g., \frac{1000RPM}{60sec} &amp;= 16.67 RPS 
-         \end{aligned}\tag{Eqn:1}
+           \frac{RPM}{60 seconds/minute}  &amp;=  RPS \end{aligned}\tag{Eqn:1}  \\ \\
+         \begin{aligned}
+         e.g., \frac{1000RPM}{60sec} &amp;= 16.67 RPS 
+         end{aligned}
       \]
    </span>
 </p>
@@ -40,10 +41,8 @@ Now we need to convert the RPS to Rad/s. Take RPS and convert to radians by mult
    <span class="math display">
       \[
          \begin{aligned}
-             RPS \cdot 2\pi  &amp;=rad/s \\ \\
-           e.g.,    \\ \\
-           16.67RPS \cdot 2\pi &amp;=104.72 rad/s 
-         \end{aligned}\tag{Eqn:2}
+             RPS \cdot 2\pi  &amp;=rad/s  \end{aligned}\tag{Eqn:2} \\ \\
+         \begin{aligned} e.g., 16.67RPS \cdot 2\pi &amp;=104.72 rad/s \end{aligned}  
       \]
    </span>
 </p>
