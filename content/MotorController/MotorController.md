@@ -73,7 +73,7 @@ Combining **equations 1** and **2** gives **equation 3**:
    <span class="math display">
       \[
          \begin{aligned}
-            RPM \cdot \frac{2\pi}{60} &amp;= rad/s
+            RPM \cdot \frac{2\pi}{60sec} &amp;= rad/s
          \end{aligned}\tag{Eqn:3}
       \]
    </span>
@@ -83,7 +83,7 @@ Combining **equations 1** and **2** gives **equation 3**:
    <span class="math display">
       \[
          \begin{aligned}
-           e.g.,  104.72 rad/s &amp;= 1000RPS \cdot \frac{2\pi}{60sec}
+           e.g.,  104.72 rad/s &amp;= 1000RPM \cdot \frac{2\pi}{60sec}
          \end{aligned}
       \]
    </span>
@@ -93,7 +93,7 @@ Combining **equations 1** and **2** gives **equation 3**:
 Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in **equations 4** and **5** respectiely. 
 
 
-**Equation 4** first takes the approach using the knowledge that \\**(1 rad/s = 57.2958^{\circ}**\\), as you have pre-calculated using **equation 3**:
+**Equation 4** first takes the approach using the knowledge that **1 rad/s = 57.2958^{\circ}**, as you have pre-calculated using **equation 3**:
 <p>
    <span class="math display">
       \[
@@ -120,7 +120,7 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
    <span class="math display">
       \[
          \begin{aligned}
-            RPM \cdot \frac{360} &amp;= {60}deg/s
+            RPM \cdot \frac{360^{\circ}}{60} \cdot 57.2958^{\circ} &amp;= deg/s
          \end{aligned}\tag{Eqn:5}
       \]
    </span>
@@ -129,7 +129,7 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
    <span class="math display">
       \[
          \begin{aligned}
-            e.g., 1000 \cdot \frac{360}{60} 57.2958^{\circ} &amp;= 628.32^{\circ}/s  
+            e.g., 1000RPM \cdot \frac{360^{\circ}}{60sec} \cdot 57.2958^{\circ} &amp;= 628.32^{\circ}/s  
          \end{aligned}
       \]
    </span>
