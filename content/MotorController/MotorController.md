@@ -28,7 +28,7 @@ So lets assume that we have a RPM of 1000, and that this needs to be converted t
       \[
          \begin{aligned}
            \frac{RPM}{60 seconds/minute}  &amp;=  RPS \end{aligned}\tag{Eqn:1} 
-      ]
+      \]
    </span>
 </p>
  <p>
