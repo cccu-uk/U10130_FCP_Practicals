@@ -28,7 +28,7 @@ So lets assume that we have a RPM of 1000, and that this needs to be converted t
       \[
          \begin{aligned}
             RPS  &amp;= \frac{RPM}{60 seconds/minute} \\ \\
-            \Rightarrow 16.67 RPS &amp;= \frac{1000}{60} 
+            \e.g., \frac{1000RPS}{60sec} &amp;= 16.67 RPS 
          \end{aligned}\tag{Eqn:1}
       \]
    </span>
@@ -55,7 +55,7 @@ Combining **equations 1** and **2** gives **equation 3**:
       \[
          \begin{aligned}
             rad/s &amp;= RPM \cdot \frac{2\pi}{60} \\
-            104.72 rad/s &amp;= 1000 \cdot \frac{2\pi}{60}
+            104.72 rad/s &amp;= 1000RPS \cdot \frac{2\pi}{60sec}
          \end{aligned}\tag{Eqn:3}
       \]
    </span>
