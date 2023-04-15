@@ -17,9 +17,9 @@ period
 - remember that this is only per minute, not per second like many other measures of rotation.
 
 **Rad/s:**
-- A radian is a measure of an angle, and it is deined in terms of π
+- A radian is a measure of an angle, and it is defined in terms of π
 - 2π radians (rad) in a complete revolution
-- You can relate this to degrees by noting that 360 degrees = 2π rad, so 1 radian = 57.3 degrees.
+- You can relate this to degrees by noting that **360 degrees = 2π rad**, so **1 radian = 57.3 degrees**
 
 So lets assume that we have a RPM of 1000, and that this needs to be converted to rad/s. The two main steps in the conversion are converting RPM to revolutions per second (RPS), then converting total revolutions to the angle covered in radians. The first step is simple: Divide the number in RPM by 60 to find the number of revolutions per second, as shown in **equation 1**:
 
@@ -41,7 +41,8 @@ Now we need to convert the RPS to Rad/s. Take RPS and convert to radians by mult
       \[
          \begin{aligned}
             rad/s &amp;= RPS \cdot 2\pi  \\ \\
-            \Rightarrow   104.72 rad/s &amp;= 16.67 \cdot 2\pi
+           e.g.,    
+           16.67RPS \cdot 2\pi &amp;=104.72 rad/s 
          \end{aligned}\tag{Eqn:2}
       \]
    </span>
