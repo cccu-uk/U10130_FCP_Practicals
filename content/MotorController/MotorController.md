@@ -115,7 +115,7 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
 
 
 
-**Equation 5** replaces \\(2\pi\\) in **Equation 3** with 360:
+**Equation 5** replaces \\(2\pi\\) in **Equation 3** with 360 degrees:
 <p>
    <span class="math display">
       \[
