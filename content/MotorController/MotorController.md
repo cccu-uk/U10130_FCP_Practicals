@@ -152,10 +152,53 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
 </details>
 
 -----------------------------
+## 3 The Motor Driver L293D
 
-## 3 Setting up the circuit
+In this setup we will be using the L293D Dual H-bridge Motor Driver to control our motor. The L293D is a 16-pin integrated circuit (IC) that has 8 pins on either side. 
 
-Once loaded, login to TinkerCad and then click on **Circuits** > **Create new Circuit**.
+The L293D IC receives signals from the Ardiuno microprocessor and then transmits the relative signal to the motor(s) attached to it. This motor driver can drive 2 DC motors simultaneously, and can drive them in either direction while also controlling the speed of the motor(s).
+
+It has a wide supply voltage range of 4.5 - 36V and can provide biderectional drive currents of up to 600 mA. Being a (dual) H-bridge, it is also the simplest circuit for controlling a low current-rated motor.
+
+**Pins on the L293D IC**
+
+**LEFT SIDE of the  L293D IC**
+- **Pin 1 - Enable 1,2:**  This will enable the left part of the L293D IC. When the pin is on HIGH, the left part of the IC is operational. If the pin is on LOW, the left part of the IC is not operational. NOTE: if the left part is not operational, this does not mean the right side is automatically operational! Enable 3,4 (see below) is responsible for the right-hand side of the IC. 
+- **Pin 2 - Input 1:** If this pin is on HIGH, so is output 1 (i.e., the current will flow through output 1).
+- **Pin 3 - Output 1:** This pin connects to one of the terminals of motor 1. 
+- **Pin 4 and Pin 5 - GND:** Grounding pins (connected to ground).
+- **Pin 6 - Output 2:** Current will flow through this pin if Input 2 is HIGH (i.e., pin 7 will also be HIGH).
+- **Pin 7 - Input 2:** If this pin is on HIGH, so is Output 2.
+- **Pin 8  - VCC2:** THe voltage required to run the motor, and it can be greater than the IC voltage VCC1. You need to supply this pin with the correct voltage, e.g., if you are driving 9V DC motors, then Pin 8 needs to be supplied with 9V.
+
+
+**RIGHT SIDE of the  L293D IC**
+- **Pin 9 - Enable 3,4:**  This will enable the right part of the L293D IC. When the pin is on HIGH, the right part of the IC is operational. If the pin is on LOW, the right part of the IC is not operational. 
+- **Pin 10 - Input 3:** If this pin is on HIGH, so is output 3 (i.e., the current will flow through output 3).
+- **Pin 11 - Output 3:** This pin connects to one of the terminals of motor 2. 
+- **Pin 12 and Pin 13 - GND:** Grounding pins (connected to ground).
+- **Pin 14 - Output 4:** Current will flow through this pin if Input 4 is HIGH (i.e., pin 14 will also be HIGH).
+- **Pin 15 - Input 4:** If this pin is on HIGH, so is Output 4.
+- **Pin 16  - VCC1:** THe voltage required to run the L293D IC. This pin is usually supplied with 5V.
+
+**NOTES**
+- **Pins Enable 1,2 and Enable 3,4** can be used to turn ON/OFF and control the speed of motor 1 and motor 2 respectively. 5V DC connection to these pins will allow for normal speed operation of the motor. Pulse Width Modulation (PWM) output can be provided to these pins via the Arduino microcontroller. 
+- **Input pins 1 - 4** act as directional control pins, with input pins 1-2 controlling motor 1 and input pins 3-4 controlling motor 2. For example, if the input logic at input pins 1 & 2 is (1,0), motor 1 will spin in one direction. Changing the input logic on these pins to (0,1) will make the motor spin in the opposite direction. 
+- **4 GND pins** are needed to act as heat sinks to reduce the heating (and subsequent damage) caused by the heavy currents. 
+
+
+For reference, look at the image below for the L293D H bridge functional block diagram and pin layout.
+
+<div align=center>
+
+![](./figures/step3-2.png)
+
+</div>
+
+
+## 4 Setting up the circuit
+
+Login to TinkerCad and then click on **Circuits** > **Create new Circuit**.
 
 Change the circuit name (located top-left hand side of the screen) to **Direction_Control_DC_Motor\_TMP36**, as see below.
 
@@ -199,7 +242,7 @@ Placing components (refer to the image below):
    
 5. Create a new red wire just below pin **Enable 1 & 2** of the L293D bridge, at row **12** column **d**, going to pin **10** of the Ardunio Uno. 
    
-6. Create an orange wire at row **13** column **c**, below pin **Input 1** of the L293D brdige, going to pin **9** of the Arduino Uno. 
+6. Create an orange wire at row **13** column **c**, below pin **Input 1** of the L293D bridge, going to pin **9** of the Arduino Uno. 
 
 7. Create an orange wire at row **18** column **d**, below pin **Input 2** of the L293D brdige, going to pin **8** of the Arduino Uno.
    
@@ -217,22 +260,13 @@ Placing components (refer to the image below):
 
 14. Lastly, take the resistor and set it to \\(1k\Omega\\). Rotate it so that it lies horizontally, and then connect the **Terminal 1** pin to row **17** column **c** of the breadboard, inline with L293D **Output 2**. This means **Terminal 2** of the resistor should be connected to row **21** column **c**.
 
-For reference, look at the image below for the L293D H bridge functional block diagram and pin layout.
 
+Your setup should look like this:
 <div align=center>
-
-![](./figures/step3-2.png)
-
-</div>
-
-<div align=center>
-
 <img src="./figures/step3-3.png" style="transform:rotate(90deg);" width=50%>
-
 </div>
 
-
-## 4.  Programming The Circuit
+## 5.  Programming The Circuit
 
 Once you have completed the circuit you will need to programme the Arduino Uno. Click the **Code Text** located above **Components**. Once sketch has appeared, reproduce the following code:
 
@@ -481,7 +515,7 @@ void motorInstructions()
 
 Let's first look at line 54's code: `lnOhm = log(1000);`. This code gives us the natural logarithm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. 
 
-Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. 
+Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. Please note that this equation is specific to this system, as mentioned above, and has an error of app. +/- 10%. 
 
 The code in line 56 calculates the radians per second, whereby **1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm**. 
 
