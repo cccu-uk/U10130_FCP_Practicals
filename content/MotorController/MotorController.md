@@ -162,7 +162,7 @@ It has a wide supply voltage range of 4.5 - 36V and can provide biderectional dr
 
 **Pins on the L293D IC**
 
-**LEFT SIDE of the  L293D IC**
+ *LEFT SIDE of the  L293D IC*
 - **Pin 1 - Enable 1,2:**  This will enable the left part of the L293D IC. When the pin is on HIGH, the left part of the IC is operational. If the pin is on LOW, the left part of the IC is not operational. NOTE: if the left part is not operational, this does not mean the right side is automatically operational! Enable 3,4 (see below) is responsible for the right-hand side of the IC. 
 - **Pin 2 - Input 1:** If this pin is on HIGH, so is output 1 (i.e., the current will flow through output 1).
 - **Pin 3 - Output 1:** This pin connects to one of the terminals of motor 1. 
@@ -172,7 +172,7 @@ It has a wide supply voltage range of 4.5 - 36V and can provide biderectional dr
 - **Pin 8  - VCC2:** THe voltage required to run the motor, and it can be greater than the IC voltage VCC1. You need to supply this pin with the correct voltage, e.g., if you are driving 9V DC motors, then Pin 8 needs to be supplied with 9V.
 
 
-**RIGHT SIDE of the  L293D IC**
+*RIGHT SIDE of the  L293D IC*
 - **Pin 9 - Enable 3,4:**  This will enable the right part of the L293D IC. When the pin is on HIGH, the right part of the IC is operational. If the pin is on LOW, the right part of the IC is not operational. 
 - **Pin 10 - Input 3:** If this pin is on HIGH, so is output 3 (i.e., the current will flow through output 3).
 - **Pin 11 - Output 3:** This pin connects to one of the terminals of motor 2. 
@@ -180,6 +180,9 @@ It has a wide supply voltage range of 4.5 - 36V and can provide biderectional dr
 - **Pin 14 - Output 4:** Current will flow through this pin if Input 4 is HIGH (i.e., pin 14 will also be HIGH).
 - **Pin 15 - Input 4:** If this pin is on HIGH, so is Output 4.
 - **Pin 16  - VCC1:** THe voltage required to run the L293D IC. This pin is usually supplied with 5V.
+
+>
+>
 
 **NOTES**
 - **Pins Enable 1,2 and Enable 3,4** can be used to turn ON/OFF and control the speed of motor 1 and motor 2 respectively. 5V DC connection to these pins will allow for normal speed operation of the motor. Pulse Width Modulation (PWM) output can be provided to these pins via the Arduino microcontroller. 
@@ -195,7 +198,7 @@ For reference, look at the image below for the L293D H bridge functional block d
 
 </div>
 
-
+-------------
 ## 4 Setting up the circuit
 
 Login to TinkerCad and then click on **Circuits** > **Create new Circuit**.
@@ -260,12 +263,12 @@ Placing components (refer to the image below):
 
 14. Lastly, take the resistor and set it to \\(1k\Omega\\). Rotate it so that it lies horizontally, and then connect the **Terminal 1** pin to row **17** column **c** of the breadboard, inline with L293D **Output 2**. This means **Terminal 2** of the resistor should be connected to row **21** column **c**.
 
-
 Your setup should look like this:
 <div align=center>
 <img src="./figures/step3-3.png" style="transform:rotate(90deg);" width=50%>
 </div>
 
+------------
 ## 5.  Programming The Circuit
 
 Once you have completed the circuit you will need to programme the Arduino Uno. Click the **Code Text** located above **Components**. Once sketch has appeared, reproduce the following code:
