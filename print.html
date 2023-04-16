@@ -2218,7 +2218,7 @@ period</li>
 <p>The L293D IC receives signals from the Ardiuno microprocessor and then transmits the relative signal to the motor(s) attached to it. This motor driver can drive 2 DC motors simultaneously, and can drive them in either direction while also controlling the speed of the motor(s).</p>
 <p>It has a wide supply voltage range of 4.5 - 36V and can provide biderectional drive currents of up to 600 mA. Being a (dual) H-bridge, it is also the simplest circuit for controlling a low current-rated motor.</p>
 <p><strong>Pins on the L293D IC</strong></p>
-<p><strong>LEFT SIDE of the  L293D IC</strong></p>
+<p><em>LEFT SIDE of the  L293D IC</em></p>
 <ul>
 <li><strong>Pin 1 - Enable 1,2:</strong>  This will enable the left part of the L293D IC. When the pin is on HIGH, the left part of the IC is operational. If the pin is on LOW, the left part of the IC is not operational. NOTE: if the left part is not operational, this does not mean the right side is automatically operational! Enable 3,4 (see below) is responsible for the right-hand side of the IC. </li>
 <li><strong>Pin 2 - Input 1:</strong> If this pin is on HIGH, so is output 1 (i.e., the current will flow through output 1).</li>
@@ -2228,7 +2228,7 @@ period</li>
 <li><strong>Pin 7 - Input 2:</strong> If this pin is on HIGH, so is Output 2.</li>
 <li><strong>Pin 8  - VCC2:</strong> THe voltage required to run the motor, and it can be greater than the IC voltage VCC1. You need to supply this pin with the correct voltage, e.g., if you are driving 9V DC motors, then Pin 8 needs to be supplied with 9V.</li>
 </ul>
-<p><strong>RIGHT SIDE of the  L293D IC</strong></p>
+<p><em>RIGHT SIDE of the  L293D IC</em></p>
 <ul>
 <li><strong>Pin 9 - Enable 3,4:</strong>  This will enable the right part of the L293D IC. When the pin is on HIGH, the right part of the IC is operational. If the pin is on LOW, the right part of the IC is not operational. </li>
 <li><strong>Pin 10 - Input 3:</strong> If this pin is on HIGH, so is output 3 (i.e., the current will flow through output 3).</li>
@@ -2238,6 +2238,8 @@ period</li>
 <li><strong>Pin 15 - Input 4:</strong> If this pin is on HIGH, so is Output 4.</li>
 <li><strong>Pin 16  - VCC1:</strong> THe voltage required to run the L293D IC. This pin is usually supplied with 5V.</li>
 </ul>
+<blockquote>
+</blockquote>
 <p><strong>NOTES</strong></p>
 <ul>
 <li><strong>Pins Enable 1,2 and Enable 3,4</strong> can be used to turn ON/OFF and control the speed of motor 1 and motor 2 respectively. 5V DC connection to these pins will allow for normal speed operation of the motor. Pulse Width Modulation (PWM) output can be provided to these pins via the Arduino microcontroller. </li>
@@ -2248,6 +2250,7 @@ period</li>
 <div align=center>
 <p><img src="MotorController/./figures/step3-2.png" alt="" /></p>
 </div>
+<hr />
 <h2 id="4-setting-up-the-circuit"><a class="header" href="#4-setting-up-the-circuit">4 Setting up the circuit</a></h2>
 <p>Login to TinkerCad and then click on <strong>Circuits</strong> &gt; <strong>Create new Circuit</strong>.</p>
 <p>Change the circuit name (located top-left hand side of the screen) to <strong>Direction_Control_DC_Motor_TMP36</strong>, as see below.</p>
@@ -2317,6 +2320,7 @@ period</li>
 <div align=center>
 <img src="MotorController/./figures/step3-3.png" style="transform:rotate(90deg);" width=50%>
 </div>
+<hr />
 <h2 id="5--programming-the-circuit"><a class="header" href="#5--programming-the-circuit">5.  Programming The Circuit</a></h2>
 <p>Once you have completed the circuit you will need to programme the Arduino Uno. Click the <strong>Code Text</strong> located above <strong>Components</strong>. Once sketch has appeared, reproduce the following code:</p>
 <pre><code class="language-C++">void setup()
