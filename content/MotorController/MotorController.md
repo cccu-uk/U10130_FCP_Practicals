@@ -509,14 +509,14 @@ Now it is time to return to lines 31 & 42. Both sets of lines do the same things
 void motorInstructions()
 {
   lnOhm = log(1000);
-  rpm = (14.449*pow(lnOhm,4)-100.83*pow(lnOhm,3)-354.06*pow(lnOhm,2)+309.41*lnOhm+16273)*(PWM/100);
-  rads = rmp*0.10472;
+  rpm = -0.2739*pow(lnOhm,5) + 5.8199*pow(lnOhm,4) - 38.133*pow(lnOhm,3) + 67.064*pow(lnOhm,2) - 45.327*lnOhm + 799.41;
+  rads = rpm*0.10472; 
   degrees = rads * 57.2958;
   analogWrite(en, pwmOutput);
 }
 ```
 
-Let's first look at line 54's code: `lnOhm = log(1000);`. This code gives us the natural logarithm (ln) of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. 
+Let's first look at line 54's code: `lnOhm = log(1000);`. This code gives us the natural logarithm of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. 
 
 Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. Please note that this equation is specific to this system, as mentioned above, and has an error of app. +/- 10%. 
 
