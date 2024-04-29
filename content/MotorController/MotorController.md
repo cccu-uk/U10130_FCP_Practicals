@@ -136,6 +136,8 @@ or
 </p>
 
 
+
+
 Alternatively, you can use **Equation 5** below, which replaces \\(2\pi\\) in **Equation 3** with 360 degrees:
 <p>
    <span class="math display">
