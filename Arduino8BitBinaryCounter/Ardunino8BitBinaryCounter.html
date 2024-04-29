@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -33,7 +33,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -63,42 +63,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="../Introduction/Intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">2.</strong> Logic Gates</a></li><li class="chapter-item expanded "><a href="../Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">3.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="../Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">4.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="../Number_Systems/Number_Systems.html"><strong aria-hidden="true">5.</strong> Number Systems</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="../Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html" class="active"><strong aria-hidden="true">6.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="../ArduinoPWM/ArduinoPWM.html"><strong aria-hidden="true">7.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="../MotorController/MotorController.html"><strong aria-hidden="true">8.</strong> MotorController</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -151,10 +180,10 @@
 <p>We will then connect the Arduino board to 4 LEDs, and see how the computer can count.</p>
 <blockquote>
 <p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com
-Create your own account to access TinkerCad and remember your login details, as we will be using TinkerCad often throughout this module. </p>
+Create your own account to access TinkerCad and remember your login details, as we will be using TinkerCad often throughout this module.</p>
 </blockquote>
 <h2 id="binary-counting"><a class="header" href="#binary-counting">Binary Counting</a></h2>
-<p>Computers count in BINARY, i.e., using ones and zeros. For example, the number 5 in binary is 00000101. How does this work? </p>
+<p>Computers count in BINARY, i.e., using ones and zeros. For example, the number 5 in binary is 00000101. How does this work?</p>
 <p>Below is a table that shows the possible combinations of 4-bit binary numbers and their decimal equivalent of 0 to 255:</p>
 <table align=center>
 <tr>
@@ -183,7 +212,7 @@ Create your own account to access TinkerCad and remember your login details, as 
 </tr>
 </table>
 <h2 id="converting-between-decimal-----binary"><a class="header" href="#converting-between-decimal-----binary">Converting between Decimal &lt;---&gt; Binary</a></h2>
-<p>Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20, the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent. </p>
+<p>Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20, the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent.</p>
 <p>Below are some examples as reminders.</p>
 <p>The decimal number `10' is converted to binary form like so:</p>
 <p>
@@ -197,12 +226,12 @@ Create your own account to access TinkerCad and remember your login details, as 
     \]
    </span>
 </p>
-<p>Alternatively you can achieve the same result this way too: </p>
+<p>Alternatively you can achieve the same result this way too:</p>
 <p>\[ [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(0) \cdot 2^{0}] \ \]</p>
 <p>\[ 1 \cdot 8 + 0 \cdot 4 + 1 \cdot 2 + 0 \cdot 1  \]</p>
 <p>\[ 1 0 1 0 \]</p>
 <p>Therefore, decimal `10' is 1010 in binary form.</p>
-<p>The binary number 11011011 is converted to decimal form like so: </p>
+<p>The binary number 11011011 is converted to decimal form like so:</p>
 <p>
    <span class="math display">
       \[
@@ -215,7 +244,7 @@ Create your own account to access TinkerCad and remember your login details, as 
     \]
    </span>
 </p>
-<p>Alternatively, you can achieve the same result this way too: </p>
+<p>Alternatively, you can achieve the same result this way too:</p>
 <p>\[ [(1) \cdot 2^{7}] + [(1) \cdot 2^{6}] + [(0) \cdot 2^{5}] + [(1) \cdot 2^{4}] + [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(1) \cdot 2^{0}] \]</p>
 <p>\[ [1 \cdot 128] +[1 \cdot 64] + [0 \cdot 32] + [1 \cdot 16]  + [1 \cdot 8] +[0 \cdot 4] + [1 \cdot 2] + [1 \cdot 1]  \]</p>
 <p>\[ 219 = 128+64+16+8+2+1\]</p>
@@ -225,18 +254,18 @@ Create your own account to access TinkerCad and remember your login details, as 
 <div align=center>
 <p><img src="./figures/step1.png" alt="" /></p>
 </div>
-<p>You will need to add an Arduino Uno and a breadboard. From there you need to connect the two boards from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. </p>
+<p>You will need to add an Arduino Uno and a breadboard. From there you need to connect the two boards from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.</p>
 <p>To do this, select the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components, or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to the image below:</p>
 <div align=center>
 <p><img src="../MotorController/figures/step3-1.png" alt="" /></p>
 </div>
-<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong>, then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards in the configuration mentioned above. </p>
-<p>Next, you will need: </p>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong>, then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards in the configuration mentioned above.</p>
+<p>Next, you will need:</p>
 <ul>
 <li>8 x LED, any colour</li>
 <li>8 x resistor, set at \(0.22k\Omega\) or \(220\Omega\)</li>
 </ul>
-<p>Placing components (refer to image below step by step instructions): </p>
+<p>Placing components (refer to image below step by step instructions):</p>
 <ol>
 <li>Place the LEDs so that the <strong>cathode</strong> and <strong>anode</strong> are in row <strong>6</strong> and <strong>7</strong> respectively, and both are in column <strong>e</strong>. Repeat for the next 7 LEDs with rows <strong>8, 11, 14, 17, 20, 23, 26</strong> as gaps between each LED.</li>
 <li>Place the resistors inline with the <strong>Cathode</strong> of their corresponding LED so that <strong>terminal 2</strong> is in column <strong>b</strong> and <strong>terminal 1</strong> in the GND rail.</li>
@@ -246,7 +275,7 @@ Create your own account to access TinkerCad and remember your login details, as 
 <p><img src="./figures/step2.png" alt="" /></p>
 </div>
 <h2 id="programming-the-circuit"><a class="header" href="#programming-the-circuit">Programming the Circuit</a></h2>
-<p>Once you have completed the circuit you will need to programme the Arduino Uno. Located above the <strong>Components</strong>, click the option <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code: </p>
+<p>Once you have completed the circuit you will need to programme the Arduino Uno. Located above the <strong>Components</strong>, click the option <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code:</p>
 <pre><code class="language-C++">void setup()
 {
 
@@ -257,7 +286,7 @@ void loop()
 
 }
 </code></pre>
-<p>Now you are ready to set up all the Sketch up as follows. </p>
+<p>Now you are ready to set up all the Sketch up as follows.</p>
 <pre><code class="language-C++">int ledPin[8]={5,6,7,8,9,10,11,12};
 char binary[9] ={0,0,0,0,0,0,0,0,'\0'};
 
@@ -272,7 +301,7 @@ void loop()
 }
 </code></pre>
 <p>Line 2, is an array of <code>char</code> with a length of 9. Notice that at the end the array there is <code>\0</code>. This is a null terminator, so that the when printed to the Serial monitor it only prints the positions prior to the <code>\0</code> (in this case, the first 8 positions) in the array.</p>
-<p>When setting up the <code>void setup()</code> we will do something a little more efficient to set the <code>pinMode()</code> of the <code>ledPins</code> array. </p>
+<p>When setting up the <code>void setup()</code> we will do something a little more efficient to set the <code>pinMode()</code> of the <code>ledPins</code> array.</p>
 <p><em>Important note: arrays start from 0 to n. So <code>ledPins[1] = 6</code> and <code>ledPins[7] = 12</code>.</em></p>
 <p>
    <span class="math display">
@@ -284,7 +313,7 @@ void loop()
        \]
    </span>
 </p>
-<p>Line 10 shows the initialisation of a <strong>for</strong> loop ,<code>for(int x=0;x&lt;8;x++)</code>, whereby it sets a variable <code>x</code> as 0 and while <code>x</code> less than 8 increments <code>x</code> by 1. Therefore, we can repeat the code between the <code>{}</code> 8 times. </p>
+<p>Line 10 shows the initialisation of a <strong>for</strong> loop ,<code>for(int x=0;x&lt;8;x++)</code>, whereby it sets a variable <code>x</code> as 0 and while <code>x</code> less than 8 increments <code>x</code> by 1. Therefore, we can repeat the code between the <code>{}</code> 8 times.</p>
 <p>So you can see that as <code>x</code> starts at 0, <code>ledPin[x]</code> will set pin 5 as <code>OUTPUT</code>. So therefore <code>Serial.print(ledPin[x])</code> outputs the value to the Serial monitor.</p>
 <pre><code class="language-C++">void setup()
 {
@@ -294,7 +323,7 @@ void loop()
   {
     pinMode(ledPin[x], OUTPUT);
     Serial.print(ledPin[x]);
-    Serial.print(&quot;,&quot;);
+    Serial.print(",");
   } 
  
   Serial.println();
@@ -316,8 +345,8 @@ void loop()
 <li>Looking at lines 22 to 26, describe what is happening.</li>
 </ul>
 </blockquote>
-<p>So now lets look at the user-defined function <code>displayBinary();</code> below. </p>
-<p>*Do you recall how in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the <code>displayBinary(byte numToShow);</code> is the data type <code>byte</code>. So line 31, <code>for(int i=0; i&lt;8; i++)</code> iterates over the number bits in one byte. </p>
+<p>So now lets look at the user-defined function <code>displayBinary();</code> below.</p>
+<p>*Do you recall how in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the <code>displayBinary(byte numToShow);</code> is the data type <code>byte</code>. So line 31, <code>for(int i=0; i&lt;8; i++)</code> iterates over the number bits in one byte.</p>
 <pre><code class="language-C++">  displayBinary(counter);
   delay(500);
  }
@@ -339,17 +368,17 @@ void displayBinary(byte numToShow)
    }
  }
 
- Serial.print(&quot;Number: &quot;);
+ Serial.print("Number: ");
  Serial.print(numToShow);
- Serial.print(&quot; | Binary: &quot;);
+ Serial.print(" | Binary: ");
  Serial.println(String(binary));
 }
 </code></pre>
 <p>Line 33, <code>if (bitRead(numToShow, i)==1)</code> passes the <code>numToShow</code> variable to the inbuilt function <code>bitRead();</code>. The <code>if</code> statement checks to see if the bit <code>i</code> is a 1.</p>
 <p>Line 35, <code>binary[7-i] = '1';</code> sets the value at the index <code>7-i</code>.</p>
-<p>Line 36, <code>digitalWrite(ledPin[i], HIGH);</code> sets the LED at the correct bit position of <code>HIGH</code>. </p>
+<p>Line 36, <code>digitalWrite(ledPin[i], HIGH);</code> sets the LED at the correct bit position of <code>HIGH</code>.</p>
 <p>Therefore in line 38 the <code>else</code> condition is implicitly true when <code>(bitRead(numToShow, i)==0)</code>.</p>
-<p>Line 40, <code>binary[7-i] = '0';</code> sets the value at the index <code>7-i</code>. </p>
+<p>Line 40, <code>binary[7-i] = '0';</code> sets the value at the index <code>7-i</code>.</p>
 <p>Line 41, <code>digitalWrite(ledPin[i], LOW)</code>, sets the LED at the correct bit position to <code>LOW</code>.</p>
 <p>Line 44 to 47, outputs the current number <code>numToShow</code> and binary equivalent to the Serial monitor. As seen in image below.</p>
 <div align=center>
@@ -397,8 +426,8 @@ void displayBinary(byte numToShow)
 </ul>
 <blockquote>
 <p>QUESTIONS:</p>
-<p>Does the cicuit and code output a 9-bit number? </p>
-<p>Reflect on this project, and focus on the difficulty of the circuit and code. </p>
+<p>Does the cicuit and code output a 9-bit number?</p>
+<p>Reflect on this project, and focus on the difficulty of the circuit and code.</p>
 </blockquote>
 
                     </main>
@@ -409,7 +438,7 @@ void displayBinary(byte numToShow)
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../ArduinoPWM/ArduinoPWM.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../ArduinoPWM/ArduinoPWM.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -423,7 +452,7 @@ void displayBinary(byte numToShow)
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../ArduinoPWM/ArduinoPWM.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../ArduinoPWM/ArduinoPWM.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

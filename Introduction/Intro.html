@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -33,7 +33,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -63,42 +63,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="../Introduction/Intro.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">2.</strong> Logic Gates</a></li><li class="chapter-item expanded "><a href="../Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">3.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="../Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">4.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="../Number_Systems/Number_Systems.html"><strong aria-hidden="true">5.</strong> Number Systems</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="../Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html"><strong aria-hidden="true">6.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="../ArduinoPWM/ArduinoPWM.html"><strong aria-hidden="true">7.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="../MotorController/MotorController.html"><strong aria-hidden="true">8.</strong> MotorController</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -198,7 +227,7 @@ The up and down arrow keys can be used to navigate the results, and enter will o
 Clicking a highlighted word or pressing the <code>Esc</code> key will remove the highlighting.</p>
 <p>You have the ability to change the theme of the mdBook by clicking the  icon on the top left mdBook. Additionally, there is a toggle for the table of content, and a search tool.</p>
 <h2 id="issues"><a class="header" href="#issues">Issues</a></h2>
-<p>If you notice a mistake you can notify the module team who can make the correction. You may be instructed to raise an actual github issue. </p>
+<p>If you notice a mistake you can notify the module team who can make the correction. You may be instructed to raise an actual github issue.</p>
 <h2 id="printing"><a class="header" href="#printing">Printing</a></h2>
 <p>Currently the mdBook is approximately 60+ pages, and the environmental impact per page is app. 10.2L water, 2g CO\(_2\) and 2g wood. Therefore, app. 600L water, 120g CO\(_2\) and 120g wood would be needed to produce a paper copy of this mdBook.</p>
 <p>The environmental effects of paper production include deforestation, the use of enormous amounts of energy and water, as well as air pollution and waste problems. Paper accounts for around 26% of total waste at landfills.</p>
@@ -209,7 +238,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next" href="../Logic_Gates/Logic_Gates.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../Logic_Gates/Logic_Gates.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -220,7 +249,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next" href="../Logic_Gates/Logic_Gates.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../Logic_Gates/Logic_Gates.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

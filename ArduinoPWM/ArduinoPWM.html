@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -33,7 +33,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -63,42 +63,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="../Introduction/Intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">2.</strong> Logic Gates</a></li><li class="chapter-item expanded "><a href="../Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">3.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="../Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">4.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="../Number_Systems/Number_Systems.html"><strong aria-hidden="true">5.</strong> Number Systems</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="../Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html"><strong aria-hidden="true">6.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="../ArduinoPWM/ArduinoPWM.html" class="active"><strong aria-hidden="true">7.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="../MotorController/MotorController.html"><strong aria-hidden="true">8.</strong> MotorController</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -147,34 +176,34 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>This lab will introduce you to Pulse Width Modulation (PWM) using Arduino. </p>
+<p>This lab will introduce you to Pulse Width Modulation (PWM) using Arduino.</p>
 <blockquote>
 <p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
 </blockquote>
-<p><strong>Pulse-width modulation (PWM)</strong>: it is a method of chopping up an electrical signal to discrete parts, so as to reduce the average power delivered by it. </p>
-<p>By turning the switch between the supply and load (the electrical component using active power, e.g., a light) on and off at a fast rate, we can control the average voltage (and current) fed to the load. The total power supplied to the load is higher the longer the switch is on compared to off. The <em>PWM switching frequency</em> (rate of on/off switching of the power supply) has to be high enough not to affect the load, in other words the resultant waveform perceived by the load must be as smooth as possible. </p>
-<p>PMW is used in solar panels, digital controls, communication systems, running certain motors, etc. PWM has a main advantage in that power loss in the switching devices is very low. </p>
-<p>Many modern microcontrollers integrate PWM controllers exposed to external pins as peripheral devices controlled by means of internal programming interfaces. These are commonly used for direct current (DC) motor controls (e.g., in robotics). </p>
+<p><strong>Pulse-width modulation (PWM)</strong>: it is a method of chopping up an electrical signal to discrete parts, so as to reduce the average power delivered by it.</p>
+<p>By turning the switch between the supply and load (the electrical component using active power, e.g., a light) on and off at a fast rate, we can control the average voltage (and current) fed to the load. The total power supplied to the load is higher the longer the switch is on compared to off. The <em>PWM switching frequency</em> (rate of on/off switching of the power supply) has to be high enough not to affect the load, in other words the resultant waveform perceived by the load must be as smooth as possible.</p>
+<p>PMW is used in solar panels, digital controls, communication systems, running certain motors, etc. PWM has a main advantage in that power loss in the switching devices is very low.</p>
+<p>Many modern microcontrollers integrate PWM controllers exposed to external pins as peripheral devices controlled by means of internal programming interfaces. These are commonly used for direct current (DC) motor controls (e.g., in robotics).</p>
 <p><strong>Duty Cycle</strong>: The term is used to describe the proportion of 'on' time to the regular interval ('period' of time). The duty cycle is expressed in percentage:</p>
 <ul>
-<li>100%: Fully on. High power. </li>
-<li>50%: “Square” wave. Half the time the power is on, and the other half it is off. </li>
-<li>25%: The power is on 25% of the time, and off 75% of the time. Low power. </li>
+<li>100%: Fully on. High power.</li>
+<li>50%: “Square” wave. Half the time the power is on, and the other half it is off.</li>
+<li>25%: The power is on 25% of the time, and off 75% of the time. Low power.</li>
 </ul>
-<p>In this section you will control the brightness of an LED using PWM pins on the Arudino Uno boardby using the <code>analogWrite()</code> function. You will also view the voltage and PWM value in the serial monitor using the <code>Serial.print()</code> and <code>Serial.println()</code> functions. </p>
+<p>In this section you will control the brightness of an LED using PWM pins on the Arudino Uno boardby using the <code>analogWrite()</code> function. You will also view the voltage and PWM value in the serial monitor using the <code>Serial.print()</code> and <code>Serial.println()</code> functions.</p>
 <h2 id="setting-up-the-circuit"><a class="header" href="#setting-up-the-circuit">Setting up the Circuit</a></h2>
 <p>Login to TinkerCad and then click on <strong>Circuits</strong> &gt; <strong>Create new Circuit</strong>.</p>
 <p>Change the circuit name, located top-left hand side of the screen, to <code>PWM_ LED</code>, as seen in the image below:</p>
 <div align=center>
 <p><img src="./figures/step1.png" alt="" /></p>
 </div>
-<p>You then need to add an Arduino Uno and a breadboard that should to be connected to each other from the 5V and GND pins of the Arduino board to the power and ground rails of the breadboard. </p>
+<p>You then need to add an Arduino Uno and a breadboard that should to be connected to each other from the 5V and GND pins of the Arduino board to the power and ground rails of the breadboard.</p>
 <p>This can be achieved by either selecting the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components, or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to image below:</p>
 <div align=center>
 <p><img src="../MotorController/figures/step3-1.png" alt="" /></p>
 </div>
-<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards as stated above. </p>
-<p>Next, you will need: </p>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards as stated above.</p>
+<p>Next, you will need:</p>
 <ul>
 <li>1 x LED, any colour</li>
 <li>1 x Potentiometer, set at \(10k\Omega\) or \(10000\Omega\)</li>
@@ -236,7 +265,7 @@ void loop() {
 </ul>
 </blockquote>
 <h2 id="further-programming"><a class="header" href="#further-programming">Further Programming</a></h2>
-<p>In order to see what is happening numerically with the circuit you will need to send the data to the serial monitor: </p>
+<p>In order to see what is happening numerically with the circuit you will need to send the data to the serial monitor:</p>
 <ol>
 <li>Create a new variable called <code>PWM</code> as an interger data type</li>
 <li>Adjust the code so that <code>void setup()</code> includes the command <code>Serial.begin(9600);</code></li>
@@ -247,7 +276,7 @@ void loop() {
 <div align=center>
 <p><img src="./figures/step4.png" alt="" /></p>
 </div>
-<p>Now you have the PWM outputting to the Serial monitor. </p>
+<p>Now you have the PWM outputting to the Serial monitor.</p>
 <blockquote>
 <p>QUESTIONS:</p>
 <ul>
@@ -273,7 +302,7 @@ void loop() {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../MotorController/MotorController.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../MotorController/MotorController.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -287,7 +316,7 @@ void loop() {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../MotorController/MotorController.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../MotorController/MotorController.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

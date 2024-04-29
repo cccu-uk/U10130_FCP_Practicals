@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Fundamentals of Computer Programming</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -34,7 +34,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -64,42 +64,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="Introduction/Intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="Logic_Gates/Logic_Gates.html"><strong aria-hidden="true">2.</strong> Logic Gates</a></li><li class="chapter-item expanded "><a href="Problem_To_Logic/Problem_To_Logic.html"><strong aria-hidden="true">3.</strong> Problem to Logic</a></li><li class="chapter-item expanded "><a href="Boolean_Algerbra/Boolean_Algebra.html"><strong aria-hidden="true">4.</strong> Boolean Algebra</a></li><li class="chapter-item expanded "><a href="Number_Systems/Number_Systems.html"><strong aria-hidden="true">5.</strong> Number Systems</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Arduino</li><li class="chapter-item expanded "><a href="Arduino8BitBinaryCounter/Ardunino8BitBinaryCounter.html"><strong aria-hidden="true">6.</strong> Arduino 8-bit Binary Counter</a></li><li class="chapter-item expanded "><a href="ArduinoPWM/ArduinoPWM.html"><strong aria-hidden="true">7.</strong> ArduinoPWM</a></li><li class="chapter-item expanded "><a href="MotorController/MotorController.html"><strong aria-hidden="true">8.</strong> MotorController</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -199,7 +228,7 @@ The up and down arrow keys can be used to navigate the results, and enter will o
 Clicking a highlighted word or pressing the <code>Esc</code> key will remove the highlighting.</p>
 <p>You have the ability to change the theme of the mdBook by clicking the  icon on the top left mdBook. Additionally, there is a toggle for the table of content, and a search tool.</p>
 <h2 id="issues"><a class="header" href="#issues">Issues</a></h2>
-<p>If you notice a mistake you can notify the module team who can make the correction. You may be instructed to raise an actual github issue. </p>
+<p>If you notice a mistake you can notify the module team who can make the correction. You may be instructed to raise an actual github issue.</p>
 <h2 id="printing"><a class="header" href="#printing">Printing</a></h2>
 <p>Currently the mdBook is approximately 60+ pages, and the environmental impact per page is app. 10.2L water, 2g CO\(_2\) and 2g wood. Therefore, app. 600L water, 120g CO\(_2\) and 120g wood would be needed to produce a paper copy of this mdBook.</p>
 <p>The environmental effects of paper production include deforestation, the use of enormous amounts of energy and water, as well as air pollution and waste problems. Paper accounts for around 26% of total waste at landfills.</p>
@@ -570,7 +599,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 </li>
 </ol>
 <p><img src="Logic_Gates/Figures/CLK_AND_Circuit.PNG" alt="Clock Input with AND Gate" /></p>
-<p>Like with all other circuits so far, right click a component and them label as shown above. </p>
+<p>Like with all other circuits so far, right click a component and them label as shown above.</p>
 <p>You will notice that when you right click the Clock Input you will get additional options. Replicate the image below:</p>
 <p><img src="Logic_Gates/Figures/CLK_Options.PNG" alt="Clock Input Options" /></p>
 <p>Make sure that the Data Graph component option <code>Max number of steps to</code> is set to 25.</p>
@@ -580,7 +609,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <p><strong>CALL TO ACTION</strong></p>
 <blockquote>
 <ul>
-<li>Save the circuit in OneDrive. </li>
+<li>Save the circuit in OneDrive.</li>
 <li>Experiment with different Clock Input Frequencies. What observations can you make? Discuss with your peers or with the tutor.</li>
 <li>Replace the <code>with another</code> and chose different frequencies. Look at the Data Graph -  is there a pattern? Is it random? Discuss with your peers or with the tutor.</li>
 </ul>
@@ -764,7 +793,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 </ol>
 <p></p>
 <ol start="3">
-<li>Write the Boolean Equation: &quot;Output = Sum of the Standard ProductTerms&quot;</li>
+<li>Write the Boolean Equation: "Output = Sum of the Standard ProductTerms"</li>
 </ol>
 <p></p>
 <ol start="4">
@@ -826,7 +855,7 @@ Clicking a highlighted word or pressing the <code>Esc</code> key will remove the
 <ol start="2">
 <li>the engine is on, the door is open</li>
 </ol>
-<p>Assume there are appropriate binary sensors for the engine, door and seat belt. </p>
+<p>Assume there are appropriate binary sensors for the engine, door and seat belt.</p>
 <p>Create and simulate the circuit of the buzzer following the steps
 below:</p>
 <ol>
@@ -838,7 +867,7 @@ below:</p>
 </ol>
 <p></p>
 <ol start="3">
-<li>Write the Boolean Equation: &quot;Output = Sum of the Standard Product terms&quot;</li>
+<li>Write the Boolean Equation: "Output = Sum of the Standard Product terms"</li>
 </ol>
 <p></p>
 <ol start="4">
@@ -1297,8 +1326,8 @@ below:</p>
 </div></details>
 <hr />
 <h2 id="decimal-to-binary-conversion"><a class="header" href="#decimal-to-binary-conversion">Decimal to Binary Conversion</a></h2>
-<p>To convert from decimal to Binary, we have two options: 
-The first of these involves continually dividing by two, and is explained in the PowerPoint presentation. 
+<p>To convert from decimal to Binary, we have two options:
+The first of these involves continually dividing by two, and is explained in the PowerPoint presentation.
 The second way is the shorter way and it involves dividing through by the positional values rather than two. For example:</p>
 <p><strong>$$171_{10}$$</strong></p>
 <p>The largest positional value which will divide into \(171_{10}\) once is \(2^7\) which is equal to \(128_{10}\). We therefore place a 1 in the \(2^7\) column, and subtract \(128_{10}\) from \(171_{10}\):</p>
@@ -1719,10 +1748,10 @@ Convert the following binary numbers to hexadecimal:
 <p>We will then connect the Arduino board to 4 LEDs, and see how the computer can count.</p>
 <blockquote>
 <p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com
-Create your own account to access TinkerCad and remember your login details, as we will be using TinkerCad often throughout this module. </p>
+Create your own account to access TinkerCad and remember your login details, as we will be using TinkerCad often throughout this module.</p>
 </blockquote>
 <h2 id="binary-counting"><a class="header" href="#binary-counting">Binary Counting</a></h2>
-<p>Computers count in BINARY, i.e., using ones and zeros. For example, the number 5 in binary is 00000101. How does this work? </p>
+<p>Computers count in BINARY, i.e., using ones and zeros. For example, the number 5 in binary is 00000101. How does this work?</p>
 <p>Below is a table that shows the possible combinations of 4-bit binary numbers and their decimal equivalent of 0 to 255:</p>
 <table align=center>
 <tr>
@@ -1751,7 +1780,7 @@ Create your own account to access TinkerCad and remember your login details, as 
 </tr>
 </table>
 <h2 id="converting-between-decimal-----binary"><a class="header" href="#converting-between-decimal-----binary">Converting between Decimal &lt;---&gt; Binary</a></h2>
-<p>Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20, the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent. </p>
+<p>Since binary is a base-2 system, each digit represents an increasing power of 2, with the rightmost digit representing 20, the next representing 21, then 22, and so on. To determine the decimal representation of a binary number simply take the sum of the products of the binary digits and the powers of 2 which they represent.</p>
 <p>Below are some examples as reminders.</p>
 <p>The decimal number `10' is converted to binary form like so:</p>
 <p>
@@ -1765,12 +1794,12 @@ Create your own account to access TinkerCad and remember your login details, as 
     \]
    </span>
 </p>
-<p>Alternatively you can achieve the same result this way too: </p>
+<p>Alternatively you can achieve the same result this way too:</p>
 <p>\[ [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(0) \cdot 2^{0}] \ \]</p>
 <p>\[ 1 \cdot 8 + 0 \cdot 4 + 1 \cdot 2 + 0 \cdot 1  \]</p>
 <p>\[ 1 0 1 0 \]</p>
 <p>Therefore, decimal `10' is 1010 in binary form.</p>
-<p>The binary number 11011011 is converted to decimal form like so: </p>
+<p>The binary number 11011011 is converted to decimal form like so:</p>
 <p>
    <span class="math display">
       \[
@@ -1783,7 +1812,7 @@ Create your own account to access TinkerCad and remember your login details, as 
     \]
    </span>
 </p>
-<p>Alternatively, you can achieve the same result this way too: </p>
+<p>Alternatively, you can achieve the same result this way too:</p>
 <p>\[ [(1) \cdot 2^{7}] + [(1) \cdot 2^{6}] + [(0) \cdot 2^{5}] + [(1) \cdot 2^{4}] + [(1) \cdot 2^{3}] + [(0) \cdot 2^{2}] + [(1) \cdot 2^{1}] + [(1) \cdot 2^{0}] \]</p>
 <p>\[ [1 \cdot 128] +[1 \cdot 64] + [0 \cdot 32] + [1 \cdot 16]  + [1 \cdot 8] +[0 \cdot 4] + [1 \cdot 2] + [1 \cdot 1]  \]</p>
 <p>\[ 219 = 128+64+16+8+2+1\]</p>
@@ -1793,18 +1822,18 @@ Create your own account to access TinkerCad and remember your login details, as 
 <div align=center>
 <p><img src="Arduino8BitBinaryCounter/./figures/step1.png" alt="" /></p>
 </div>
-<p>You will need to add an Arduino Uno and a breadboard. From there you need to connect the two boards from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard. </p>
+<p>You will need to add an Arduino Uno and a breadboard. From there you need to connect the two boards from the 5V and GND pins of the Arduino to the power and ground rails of the breadboard.</p>
 <p>To do this, select the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components, or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to the image below:</p>
 <div align=center>
 <p><img src="Arduino8BitBinaryCounter/../MotorController/figures/step3-1.png" alt="" /></p>
 </div>
-<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong>, then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards in the configuration mentioned above. </p>
-<p>Next, you will need: </p>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong>, then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards in the configuration mentioned above.</p>
+<p>Next, you will need:</p>
 <ul>
 <li>8 x LED, any colour</li>
 <li>8 x resistor, set at \(0.22k\Omega\) or \(220\Omega\)</li>
 </ul>
-<p>Placing components (refer to image below step by step instructions): </p>
+<p>Placing components (refer to image below step by step instructions):</p>
 <ol>
 <li>Place the LEDs so that the <strong>cathode</strong> and <strong>anode</strong> are in row <strong>6</strong> and <strong>7</strong> respectively, and both are in column <strong>e</strong>. Repeat for the next 7 LEDs with rows <strong>8, 11, 14, 17, 20, 23, 26</strong> as gaps between each LED.</li>
 <li>Place the resistors inline with the <strong>Cathode</strong> of their corresponding LED so that <strong>terminal 2</strong> is in column <strong>b</strong> and <strong>terminal 1</strong> in the GND rail.</li>
@@ -1814,7 +1843,7 @@ Create your own account to access TinkerCad and remember your login details, as 
 <p><img src="Arduino8BitBinaryCounter/./figures/step2.png" alt="" /></p>
 </div>
 <h2 id="programming-the-circuit"><a class="header" href="#programming-the-circuit">Programming the Circuit</a></h2>
-<p>Once you have completed the circuit you will need to programme the Arduino Uno. Located above the <strong>Components</strong>, click the option <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code: </p>
+<p>Once you have completed the circuit you will need to programme the Arduino Uno. Located above the <strong>Components</strong>, click the option <strong>Code</strong> &gt; <strong>Text</strong>. Once the sketch has appeared reproduce the following code:</p>
 <pre><code class="language-C++">void setup()
 {
 
@@ -1825,7 +1854,7 @@ void loop()
 
 }
 </code></pre>
-<p>Now you are ready to set up all the Sketch up as follows. </p>
+<p>Now you are ready to set up all the Sketch up as follows.</p>
 <pre><code class="language-C++">int ledPin[8]={5,6,7,8,9,10,11,12};
 char binary[9] ={0,0,0,0,0,0,0,0,'\0'};
 
@@ -1840,7 +1869,7 @@ void loop()
 }
 </code></pre>
 <p>Line 2, is an array of <code>char</code> with a length of 9. Notice that at the end the array there is <code>\0</code>. This is a null terminator, so that the when printed to the Serial monitor it only prints the positions prior to the <code>\0</code> (in this case, the first 8 positions) in the array.</p>
-<p>When setting up the <code>void setup()</code> we will do something a little more efficient to set the <code>pinMode()</code> of the <code>ledPins</code> array. </p>
+<p>When setting up the <code>void setup()</code> we will do something a little more efficient to set the <code>pinMode()</code> of the <code>ledPins</code> array.</p>
 <p><em>Important note: arrays start from 0 to n. So <code>ledPins[1] = 6</code> and <code>ledPins[7] = 12</code>.</em></p>
 <p>
    <span class="math display">
@@ -1852,7 +1881,7 @@ void loop()
        \]
    </span>
 </p>
-<p>Line 10 shows the initialisation of a <strong>for</strong> loop ,<code>for(int x=0;x&lt;8;x++)</code>, whereby it sets a variable <code>x</code> as 0 and while <code>x</code> less than 8 increments <code>x</code> by 1. Therefore, we can repeat the code between the <code>{}</code> 8 times. </p>
+<p>Line 10 shows the initialisation of a <strong>for</strong> loop ,<code>for(int x=0;x&lt;8;x++)</code>, whereby it sets a variable <code>x</code> as 0 and while <code>x</code> less than 8 increments <code>x</code> by 1. Therefore, we can repeat the code between the <code>{}</code> 8 times.</p>
 <p>So you can see that as <code>x</code> starts at 0, <code>ledPin[x]</code> will set pin 5 as <code>OUTPUT</code>. So therefore <code>Serial.print(ledPin[x])</code> outputs the value to the Serial monitor.</p>
 <pre><code class="language-C++">void setup()
 {
@@ -1862,7 +1891,7 @@ void loop()
   {
     pinMode(ledPin[x], OUTPUT);
     Serial.print(ledPin[x]);
-    Serial.print(&quot;,&quot;);
+    Serial.print(",");
   } 
  
   Serial.println();
@@ -1884,8 +1913,8 @@ void loop()
 <li>Looking at lines 22 to 26, describe what is happening.</li>
 </ul>
 </blockquote>
-<p>So now lets look at the user-defined function <code>displayBinary();</code> below. </p>
-<p>*Do you recall how in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the <code>displayBinary(byte numToShow);</code> is the data type <code>byte</code>. So line 31, <code>for(int i=0; i&lt;8; i++)</code> iterates over the number bits in one byte. </p>
+<p>So now lets look at the user-defined function <code>displayBinary();</code> below.</p>
+<p>*Do you recall how in earlier weeks of the course you looked at the number of bits in different data types? Notice that the expected argument in the <code>displayBinary(byte numToShow);</code> is the data type <code>byte</code>. So line 31, <code>for(int i=0; i&lt;8; i++)</code> iterates over the number bits in one byte.</p>
 <pre><code class="language-C++">  displayBinary(counter);
   delay(500);
  }
@@ -1907,17 +1936,17 @@ void displayBinary(byte numToShow)
    }
  }
 
- Serial.print(&quot;Number: &quot;);
+ Serial.print("Number: ");
  Serial.print(numToShow);
- Serial.print(&quot; | Binary: &quot;);
+ Serial.print(" | Binary: ");
  Serial.println(String(binary));
 }
 </code></pre>
 <p>Line 33, <code>if (bitRead(numToShow, i)==1)</code> passes the <code>numToShow</code> variable to the inbuilt function <code>bitRead();</code>. The <code>if</code> statement checks to see if the bit <code>i</code> is a 1.</p>
 <p>Line 35, <code>binary[7-i] = '1';</code> sets the value at the index <code>7-i</code>.</p>
-<p>Line 36, <code>digitalWrite(ledPin[i], HIGH);</code> sets the LED at the correct bit position of <code>HIGH</code>. </p>
+<p>Line 36, <code>digitalWrite(ledPin[i], HIGH);</code> sets the LED at the correct bit position of <code>HIGH</code>.</p>
 <p>Therefore in line 38 the <code>else</code> condition is implicitly true when <code>(bitRead(numToShow, i)==0)</code>.</p>
-<p>Line 40, <code>binary[7-i] = '0';</code> sets the value at the index <code>7-i</code>. </p>
+<p>Line 40, <code>binary[7-i] = '0';</code> sets the value at the index <code>7-i</code>.</p>
 <p>Line 41, <code>digitalWrite(ledPin[i], LOW)</code>, sets the LED at the correct bit position to <code>LOW</code>.</p>
 <p>Line 44 to 47, outputs the current number <code>numToShow</code> and binary equivalent to the Serial monitor. As seen in image below.</p>
 <div align=center>
@@ -1965,38 +1994,38 @@ void displayBinary(byte numToShow)
 </ul>
 <blockquote>
 <p>QUESTIONS:</p>
-<p>Does the cicuit and code output a 9-bit number? </p>
-<p>Reflect on this project, and focus on the difficulty of the circuit and code. </p>
+<p>Does the cicuit and code output a 9-bit number?</p>
+<p>Reflect on this project, and focus on the difficulty of the circuit and code.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-2"><a class="header" href="#introduction-2">Introduction</a></h1>
-<p>This lab will introduce you to Pulse Width Modulation (PWM) using Arduino. </p>
+<p>This lab will introduce you to Pulse Width Modulation (PWM) using Arduino.</p>
 <blockquote>
 <p>The primary tool for this project will be TinkerCad -&gt; https://www.tinkercad.com</p>
 </blockquote>
-<p><strong>Pulse-width modulation (PWM)</strong>: it is a method of chopping up an electrical signal to discrete parts, so as to reduce the average power delivered by it. </p>
-<p>By turning the switch between the supply and load (the electrical component using active power, e.g., a light) on and off at a fast rate, we can control the average voltage (and current) fed to the load. The total power supplied to the load is higher the longer the switch is on compared to off. The <em>PWM switching frequency</em> (rate of on/off switching of the power supply) has to be high enough not to affect the load, in other words the resultant waveform perceived by the load must be as smooth as possible. </p>
-<p>PMW is used in solar panels, digital controls, communication systems, running certain motors, etc. PWM has a main advantage in that power loss in the switching devices is very low. </p>
-<p>Many modern microcontrollers integrate PWM controllers exposed to external pins as peripheral devices controlled by means of internal programming interfaces. These are commonly used for direct current (DC) motor controls (e.g., in robotics). </p>
+<p><strong>Pulse-width modulation (PWM)</strong>: it is a method of chopping up an electrical signal to discrete parts, so as to reduce the average power delivered by it.</p>
+<p>By turning the switch between the supply and load (the electrical component using active power, e.g., a light) on and off at a fast rate, we can control the average voltage (and current) fed to the load. The total power supplied to the load is higher the longer the switch is on compared to off. The <em>PWM switching frequency</em> (rate of on/off switching of the power supply) has to be high enough not to affect the load, in other words the resultant waveform perceived by the load must be as smooth as possible.</p>
+<p>PMW is used in solar panels, digital controls, communication systems, running certain motors, etc. PWM has a main advantage in that power loss in the switching devices is very low.</p>
+<p>Many modern microcontrollers integrate PWM controllers exposed to external pins as peripheral devices controlled by means of internal programming interfaces. These are commonly used for direct current (DC) motor controls (e.g., in robotics).</p>
 <p><strong>Duty Cycle</strong>: The term is used to describe the proportion of 'on' time to the regular interval ('period' of time). The duty cycle is expressed in percentage:</p>
 <ul>
-<li>100%: Fully on. High power. </li>
-<li>50%: “Square” wave. Half the time the power is on, and the other half it is off. </li>
-<li>25%: The power is on 25% of the time, and off 75% of the time. Low power. </li>
+<li>100%: Fully on. High power.</li>
+<li>50%: “Square” wave. Half the time the power is on, and the other half it is off.</li>
+<li>25%: The power is on 25% of the time, and off 75% of the time. Low power.</li>
 </ul>
-<p>In this section you will control the brightness of an LED using PWM pins on the Arudino Uno boardby using the <code>analogWrite()</code> function. You will also view the voltage and PWM value in the serial monitor using the <code>Serial.print()</code> and <code>Serial.println()</code> functions. </p>
+<p>In this section you will control the brightness of an LED using PWM pins on the Arudino Uno boardby using the <code>analogWrite()</code> function. You will also view the voltage and PWM value in the serial monitor using the <code>Serial.print()</code> and <code>Serial.println()</code> functions.</p>
 <h2 id="setting-up-the-circuit"><a class="header" href="#setting-up-the-circuit">Setting up the Circuit</a></h2>
 <p>Login to TinkerCad and then click on <strong>Circuits</strong> &gt; <strong>Create new Circuit</strong>.</p>
 <p>Change the circuit name, located top-left hand side of the screen, to <code>PWM_ LED</code>, as seen in the image below:</p>
 <div align=center>
 <p><img src="ArduinoPWM/./figures/step1.png" alt="" /></p>
 </div>
-<p>You then need to add an Arduino Uno and a breadboard that should to be connected to each other from the 5V and GND pins of the Arduino board to the power and ground rails of the breadboard. </p>
+<p>You then need to add an Arduino Uno and a breadboard that should to be connected to each other from the 5V and GND pins of the Arduino board to the power and ground rails of the breadboard.</p>
 <p>This can be achieved by either selecting the Arduino Uno and the breadboard from <strong>Components</strong> &gt; <strong>Basic</strong> components, or by changing <strong>Components</strong> &gt; <strong>Basic</strong> to <strong>Components</strong> &gt; <strong>Starter</strong> and choosing Arduino Uno and the Breadboard starter. Please refer to image below:</p>
 <div align=center>
 <p><img src="ArduinoPWM/../MotorController/figures/step3-1.png" alt="" /></p>
 </div>
-<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards as stated above. </p>
-<p>Next, you will need: </p>
+<p>If you have chosen the Arduino and breadboard template from the the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding red 5V line and GND line. Otherwise, you will need to connect the two boards as stated above.</p>
+<p>Next, you will need:</p>
 <ul>
 <li>1 x LED, any colour</li>
 <li>1 x Potentiometer, set at \(10k\Omega\) or \(10000\Omega\)</li>
@@ -2058,7 +2087,7 @@ void loop() {
 </ul>
 </blockquote>
 <h2 id="further-programming"><a class="header" href="#further-programming">Further Programming</a></h2>
-<p>In order to see what is happening numerically with the circuit you will need to send the data to the serial monitor: </p>
+<p>In order to see what is happening numerically with the circuit you will need to send the data to the serial monitor:</p>
 <ol>
 <li>Create a new variable called <code>PWM</code> as an interger data type</li>
 <li>Adjust the code so that <code>void setup()</code> includes the command <code>Serial.begin(9600);</code></li>
@@ -2069,7 +2098,7 @@ void loop() {
 <div align=center>
 <p><img src="ArduinoPWM/./figures/step4.png" alt="" /></p>
 </div>
-<p>Now you have the PWM outputting to the Serial monitor. </p>
+<p>Now you have the PWM outputting to the Serial monitor.</p>
 <blockquote>
 <p>QUESTIONS:</p>
 <ul>
@@ -2105,7 +2134,7 @@ period</li>
 <ul>
 <li>A radian is a measure of an angle, and it is defined in terms of π</li>
 <li>2π radians (rad) in a complete revolution</li>
-<li>You can relate this to degrees by noting that <strong>360 degrees = 2π rad</strong>, so <strong>1 radian = 57.3 degrees</strong></li>
+<li>You can relate this to degrees by noting that <strong>360 degrees = 2π rad</strong>, so <strong>1 radian 180 degrees/π = 57.3 degrees</strong></li>
 </ul>
 <p>So lets assume that we have a RPM of 1000, and that this needs to be converted to rad/s. The two main steps in the conversion are converting RPM to revolutions per second (RPS), then converting total revolutions to the angle covered in radians. The first step is simple: Divide the number in RPM by 60 to find the number of revolutions per second, as shown in <strong>equation 1</strong>:</p>
 <p>
@@ -2117,7 +2146,7 @@ period</li>
       \]
    </span>
 </p>
-<p>
+ <p>
    <span class="math display">
       \[     
          \begin{aligned}
@@ -2164,7 +2193,7 @@ period</li>
       \]
    </span>
 </p>
-<p>Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in <strong>equations 4</strong> and <strong>5</strong> respectiely. </p>
+<p>Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in <strong>equations 4</strong> and <strong>5</strong> respectiely.</p>
 <p><strong>Equation 4</strong> first takes the approach using the knowledge that <strong>1 rad/s = 57.2958 degrees</strong>, as you have pre-calculated using <strong>equation 3</strong>:</p>
 <p>
    <span class="math display">
@@ -2214,15 +2243,15 @@ period</li>
 </details>
 <hr />
 <h2 id="3-the-motor-driver-l293d"><a class="header" href="#3-the-motor-driver-l293d">3 The Motor Driver L293D</a></h2>
-<p>In this setup we will be using the L293D Dual H-bridge Motor Driver to control our motor. The L293D is a 16-pin integrated circuit (IC) that has 8 pins on either side. </p>
+<p>In this setup we will be using the L293D Dual H-bridge Motor Driver to control our motor. The L293D is a 16-pin integrated circuit (IC) that has 8 pins on either side.</p>
 <p>The L293D IC receives signals from the Ardiuno microprocessor and then transmits the relative signal to the motor(s) attached to it. This motor driver can drive 2 DC motors simultaneously, and can drive them in either direction while also controlling the speed of the motor(s).</p>
 <p>It has a wide supply voltage range of 4.5 - 36V and can provide biderectional drive currents of up to 600 mA. Being a (dual) H-bridge, it is also the simplest circuit for controlling a low current-rated motor.</p>
 <p><strong>Pins on the L293D IC</strong></p>
 <p><em>LEFT SIDE of the  L293D IC</em></p>
 <ul>
-<li><strong>Pin 1 - Enable 1,2:</strong>  This will enable the left part of the L293D IC. When the pin is on HIGH, the left part of the IC is operational. If the pin is on LOW, the left part of the IC is not operational. NOTE: if the left part is not operational, this does not mean the right side is automatically operational! Enable 3,4 (see below) is responsible for the right-hand side of the IC. </li>
+<li><strong>Pin 1 - Enable 1,2:</strong>  This will enable the left part of the L293D IC. When the pin is on HIGH, the left part of the IC is operational. If the pin is on LOW, the left part of the IC is not operational. NOTE: if the left part is not operational, this does not mean the right side is automatically operational! Enable 3,4 (see below) is responsible for the right-hand side of the IC.</li>
 <li><strong>Pin 2 - Input 1:</strong> If this pin is on HIGH, so is output 1 (i.e., the current will flow through output 1).</li>
-<li><strong>Pin 3 - Output 1:</strong> This pin connects to one of the terminals of motor 1. </li>
+<li><strong>Pin 3 - Output 1:</strong> This pin connects to one of the terminals of motor 1.</li>
 <li><strong>Pin 4 and Pin 5 - GND:</strong> Grounding pins (connected to ground).</li>
 <li><strong>Pin 6 - Output 2:</strong> Current will flow through this pin if Input 2 is HIGH (i.e., pin 7 will also be HIGH).</li>
 <li><strong>Pin 7 - Input 2:</strong> If this pin is on HIGH, so is Output 2.</li>
@@ -2230,9 +2259,9 @@ period</li>
 </ul>
 <p><em>RIGHT SIDE of the  L293D IC</em></p>
 <ul>
-<li><strong>Pin 9 - Enable 3,4:</strong>  This will enable the right part of the L293D IC. When the pin is on HIGH, the right part of the IC is operational. If the pin is on LOW, the right part of the IC is not operational. </li>
+<li><strong>Pin 9 - Enable 3,4:</strong>  This will enable the right part of the L293D IC. When the pin is on HIGH, the right part of the IC is operational. If the pin is on LOW, the right part of the IC is not operational.</li>
 <li><strong>Pin 10 - Input 3:</strong> If this pin is on HIGH, so is output 3 (i.e., the current will flow through output 3).</li>
-<li><strong>Pin 11 - Output 3:</strong> This pin connects to one of the terminals of motor 2. </li>
+<li><strong>Pin 11 - Output 3:</strong> This pin connects to one of the terminals of motor 2.</li>
 <li><strong>Pin 12 and Pin 13 - GND:</strong> Grounding pins (connected to ground).</li>
 <li><strong>Pin 14 - Output 4:</strong> Current will flow through this pin if Input 4 is HIGH (i.e., pin 14 will also be HIGH).</li>
 <li><strong>Pin 15 - Input 4:</strong> If this pin is on HIGH, so is Output 4.</li>
@@ -2242,9 +2271,9 @@ period</li>
 </blockquote>
 <p><strong>NOTES</strong></p>
 <ul>
-<li><strong>Pins Enable 1,2 and Enable 3,4</strong> can be used to turn ON/OFF and control the speed of motor 1 and motor 2 respectively. 5V DC connection to these pins will allow for normal speed operation of the motor. Pulse Width Modulation (PWM) output can be provided to these pins via the Arduino microcontroller. </li>
-<li><strong>Input pins 1 - 4</strong> act as directional control pins, with input pins 1-2 controlling motor 1 and input pins 3-4 controlling motor 2. For example, if the input logic at input pins 1 &amp; 2 is (1,0), motor 1 will spin in one direction. Changing the input logic on these pins to (0,1) will make the motor spin in the opposite direction. </li>
-<li><strong>4 GND pins</strong> are needed to act as heat sinks to reduce the heating (and subsequent damage) caused by the heavy currents. </li>
+<li><strong>Pins Enable 1,2 and Enable 3,4</strong> can be used to turn ON/OFF and control the speed of motor 1 and motor 2 respectively. 5V DC connection to these pins will allow for normal speed operation of the motor. Pulse Width Modulation (PWM) output can be provided to these pins via the Arduino microcontroller.</li>
+<li><strong>Input pins 1 - 4</strong> act as directional control pins, with input pins 1-2 controlling motor 1 and input pins 3-4 controlling motor 2. For example, if the input logic at input pins 1 &amp; 2 is (1,0), motor 1 will spin in one direction. Changing the input logic on these pins to (0,1) will make the motor spin in the opposite direction.</li>
+<li><strong>4 GND pins</strong> are needed to act as heat sinks to reduce the heating (and subsequent damage) caused by the heavy currents.</li>
 </ul>
 <p>For reference, look at the image below for the L293D H bridge functional block diagram and pin layout.</p>
 <div align=center>
@@ -2262,7 +2291,7 @@ period</li>
 <div align=center>
 <p><img src="MotorController/./figures/step3-1.png" alt="" /></p>
 </div>
-<p>If you have chosen the Arduino and breadboard template from the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding 5V line(red) and GND line. </p>
+<p>If you have chosen the Arduino and breadboard template from the <strong>Components</strong> &gt; <strong>Starter</strong> then these two components are already connected with a corresponding 5V line(red) and GND line.</p>
 <p><strong>You now need to add:</strong></p>
 <ol>
 <li>1 x TMP36, temperature sensor: <strong>Components</strong> &gt; <strong>Basic</strong>; bottom of the list or, alternatively, use the search box</li>
@@ -2271,31 +2300,31 @@ period</li>
 <li>1 x DC Motor: <strong>Components</strong> &gt; <strong>Basic</strong>; 14th item in the list or, alternatively, use the search box</li>
 <li>1 x 9V D-Cell Battery: <strong>Components</strong> &gt; <strong>Basic</strong>; 7th item in the list or, alternatively, use the search box.</li>
 </ol>
-<p>Placing components (refer to the image below): </p>
+<p>Placing components (refer to the image below):</p>
 <ol>
 <li>
-<p>Place the TMP36 so that the <strong>Power</strong> and <strong>GND</strong> are in row <strong>4</strong> and <strong>6</strong>  respectively, and both are in column <strong>h</strong>. Take a wire from the <strong>Vout</strong> of the sensor (row <strong>5</strong> column <strong>g</strong>) to pin <strong>A0</strong> of the Arduino Uno. </p>
+<p>Place the TMP36 so that the <strong>Power</strong> and <strong>GND</strong> are in row <strong>4</strong> and <strong>6</strong>  respectively, and both are in column <strong>h</strong>. Take a wire from the <strong>Vout</strong> of the sensor (row <strong>5</strong> column <strong>g</strong>) to pin <strong>A0</strong> of the Arduino Uno.</p>
 </li>
 <li>
-<p>Place the L293D chip so that the white dot (pin <strong>enable 1 &amp; 2</strong>) is in row <strong>12</strong> and column <strong>e</strong>, therefore the pin labeled <strong>Power 2</strong> should be in row <strong>19</strong> column <strong>e</strong>. You should have the H-bridge between both sides of the breadboard (rows e and f). </p>
+<p>Place the L293D chip so that the white dot (pin <strong>enable 1 &amp; 2</strong>) is in row <strong>12</strong> and column <strong>e</strong>, therefore the pin labeled <strong>Power 2</strong> should be in row <strong>19</strong> column <strong>e</strong>. You should have the H-bridge between both sides of the breadboard (rows e and f).</p>
 </li>
 <li>
-<p>Staying with the L293D bridge, create a red wire at row <strong>12</strong> column <strong>j</strong> going to the <strong>+</strong> line of the same row. This connects the L293D <strong>Power 1</strong> pin to the Arduino 5V line. </p>
+<p>Staying with the L293D bridge, create a red wire at row <strong>12</strong> column <strong>j</strong> going to the <strong>+</strong> line of the same row. This connects the L293D <strong>Power 1</strong> pin to the Arduino 5V line.</p>
 </li>
 <li>
 <p>Next, create a black wire at row <strong>15</strong> column <strong>j</strong> going to the <strong>-</strong> of the same row. This connects the L293D <strong>Ground</strong> pin to the Arduino GND line.</p>
 </li>
 <li>
-<p>Create a new red wire just below pin <strong>Enable 1 &amp; 2</strong> of the L293D bridge, at row <strong>12</strong> column <strong>d</strong>, going to pin <strong>10</strong> of the Ardunio Uno. </p>
+<p>Create a new red wire just below pin <strong>Enable 1 &amp; 2</strong> of the L293D bridge, at row <strong>12</strong> column <strong>d</strong>, going to pin <strong>10</strong> of the Ardunio Uno.</p>
 </li>
 <li>
-<p>Create an orange wire at row <strong>13</strong> column <strong>c</strong>, below pin <strong>Input 1</strong> of the L293D bridge, going to pin <strong>9</strong> of the Arduino Uno. </p>
+<p>Create an orange wire at row <strong>13</strong> column <strong>c</strong>, below pin <strong>Input 1</strong> of the L293D bridge, going to pin <strong>9</strong> of the Arduino Uno.</p>
 </li>
 <li>
 <p>Create an orange wire at row <strong>18</strong> column <strong>d</strong>, below pin <strong>Input 2</strong> of the L293D brdige, going to pin <strong>8</strong> of the Arduino Uno.</p>
 </li>
 <li>
-<p>Get the 9V Battery and places it in vertical alignment using the rotate button at the top left of the control panel. Place the battery so that it is parallel to the breadboard on the opposite side the Arduino Uno. </p>
+<p>Get the 9V Battery and places it in vertical alignment using the rotate button at the top left of the control panel. Place the battery so that it is parallel to the breadboard on the opposite side the Arduino Uno.</p>
 </li>
 <li>
 <p>Create a red wire from the <strong>Positive</strong> terminal of the battery and connect it to row <strong>19</strong> column <strong>d</strong>, just below  pin <strong>Power 2</strong> of the L293D bridge.</p>
@@ -2353,7 +2382,7 @@ void loop()
 <p>Lines 1 to 3 define the variables <code>en 10</code>, <code>in1 9</code> and <code>in2 8</code> and will reference the physical connections of the L293D: Enable 1 &amp; 2, <strong>Input 1</strong>, and <strong>Input 2</strong> respectively.</p>
 <p>Line 4, defines the variable <code>temp A0</code> which will reference the physical connection of the TMP36 temperature sensor<code>Vout</code> pin.</p>
 <blockquote>
-<p>TODO: </p>
+<p>TODO:</p>
 <p>Add inline comments on lines 1 - 4 for what each variable is for, using the // comment symbols</p>
 </blockquote>
 <p>Secondly, the dynamic variables are declared and initialised using data types <code>int</code>, <code>float</code> and <code>bool</code>.</p>
@@ -2365,11 +2394,11 @@ float degrees = 0.0;
 bool movedRight = false;
 bool movedLeft = false;
 </code></pre>
-<p>Line 6, <code>float pwmOutput = 12;</code>, will store the value that will be used in the <code>analogWrite()</code> function. Use float and not int! </p>
-<p>Lines 7 and 8, variables <code>float tempValue; float temperature;</code> respectively, will store the <code>analogRead()</code> value and the converted temperature value respectively. </p>
+<p>Line 6, <code>float pwmOutput = 12;</code>, will store the value that will be used in the <code>analogWrite()</code> function. Use float and not int!</p>
+<p>Lines 7 and 8, variables <code>float tempValue; float temperature;</code> respectively, will store the <code>analogRead()</code> value and the converted temperature value respectively.</p>
 <p>Lines 9 and 10, variables <code>float rads =0.0;</code> and <code>float degrees = 0.0;</code> respectively, will store the calculated values for radians per second and degrees per second respectively.</p>
 <p>Lines 11 and 12, variables <code>bool movedRight = false;</code> and <code>bool movedLeft = false;</code> respectively, are used to stop the motor turning continuously.</p>
-<p>Lines 13-15 include some more variables that will be used to calculate RPM. Speciifcally, line 13 contains rpm (to store the calculated rounds per minute), line 14 contains PWM (which stores the percentage of the total voltage used in the modulation), and line 15 contains lnOhm: this will be used to store the natural logarithm of the resistance value. You will need to enter this resistance value in the code manually every time you change the value on the resistor. </p>
+<p>Lines 13-15 include some more variables that will be used to calculate RPM. Speciifcally, line 13 contains rpm (to store the calculated rounds per minute), line 14 contains PWM (which stores the percentage of the total voltage used in the modulation), and line 15 contains lnOhm: this will be used to store the natural logarithm of the resistance value. You will need to enter this resistance value in the code manually every time you change the value on the resistor.</p>
 <p>The script should now look like this:</p>
 <pre><code class="language-C++">#define en 10
 #define in1 9
@@ -2398,7 +2427,7 @@ void loop()
 }
 </code></pre>
 <blockquote>
-<p>TODO: </p>
+<p>TODO:</p>
 <p>Add inline comments on lines 6 - 15 for what each variable is for, using the // comment symbols</p>
 </blockquote>
 <p>The <code>void setup()</code> will be used to set the pin modes and initialise the serial.</p>
@@ -2440,7 +2469,7 @@ void loop()
 }
 </code></pre>
 <blockquote>
-<p>TODO: </p>
+<p>TODO:</p>
 <p>Add inline comments on lines 16 - 19 for what each variable is for, using the // comment symbols</p>
 </blockquote>
 <pre><code class="language-C++"> void loop()
@@ -2476,7 +2505,7 @@ void loop()
 </code></pre>
 <p>Starting with line 27, the code <code>tempValue = analogRead(temp);</code> will read the TMP36 wired to pin A0 of the Arduino, and convert voltage to the Analogue Digital Converted value. Remember, the voltage range is 0V to 5V, and the ADC of the Arduino is 10-bits, so its range is 0 - 1023.</p>
 <p>Line 28's code, <code>temperature = ((tempValue*(5.0/1024.0))-0.5)/0.01;}</code>, converts the the <code>temp</code> value, (0 - 358), to degrees Celsius with a range of \(-40^{\circ}C\) to \(125^{\circ}C\), see <strong>equation 6</strong>:</p>
-<p>
+ <p>
    <span class="math display">
       \[
          \begin{aligned}
@@ -2495,20 +2524,20 @@ void loop()
    </span>
 </p>
 <blockquote>
-<p>TODO: </p>
+<p>TODO:</p>
 <p>Add inline comments on lines 27 - 28 for what each variable is for, using the // comment symbols</p>
 </blockquote>
 <p>Now that the <code>temperature</code> value has been calculated, lines 27 and 41 can be explained.</p>
-<p>Line 29's code, <code>if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)</code>, checks to see if the <code>temperature</code> is less than or equal to, <code>&lt;=</code>, 30.0. If this condition is <code>true</code> then the second part of the conditional statement can be checked, using <code>&amp;&amp;</code>. The boolean (true or false) variable <code>movedRight == false</code> is compared for equality <code>==</code>. 
-Now if both conditions are true then the code between lines 30 and 39 will be executed. If either statement is false, then line 40 is executed. </p>
-<p><strong>NOTE:</strong> a single <code>=</code> means assign the right hand side value to the left hand side, whereas double <code>==</code> is a comparison operator. </p>
-<p>Line 42's code is much the same as line 31's, but the <code>temperature</code> has to be greater or equal to, <code>&gt;=</code>, 40.0 and <code>movedLeft</code> must be false. If both statements are true then lines 42 to 49 are executed. If either or both statements are false then the programme loops back to the line 25, and the process starts again. </p>
-<p>When looking inside lines 31 to 38 &amp; lines 42 to 49, you can see that there are only a few differences between the two blocks of code. We will look at lines 31 - 32 and 42 - 43 later. </p>
-<p>Lets look at lines 33 - 34 and 44 - 45, where the two sets of lines are polar opposites of each other. The <code>digitalWrite(in1, LOW);</code> <code>digitalWrite(in1, HIGH);</code> &amp; <code>digitalWrite(in2, LOW);</code> <code>digitalWrite(in2, HIGH);</code> changes the direction the motor spins. </p>
+<p>Line 29's code, <code>if( temperature &lt;= 30.0 &amp;&amp; movedRight == false)</code>, checks to see if the <code>temperature</code> is less than or equal to, <code>&lt;=</code>, 30.0. If this condition is <code>true</code> then the second part of the conditional statement can be checked, using <code>&amp;&amp;</code>. The boolean (true or false) variable <code>movedRight == false</code> is compared for equality <code>==</code>.
+Now if both conditions are true then the code between lines 30 and 39 will be executed. If either statement is false, then line 40 is executed.</p>
+<p><strong>NOTE:</strong> a single <code>=</code> means assign the right hand side value to the left hand side, whereas double <code>==</code> is a comparison operator.</p>
+<p>Line 42's code is much the same as line 31's, but the <code>temperature</code> has to be greater or equal to, <code>&gt;=</code>, 40.0 and <code>movedLeft</code> must be false. If both statements are true then lines 42 to 49 are executed. If either or both statements are false then the programme loops back to the line 25, and the process starts again.</p>
+<p>When looking inside lines 31 to 38 &amp; lines 42 to 49, you can see that there are only a few differences between the two blocks of code. We will look at lines 31 - 32 and 42 - 43 later.</p>
+<p>Lets look at lines 33 - 34 and 44 - 45, where the two sets of lines are polar opposites of each other. The <code>digitalWrite(in1, LOW);</code> <code>digitalWrite(in1, HIGH);</code> &amp; <code>digitalWrite(in2, LOW);</code> <code>digitalWrite(in2, HIGH);</code> changes the direction the motor spins.</p>
 <p>Looking at the block diagram of the L293D bridge, we can see that Input 1 (pin 3 on the bridge) and Input 2 (pin 7 on the bridge) change the direction of the motor.</p>
-<p>The code of lines 35 and 46, <code>delay(1000)</code>, gives the motor 1 second to turn in the programmed direction. </p>
+<p>The code of lines 35 and 46, <code>delay(1000)</code>, gives the motor 1 second to turn in the programmed direction.</p>
 <blockquote>
-<p>TODO: </p>
+<p>TODO:</p>
 <p>Add inline comments on lines 33 - 36 &amp; 44 - 48 for what each variable is for, using the // comment symbols</p>
 </blockquote>
 <p>Lines 37 - 38, and 48 - 49 both set the <code>movedLeft</code> and <code>movedRight</code> variables as true or false.</p>
@@ -2522,30 +2551,30 @@ Now if both conditions are true then the code between lines 30 and 39 will be ex
   analogWrite(en, pwmOutput);
 }
 </code></pre>
-<p>Let's first look at line 54's code: <code>lnOhm = log(1000);</code>. This code gives us the natural logarithm of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor. </p>
-<p>Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. Please note that this equation is specific to this system, as mentioned above, and has an error of app. +/- 10%. </p>
-<p>The code in line 56 calculates the radians per second, whereby <strong>1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm</strong>. </p>
-<p>Line 57's code, <code>degrees = rads * 57.2958;</code>, is taken from <strong>equation 4</strong> and is used to calculate degrees per second. </p>
+<p>Let's first look at line 54's code: <code>lnOhm = log(1000);</code>. This code gives us the natural logarithm of the resistor value. The value in the paranthesis is the resistance value in Ohm, e.g., 1KΩ = 1000Ω. You will need to change this value every time you change the value on the resistor. This value is needed to calculate the rounds per minute of the motor.</p>
+<p>Line 55 gives us a polynomial equation specific to this system. It is used to calculate the motor's rounds per minute using the aforementioned resistor value. It also changes linearly with the PWM: decreasing the PWM by half changes the result of the rpm equation by half. Please note that this equation is specific to this system, as mentioned above, and has an error of app. +/- 10%.</p>
+<p>The code in line 56 calculates the radians per second, whereby <strong>1rad/s = 60rad/min = 60/2π rpm = 9.549297 rpm</strong>.</p>
+<p>Line 57's code, <code>degrees = rads * 57.2958;</code>, is taken from <strong>equation 4</strong> and is used to calculate degrees per second.</p>
 <p>Line 58's code, <code>analogWrite(en, pwmOutput);</code>, outputs the PWM signal,<code>pwmOutput</code>,  value of 12 to the <code>en</code> pin, to the <strong>Enable 1 &amp; 2</strong> pin of the L293D. The value of <code>en</code>, 12, again is preset because of the resistor's initial value of \(1k\Omega\).</p>
-<p>So lastly, lets look at the function <code>debugger();</code>, called on lines 32 and 43 of the <code>void loop()</code> function. </p>
+<p>So lastly, lets look at the function <code>debugger();</code>, called on lines 32 and 43 of the <code>void loop()</code> function.</p>
 <pre><code class="language-C++">void debugger()
 {
-  Serial.print(&quot;Temperature: &quot;);
+  Serial.print("Temperature: ");
   Serial.print(temperature);
-  Serial.print(&quot;  | RAD/s: &quot;);
+  Serial.print("  | RAD/s: ");
   Serial.print(rads);
-  Serial.print(&quot;   | Degree/s: &quot;);
+  Serial.print("   | Degree/s: ");
   Serial.print(degrees);
-  Serial.print(&quot; | rpm: &quot;);
+  Serial.print(" | rpm: ");
   Serial.println(rpm);
 }
 </code></pre>
 <p>Lines 64 to 71 output information about the variables to the serial montior.</p>
 <p>Now you have a better understanding of the circuit and the code ...</p>
 <blockquote>
-<p>TODO: </p>
+<p>TODO:</p>
 <ul>
-<li>What happens to the motor when the resistance value is changed? Adjust line 54's value to match the resistance on the resistor. </li>
+<li>What happens to the motor when the resistance value is changed? Adjust line 54's value to match the resistance on the resistor.</li>
 <li>Why are we using float for some variables and int for others? What would happen if, for example, we defined PWM or lnOhm via int instead of float?</li>
 <li>Why was #define used on some variables?</li>
 <li>With the knowledge that each line of code takes <em>some</em> time to execute, specifically mathematical functions, would pre-calculating all of the constants in an equation speed up the programme? Try it.</li>
@@ -2617,13 +2646,13 @@ void motorInstructions()
 
 void debugger()
 {
-  Serial.print(&quot;Temperature: &quot;);
+  Serial.print("Temperature: ");
   Serial.print(temperature);
-  Serial.print(&quot;  | Radians/s: &quot;);
+  Serial.print("  | Radians/s: ");
   Serial.print(rads);
-  Serial.print(&quot;   | Degrees/s: &quot;);
+  Serial.print("   | Degrees/s: ");
   Serial.print(degrees);
-  Serial.print(&quot;   | rpm &quot;);
+  Serial.print("   | rpm ");
   Serial.println(rpm);
 }
 </code></pre>
