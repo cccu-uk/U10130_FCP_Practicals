@@ -93,7 +93,6 @@ Therefore, for our initial example of 1000RPM, to convert to rad/s we do the fol
 
 Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in **equations 4** and **5** respectiely. 
 
-
 **Equation 4** first takes the approach using the knowledge that **1 rad = 180 degrees/π = 57.3 degrees**, as you have pre-calculated using **equation 3**:
 <p>
    <span class="math display">
@@ -110,7 +109,7 @@ or
       \[
          \begin{aligned}
           rad/s \cdot  57.3^{\circ} &amp; = deg/s   
-         \end{aligned}
+         \end{aligned}\tag{Eqn:4}
       \]
    </span>
 </p>
@@ -121,20 +120,29 @@ or
    <span class="math display">
       \[
          \begin{aligned}
-          e.g., 104.7 rad/s \cdot 180^{\circ} &amp;/π = 628.3^{\circ}/s   or  104.7 rad/s \cdot 57.3^{\circ} &amp; = 628.3^{\circ}/s     
+          e.g., 104.7 rad/s \cdot 180^{\circ} &amp;/π = 6001.9^{\circ}/s       
+      \end{aligned}
+      \]
+   </span>
+</p>
+or 
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+          104.7 rad/s \cdot 57.3^{\circ} &amp; = 6001.9^{\circ}/s     
       \end{aligned}
       \]
    </span>
 </p>
 
 
-
-**Equation 5** replaces \\(2\pi\\) in **Equation 3** with 360 degrees:
+Alternatively, you can use **Equation 5** below, which replaces \\(2\pi\\) in **Equation 3** with 360 degrees:
 <p>
    <span class="math display">
       \[
          \begin{aligned}
-            RPM \cdot \frac{360^{\circ}}{60} \cdot 57.3^{\circ} &amp;= deg/s
+            RPM \cdot \frac{360^{\circ}}{60} = deg/s
          \end{aligned}\tag{Eqn:5}
       \]
    </span>
@@ -143,7 +151,7 @@ or
    <span class="math display">
       \[
          \begin{aligned}
-            e.g., 1000RPM \cdot \frac{360^{\circ}}{60sec} \cdot 57.2958^{\circ} &amp;= 628.32^{\circ}/s  
+            e.g., 1000RPM \cdot \frac{360^{\circ}}{60sec} = 6000^{\circ}/s  
          \end{aligned}
       \]
    </span>
@@ -152,16 +160,16 @@ or
 **Questions:**
 
 <details>
-<summary>Convert 53 RPM to Angular velocity to 2 decimal places</summary>
+<summary>Convert 53 RPM to Angular velocity (degrees/s) to 2 decimal places</summary>
 
-\\(318^\circ\\)
+\\(318^{\circ}/s\\)
 
 </details>
 
 <details>
-<summary>Convert 4242 RPM to Angular velocity to 2 decimal places.</summary>
+<summary>Convert 4242 RPM to Angular velocity (degrees/s) to 2 decimal places.</summary>
 
-\\(25452^{\circ}\\)
+\\(25452^{\circ}/s\\)
 
 </details>
 
