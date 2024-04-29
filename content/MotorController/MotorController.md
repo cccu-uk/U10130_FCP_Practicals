@@ -74,7 +74,7 @@ Combining **equations 1** and **2** gives **equation 3**:
       \[
          \begin{aligned}
             RPM \cdot \frac{2\pi}{60sec} &amp;= rad/s
-         \end{aligned}\tag{Eqn:3}
+         \end{aligned}
       \]
    </span>
 </p>
@@ -86,8 +86,8 @@ Therefore, for our initial example of 1000RPM, to convert to rad/s we do the fol
          \begin{aligned}
           
          1000RPM \cdot \frac{2\pi}{60sec} &amp;= 104.7 rad/s
-         \end{aligned}
-      \]
+         \end{aligned}\tag{Eqn:3}
+         \]
    </span>
 </p>
 
@@ -100,11 +100,24 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
    <span class="math display">
       \[
          \begin{aligned}
-            rad/s \cdot 180^{\circ} &amp;/π = deg/s      or    rad/s \cdot  57.3^{\circ} &amp; = deg/s
+            rad/s \cdot 180^{\circ} &amp;/π = deg/s    
          \end{aligned}\tag{Eqn:4}
       \]
    </span>
 </p>
+or 
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+          rad/s \cdot  57.3^{\circ} &amp; = deg/s   
+         \end{aligned}
+      \]
+   </span>
+</p>
+
+
+
 <p>
    <span class="math display">
       \[
