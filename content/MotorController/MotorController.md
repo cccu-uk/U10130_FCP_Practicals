@@ -74,7 +74,7 @@ Combining **equations 1** and **2** gives **equation 3**:
       \[
          \begin{aligned}
             RPM \cdot \frac{2\pi}{60sec} &amp;= rad/s
-         \end{aligned}
+         \end{aligned}\tag{Eqn:3}
       \]
    </span>
 </p>
@@ -84,10 +84,9 @@ Therefore, for our initial example of 1000RPM, to convert to rad/s we do the fol
    <span class="math display">
       \[
          \begin{aligned}
-          
          1000RPM \cdot \frac{2\pi}{60sec} &amp;= 104.7 rad/s
-         \end{aligned}\tag{Eqn:3}
-         \]
+         \end{aligned}
+      \]
    </span>
 </p>
 
