@@ -99,23 +99,10 @@ Now that we have rad/s, we can calculate the angular velocity in degrees per sec
       \[
          \begin{aligned}
             rad/s \cdot 180^{\circ} &amp;/π = deg/s    
-         \end{aligned}\tag{Eqn:4}
+         \end{aligned}\tag{Eqn:4a}
       \]
    </span>
 </p>
-or 
-<p>
-   <span class="math display">
-      \[
-         \begin{aligned}
-          rad/s \cdot  57.3^{\circ} &amp; = deg/s   
-         \end{aligned}\tag{Eqn:4}
-      \]
-   </span>
-</p>
-
-
-
 <p>
    <span class="math display">
       \[
@@ -125,12 +112,24 @@ or
       \]
    </span>
 </p>
+
 or 
+
 <p>
    <span class="math display">
       \[
          \begin{aligned}
-          104.7 rad/s \cdot 57.3^{\circ} &amp; = 6001.9^{\circ}/s     
+          rad/s \cdot  57.3^{\circ} &amp; = deg/s   
+         \end{aligned}\tag{Eqn:4b}
+      \]
+   </span>
+</p>
+
+<p>
+   <span class="math display">
+      \[
+         \begin{aligned}
+          e.g., 104.7 rad/s \cdot 57.3^{\circ} &amp; = 6001.9^{\circ}/s     
       \end{aligned}
       \]
    </span>
