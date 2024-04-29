@@ -19,7 +19,7 @@ period
 **Rad/s:**
 - A radian is a measure of an angle, and it is defined in terms of π
 - 2π radians (rad) in a complete revolution
-- You can relate this to degrees by noting that **360 degrees = 2π rad**, so **1 radian 180 degrees/π = 57.3 degrees**
+- You can relate this to degrees by noting that **360 degrees = 2π rad**, so **1 radian = 180 degrees/π = 57.3 degrees**
 
 So lets assume that we have a RPM of 1000, and that this needs to be converted to rad/s. The two main steps in the conversion are converting RPM to revolutions per second (RPS), then converting total revolutions to the angle covered in radians. The first step is simple: Divide the number in RPM by 60 to find the number of revolutions per second, as shown in **equation 1**:
 
@@ -83,7 +83,8 @@ Combining **equations 1** and **2** gives **equation 3**:
    <span class="math display">
       \[
          \begin{aligned}
-           e.g., 1000RPM \cdot \frac{2\pi}{60sec} &amp;= 104.72 rad/s
+           Therefore, for our initial exam of 1000RPM, to convert to rad/s we do the following:
+         1000RPM \cdot \frac{2\pi}{60sec} &amp;= 104.72 rad/s
          \end{aligned}
       \]
    </span>
@@ -93,7 +94,7 @@ Combining **equations 1** and **2** gives **equation 3**:
 Now that we have rad/s, we can calculate the angular velocity in degrees per second (deg/s). There are two ways to achieve this and both methods are shown below in **equations 4** and **5** respectiely. 
 
 
-**Equation 4** first takes the approach using the knowledge that **1 rad/s = 57.2958 degrees**, as you have pre-calculated using **equation 3**:
+**Equation 4** first takes the approach using the knowledge that **1 rad = 180 degrees / π = 57.3 degrees**, as you have pre-calculated using **equation 3**:
 <p>
    <span class="math display">
       \[
