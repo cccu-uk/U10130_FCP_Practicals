@@ -1,6 +1,6 @@
 # Introduction
 
-This MB book was prepared by Mr Seb Blair adapted for L0 Engineering by Dr Georgina Zimbitas.
+This MB book was prepared by Mr Seb Blair and suitably adapted for L0/L4 Engineering by Dr Georgina Zimbitas.
 
 This mdBook will grow over the duration of this module with new labs/workshops and general content needed to test and increase your knowledge of computer programming.
 
